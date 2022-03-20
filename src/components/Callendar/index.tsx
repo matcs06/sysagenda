@@ -1,21 +1,12 @@
 import { EventSettingsModel,Inject, ScheduleComponent, Day, Week, WorkWeek, Month, Agenda } from "@syncfusion/ej2-react-schedule";
 import ScheduleDetail from "./ScheduleDetail";
 
-import {L10n} from "@syncfusion/ej2-base"
 import { useEffect, useState } from "react";
 import { addTimes } from "../../utils";
 import api from "../../api"
 
-L10n.load({
-    'en-US':{
-        'schedule':{
-            'saveButton': 'Salvar',
-            'cancelButton': 'Fechar',
-            'deleteButton': 'Remover',
-            'newEvent': 'Detalhes do agendamento'
-        }
-    }
-})
+import "./translation.ts"
+
 
 interface SchduleFields{
     id:string;
@@ -83,12 +74,7 @@ export default function Scheduller({data}){
     })
 
     const localData: EventSettingsModel = {
-
         dataSource
-    }
-
-    const eventTemplate = (props)=>{
-      
     }
 
     const editorWindow = (props: any) =>{
@@ -99,6 +85,7 @@ export default function Scheduller({data}){
         <ScheduleComponent eventSettings={{dataSource: localData.dataSource}  } 
             editorTemplate={editorWindow}
             showQuickInfo={false} 
+            height='1000px'
             >
             <Inject services={[Day, Week, WorkWeek, Month, Agenda] }/>
         </ScheduleComponent>

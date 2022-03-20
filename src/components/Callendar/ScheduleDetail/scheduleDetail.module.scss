@@ -1,11 +1,81 @@
 .e-footer-content {
-  display: flex;
-  background-color: rgb(0, 0, 0);
 }
 .whatsappContainer {
   cursor: pointer;
 
   &:hover {
     color: green;
+  }
+}
+
+.e-event-save {
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  background: transparent;
+  border-radius: 10px;
+  padding: 15px 15px 15px 15px;
+  margin: 10px 15px 10px 10px;
+  height: 270px;
+  transition: background 0.2s;
+  font-weight: bold;
+  font-size: 16px;
+  overflow-y: auto;
+  animation-name: appearFromLeft;
+  animation-duration: 0.6s;
+
+  p {
+    margin: 8px;
+    max-width: 200px;
+    color: #535252;
+    font-family: "Roboto";
+  }
+
+  .cardBottom {
+    font-family: "Roboto";
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.numberContainer {
+  display: flex;
+  justify-content: space-between;
+  margin: -8px 0 -8px 0;
+}
+
+.wppIcon {
+  cursor: pointer;
+  justify-self: center;
+  align-self: center;
+  color: #d3cfcf;
+  transition: color 0.2s;
+
+  &:hover {
+    color: green;
+  }
+}
+
+.bottomContainer {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  bottom: 15px;
+}
+.deleteContainer {
+  display: flex;
+  align-self: center;
+  cursor: pointer;
+  color: #000000;
+  transition: color 0.2s;
+
+  &:hover {
+    color: rgb(255, 88, 88);
   }
 }

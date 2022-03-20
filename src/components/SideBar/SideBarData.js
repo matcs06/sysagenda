@@ -4,7 +4,7 @@ import AddBoxIcon from '@mui/icons-material/AddBox';
 import MoreTimeIcon from '@mui/icons-material/MoreTime';
 import FindInPageIcon from '@mui/icons-material/FindInPage';
 import PriceChangeIcon from '@mui/icons-material/PriceChange';
-
+import DateRangeIcon from '@mui/icons-material/DateRange';
 
 import AvailabilityInquiry from '../../pages/admin/app/availabilityInquiry';
 import CreateAvailability from '../../pages/admin/app/createAvailability';
@@ -42,7 +42,7 @@ export const SideBarData = [
    },
    {
       title: "Calendário",
-      icon: <EventIcon />,
+      icon: <DateRangeIcon />,
       component: <Scheduller/>
    },
    {

@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { DropDownListComponent } from "@syncfusion/ej2-react-dropdowns";
 import styles from "./scheduleDetail.module.scss"
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import api from "../../../api"
 
 const ScheduleDetail= ({props}) => {
+
+    const [updateOnDelete, setUpdateOnDelete] = useState(false)
+    const [updateOnClick, setupdateOnClick] = useState(false)
+    const [togleTransaction, setTogleTransaction] = useState(true)
 
    const onWhatsAppClick = (phone: string, serviceName:string, serviceDate:string, serviceTime:string)=>{
 
@@ -22,18 +28,53 @@ const ScheduleDetail= ({props}) => {
       window.open(apiURL);
   }
 
+  const deleteSchedules = async (scheduleId: string,
+                                  serviceName:string,
+                                  serviceDate:string,
+                                  serviceValue:string) => {
+     
+    
+        try {
+            const token = localStorage.getItem("token"); 
+
+            await api.post("/transactions", {
+               title: serviceName ,
+               value: serviceValue,
+               formatedDate: serviceDate,
+               }, {
+                  headers: {
+                  Authorization: "Bearer " + token,
+               },
+            });
+
+            window.alert("Agendamento adicionado ao IFinance com sucesso!")
+        } catch (error) {
+           window.alert("Erro ao adicionar agendamento no IFinance")
+           
+        }
+    
+
+     try {
+
+       const token = localStorage.getItem("token");
+       await api.delete(`/schedules/${scheduleId}`,{
+           headers: { Authorization: "Bearer " + token },
+       })
+       setUpdateOnDelete(true)
+     } catch (error) {
+       window.alert("Erro ao deletar agendamento")
+     }
+   }
+
   return (
-     <div>
-         <table className="custom-event-editor">
-          <tbody>
-              <tr>
-                <td className="e-textlabel">Cliente: </td>
-                <td><p>{props.Cliente}</p></td>
-              </tr>
-              <tr>
-                <td className="e-textlabel">Serviço: </td>
-                <td><p>{props.Service}</p></td>
-              </tr>
+
+    
+
+     <div className={styles.card}>
+          <div>
+               <p>Cliente: {props.Cliente}</p>
+               <p>Serviço: {props.Service}</p>
+
            {/*    <tr>
                   <td className="e-textlabel">Status</td>
                   <td>
@@ -43,28 +84,28 @@ const ScheduleDetail= ({props}) => {
                       </DropDownListComponent>
                   </td>
               </tr> */}
-              <tr className="e-textlabel">
-                  <td>
-                      Início:   
-                  </td>
-                  <p>{String(props.fStartTime)}</p>
-              </tr>
-              <tr className="e-textlabel">
-                  <td>
-                      Fim:     
-                  </td>
-                  <p>{String(props.fEndTime)}</p>
-              </tr>
+             
+              <p>Início: {String(props.fStartTime)}</p>
+              <p>Fim: {String(props.fEndTime)}</p>
+              <div className={styles.numberContainer}>
+                     <p>Contato: {props.phone}</p>
+              </div>
               <div>
                  <p>Preço: {props.value} R$</p>
               </div>
-              <div>
-                 <p>Contato: {props.phone} </p>
-                 <div onClick={()=>{onWhatsAppClick(props.phone, props.Service, props.date, props.fStartTime)}} className={styles.whatsappContainer}><WhatsAppIcon/></div>
+          </div>
+
+          <div className={styles.bottomContainer}>
+              <div onClick={()=>{onWhatsAppClick(props.phone, props.Service, props.date, props.fStartTime)}} className={styles.whatsappContainer}>
+                     <WhatsAppIcon/>
               </div>
+
+              <div className={styles.deleteContainer} onClick={()=>deleteSchedules(props.id, props.service, props.date, props.value)}>
+                    <DeleteForeverIcon sx={{fontSize:30}}/>
+              </div>
+
+          </div>
             
-          </tbody>
-      </table>
      </div>
      
   )
