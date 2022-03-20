@@ -1,0 +1,120 @@
+.container {
+  display: flex;
+  background: var(--gray-backg);
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+.panelContainer {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-self: center;
+  height: 80%;
+  width: 100%;
+  padding: 5px;
+}
+
+@keyframes increaseSize {
+  from {
+    opacity: 0;
+    transform: scale(0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(100%, 100%);
+  }
+}
+
+.panel {
+  border-radius: 5px;
+  flex-direction: column;
+  display: flex;
+  align-self: center;
+  justify-self: center;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  max-height: 473px;
+  background: var(--azul-card);
+  overflow-x: hidden;
+  height: 100%;
+  padding-top: 40px;
+  animation: increaseSize 0.6s;
+}
+
+.serviceName {
+  display: flex;
+  width: 85%;
+  align-items: center;
+  margin-top: 20px;
+
+  input {
+    border-radius: 2px;
+    font-family: "Roboto";
+    background: var(--input-color);
+    text-align: center;
+    font-size: 15px;
+    height: 40px;
+    border-bottom: none;
+  }
+}
+.serviceDescription {
+  display: flex;
+  width: 85%;
+  align-items: center;
+  margin-top: 20px;
+
+  input {
+    border-radius: 2px;
+    font-family: "Roboto";
+    background: var(--input-color);
+    text-align: center;
+    font-size: 15px;
+    height: 40px;
+    border-bottom: none;
+  }
+}
+.valueAndDuration {
+  display: flex;
+  width: 70%;
+  align-items: center;
+  margin-top: 20px;
+
+  input {
+    border-radius: 2px;
+    font-family: "Roboto";
+    background: var(--input-color);
+    text-align: center;
+    font-size: 15px;
+    height: 40px;
+    border-bottom: none;
+  }
+}
+
+.buttonContainer {
+  width: 90%;
+  margin-top: 50px;
+  button {
+    background-color: var(--azul-button);
+    border-radius: 2px;
+    color: rgb(219, 237, 248);
+    font-weight: bold;
+    font-family: "Roboto";
+  }
+}
+
+@media (max-width: 320px) {
+  .serviceName,
+  .serviceDescription,
+  .valueAndDuration {
+    input {
+      font-size: 12px;
+    }
+  }
+
+  .panel {
+    height: 90%;
+  }
+}

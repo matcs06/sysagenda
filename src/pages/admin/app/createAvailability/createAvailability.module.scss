@@ -1,0 +1,148 @@
+.container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+.panelContainer {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-self: center;
+  height: 80%;
+  width: 100%;
+  overflow-x: auto;
+  padding: 5px;
+}
+
+@keyframes increaseSize {
+  from {
+    opacity: 0;
+    transform: scale(0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(100%, 100%);
+  }
+}
+.panel {
+  border-radius: 5px;
+  flex-direction: column;
+  display: flex;
+  align-self: center;
+  justify-self: center;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  max-height: 473px;
+  background: var(--azul-card);
+  overflow-x: hidden;
+  height: 100%;
+  padding-top: 40px;
+  animation: increaseSize 0.5s;
+
+  .formatedDate {
+    position: absolute;
+    margin: 0;
+    overflow-y: hidden;
+    background: var(--input-color);
+    height: 1;
+    margin-top: 30px;
+    margin-left: 23px;
+    width: 40%;
+    max-width: 280px;
+    height: 35px;
+    color: black;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 2;
+    font-family: "Roboto";
+    font-size: 15px;
+  }
+
+  .datePicker {
+    position: relative;
+    color: transparent;
+    background: transparent;
+    border: none;
+
+    z-index: 3;
+    outline: transparent;
+  }
+
+  input {
+    margin-top: 20px;
+    width: 70%;
+    margin-left: 20%;
+    height: 35px;
+    text-align: center;
+    background: var(--gray-backg);
+    border-radius: 1px;
+    font-family: "Roboto";
+  }
+
+  h3 {
+    margin-top: 30px;
+    font-family: "Roboto";
+    font-weight: 100;
+    font-size: medium;
+  }
+}
+
+.morningAfternoon {
+  display: flex;
+  width: 70%;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+
+  div {
+    input {
+      max-width: 100px;
+      font-size: 15px;
+      height: 40px;
+      border-bottom: none;
+      background: var(--input-color);
+      border-radius: 2px;
+    }
+  }
+}
+
+.buttonContainer {
+  width: 70%;
+  margin: 30px 0 0 20px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  div {
+    button {
+      height: 40px;
+      max-width: 260px;
+      background-color: var(--azul-button);
+      border-radius: 2px;
+      color: rgb(219, 237, 248);
+      font-weight: bold;
+      font-family: "Roboto";
+      transition: background-color 0.6s;
+
+      &:hover {
+        background-color: rgb(78, 194, 223);
+      }
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  .morningAfternoon {
+    display: flex;
+  }
+
+  .panel {
+    height: 90%;
+  }
+}

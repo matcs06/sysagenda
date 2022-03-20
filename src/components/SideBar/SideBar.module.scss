@@ -1,0 +1,110 @@
+.screenContainer {
+  display: flex;
+  width: 100%;
+}
+
+.sidebarContainer {
+  padding: 10px 0 0 0px;
+  display: flex;
+  justify-content: left;
+  flex-direction: column;
+  width: var(--sidebar-width);
+  background: var(--azul-card);
+  transition: width 0.2s;
+
+  ul {
+    margin-top: 40px;
+    li {
+      display: flex;
+      margin: 0px 10px 10px 10px;
+      color: #d5d9de;
+      font-family: "Roboto";
+      transition: font-size 0.2s;
+      transition: background 0.2s;
+      font-size: 15px;
+
+      &:hover {
+        color: #231227;
+        font-size: 16px;
+        background: #d5d9de;
+        border-radius: 2px;
+      }
+    }
+  }
+}
+
+.title {
+  align-self: center;
+  margin: 18px 5px 10px 5px;
+  font-family: "Rouge Script";
+  font-weight: 10;
+  font-size: 40px;
+  display: var(--display-header);
+}
+
+.services {
+  cursor: pointer;
+  margin-top: 3px;
+}
+
+.icon {
+  margin-right: 10px;
+}
+
+.toogle {
+  position: absolute;
+  margin: 10px 0 0 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--toogle-color);
+  justify-content: center;
+
+  background: var(--azul-card);
+  cursor: pointer;
+  z-index: 3;
+}
+
+@media (max-width: 1366px) {
+  .title {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .title {
+    font-size: 20px;
+  }
+  .sidebarContainer {
+    font-size: 100%;
+  }
+}
+
+@media (max-width: 760px) {
+  .title {
+    font-size: 18px;
+  }
+  .sidebarContainer {
+    font-size: 14px;
+  }
+
+  .toogle {
+    display: flex;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 16px;
+  }
+  .services {
+    overflow: hidden;
+  }
+  .sidebarContainer {
+    font-size: 10px;
+  }
+}

@@ -1,0 +1,169 @@
+.container {
+  display: flex;
+  position: relative;
+  background: var(--gray-backg);
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+.addToIfinance {
+  display: flex;
+  z-index: 2;
+  width: 10%;
+  border-radius: 5px;
+  font-family: "Roboto";
+  justify-content: center;
+  height: 4%;
+  align-items: center;
+  position: absolute;
+  margin: 10px;
+  background-color: var(--lilac-button);
+  right: 6%;
+  bottom: 15px;
+  transition: background 0.6s;
+  input {
+    cursor: pointer;
+  }
+  &:hover {
+    background: #3e2942;
+  }
+  p {
+    margin: 0 5px 0 5px;
+    color: #dee0e4;
+  }
+}
+.panel {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-rows: auto auto 1fr 1fr 1fr auto auto;
+  grid-gap: 10px;
+  background: var(--gray-backg);
+  overflow-y: auto;
+  margin: 5% 5% 0 5%;
+}
+@keyframes appearFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.card {
+  position: relative;
+  width: 25%;
+  min-width: 250px;
+  background: var(--azul-card);
+  border-radius: 10px;
+  padding: 15px 15px 15px 15px;
+  margin: 10px 15px 10px 10px;
+  height: 270px;
+  transition: background 0.2s;
+  font-family: "Roboto";
+  font-size: 15px;
+  overflow-y: auto;
+  animation-name: appearFromLeft;
+  animation-duration: 0.6s;
+
+  &:hover {
+    background: #8f8f8f;
+  }
+
+  p {
+    margin: 8px;
+    max-width: 200px;
+    color: #d3cfcf;
+  }
+
+  .cardBottom {
+    font-family: "Roboto";
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: -10px;
+  }
+}
+
+.numberContainer {
+  display: flex;
+  justify-content: space-between;
+  margin: -8px 0 -8px 0;
+}
+
+.wppIcon {
+  cursor: pointer;
+  justify-self: center;
+  align-self: center;
+  color: #d3cfcf;
+  transition: color 0.2s;
+
+  &:hover {
+    color: green;
+  }
+}
+
+.bottomContainer {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  bottom: 15px;
+}
+.deleteContainer {
+  display: flex;
+  align-self: center;
+  cursor: pointer;
+  color: #d3cfcf;
+  transition: color 0.2s;
+
+  &:hover {
+    color: rgb(255, 255, 255);
+  }
+}
+
+.togleContainer {
+  font-family: "Roboto";
+  display: flex;
+  justify-content: row;
+  align-items: center;
+  cursor: pointer;
+  input {
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 500px) {
+  .addToIfinance {
+    display: flex;
+    z-index: 2;
+    width: 15%;
+    border-radius: 5px;
+    font-family: "Roboto";
+    justify-content: center;
+    height: 4%;
+    align-items: center;
+    position: absolute;
+    margin: 10px;
+    background-color: var(--lilac-button);
+    right: 3%;
+    bottom: 15px;
+
+    input {
+      cursor: pointer;
+    }
+
+    p {
+      margin: 0 5px 0 5px;
+    }
+  }
+  .card {
+    margin-left: 10%;
+  }
+}

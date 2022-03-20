@@ -1,0 +1,46 @@
+{
+  "name": "antonielem",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "openmobile": "node ./node_modules/openmobile/ip.js"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.5.0",
+    "@emotion/styled": "^11.3.0",
+    "@material-ui/core": "^5.0.0-beta.5",
+    "@material-ui/icons": "^4.11.2",
+    "@mui/icons-material": "^5.0.5",
+    "@mui/material": "^5.0.6",
+    "axios": "^0.25.0",
+    "date-fns": "^2.25.0",
+    "dotenv": "^16.0.0",
+    "http-proxy-middleware": "^2.0.3",
+    "next": "12.0.2",
+    "react": "17.0.2",
+    "react-calendar": "^3.6.0",
+    "react-datepicker": "^4.3.0",
+    "react-dom": "17.0.2",
+    "react-icons": "^4.3.1",
+    "react-input-mask": "^2.0.4",
+    "react-loading-skeleton": "^3.0.3",
+    "sass": "^1.43.4",
+    "@syncfusion/ej2-react-dropdowns": "^19.4.56",
+    "@syncfusion/ej2-react-schedule": "^19.4.55"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.6",
+    "@types/react": "^17.0.38",
+    "eslint": "7",
+    "eslint-config-next": "12.0.2",
+    "openmobile": "^1.0.0",
+    "typescript": "^4.4.4"
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:matcs06/SistemaDeAgendamentos.git",
+  "license": "MIT"
+}

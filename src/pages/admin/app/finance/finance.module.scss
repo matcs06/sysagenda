@@ -1,0 +1,289 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  background: var(--gray-backg);
+  height: 100vh;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.header {
+  display: flex;
+  background: var(--lilac-backg);
+  height: 25vh;
+  width: 100%;
+  position: fixed;
+  padding: 10px;
+  h2 {
+    margin-left: 10%;
+    margin-top: 2%;
+    font-family: "Rouge Script";
+    font-size: 60px;
+    font-weight: lighter;
+  }
+}
+
+.infoContaiener {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  flex-direction: row;
+  position: relative;
+  margin-top: 150px;
+
+  .cardType {
+    margin: 10px;
+    background-color: #f0eaea;
+    color: #746f6f;
+    width: 25%;
+    height: 12vh;
+    border-radius: 3px;
+    padding: 10px;
+
+    .type {
+      font-family: "Roboto";
+      font-size: 20px;
+    }
+
+    .value {
+      font-family: "Roboto";
+      font-weight: bold;
+      margin: 10px;
+      font-size: 30px;
+      color: #504d4d;
+    }
+  }
+}
+.topCard {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+}
+#total {
+  background-color: #20ae72;
+  p {
+    color: #fff;
+  }
+}
+
+.addNewTransaction {
+  display: flex;
+  flex-direction: row;
+  margin-left: 10%;
+  margin-top: 10px;
+  position: relative;
+  cursor: pointer;
+
+  p {
+    font-family: "Roboto";
+    font-size: 16px;
+    color: #4ecb71;
+    margin-top: 2px;
+    margin-left: 3px;
+    transition: color 0.5ms;
+
+    &:hover {
+      color: #89d69f;
+    }
+  }
+}
+
+.infoTitle {
+  display: flex;
+  flex-direction: row;
+  width: 78%;
+  height: 39px;
+  min-height: 30px;
+  border-radius: 3px;
+  background: #f0eaea;
+  align-self: center;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  padding: 0 40px 0 20px;
+
+  p {
+    position: relative;
+    font-family: "Roboto";
+    color: #746f6f;
+    font-weight: 700;
+    min-width: 25%;
+  }
+  * + p {
+    margin-left: 30px;
+  }
+}
+
+.transactionsContainer {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  align-items: center;
+  overflow-y: auto;
+  flex-direction: column;
+  margin-top: 10px;
+  padding: 10px 0 0 0;
+}
+
+.transactions {
+  display: flex;
+  flex-direction: row;
+  width: 78%;
+  height: 52px;
+  min-height: 52px;
+  border-radius: 3px;
+  background: #e2e2e2;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  padding: 0 40px 0 20px;
+
+  p {
+    font-family: "Roboto";
+    color: #746f6f;
+    font-weight: 700;
+    min-width: 27%;
+  }
+
+  .transactionTitle {
+    max-width: 27%;
+  }
+
+  .remove {
+    cursor: pointer;
+    width: 2%;
+    margin-right: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 920px) {
+  .infoTitle {
+    * + p {
+      margin-left: 10px;
+    }
+  }
+}
+
+@media (max-width: 610px) {
+  .infoTitle {
+    p {
+      position: relative;
+      font-family: "Roboto";
+      color: #746f6f;
+      font-weight: 700;
+      min-width: 27%;
+    }
+    * + p {
+      margin-left: 10px;
+    }
+  }
+
+  .infoContaiener {
+    .cardType {
+      .type {
+        font-family: "Roboto";
+        margin: 10px;
+        font-size: 20px;
+      }
+
+      .value {
+        font-family: "Roboto";
+        font-weight: bold;
+        margin: 10px;
+        font-size: 25px;
+        color: #504d4d;
+      }
+    }
+  }
+
+  .transactionsContainer {
+    padding: 5%;
+  }
+}
+
+@media (max-width: 551px) {
+  .infoContaiener {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    flex-direction: column;
+
+    .cardType {
+      min-width: 340px;
+      .type {
+        font-family: "Roboto";
+        margin: 0 0 5px 5px;
+        font-size: 20px;
+      }
+
+      .value {
+        font-family: "Roboto";
+        font-weight: bold;
+        margin: 0 0 5px 15px;
+        font-size: 20px;
+        color: #504d4d;
+      }
+    }
+  }
+
+  .header {
+    h2 {
+      font-family: "Rouge Script";
+      font-size: 50px;
+      font-weight: lighter;
+    }
+  }
+
+  .transactionsContainer {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    overflow-y: auto;
+    flex-direction: column;
+    margin-top: 10px;
+    padding: 10px 0 0 0;
+  }
+
+  .transactions {
+    .remove {
+      margin-left: 10%;
+    }
+
+    .transactionTitle {
+      overflow-y: auto;
+      max-height: 45px;
+    }
+
+    p {
+      font-family: "Roboto";
+      color: #746f6f;
+      font-weight: 700;
+      font-size: 10px;
+    }
+
+    * + p {
+      margin-left: 8px;
+    }
+  }
+
+  .infoTitle {
+    p {
+      position: relative;
+      font-family: "Roboto";
+      color: #746f6f;
+      font-weight: 700;
+      min-width: 27%;
+    }
+    * + p {
+      margin-left: 10px;
+    }
+  }
+}
