@@ -2,7 +2,7 @@ import DesignServicesIcon from '@mui/icons-material/DesignServices';
 import EventIcon from '@mui/icons-material/Event';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import MoreTimeIcon from '@mui/icons-material/MoreTime';
-import FindInPageIcon from '@mui/icons-material/FindInPage';
+import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 import PriceChangeIcon from '@mui/icons-material/PriceChange';
 import DateRangeIcon from '@mui/icons-material/DateRange';
 
@@ -12,7 +12,7 @@ import ServicesList from '../../pages/admin/app/servicesList';
 import CreateService from '../../pages/admin/app/createService';
 import OpenSchedules from '../../pages/admin/app/openSchedules';
 import Finance from '../../pages/admin/app/finance';
-import Scheduller from "../Callendar/"
+import Scheduller from "../../pages/admin/app/Callendar"
 
 export const SideBarData = [
    {
@@ -27,7 +27,7 @@ export const SideBarData = [
    },
      {
       title: "Ver Horário",
-      icon: <FindInPageIcon />,
+      icon: <AccessTimeFilledIcon />,
       component: <AvailabilityInquiry/>
    },
     {

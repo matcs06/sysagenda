@@ -2,8 +2,8 @@ import { EventSettingsModel,Inject, ScheduleComponent, Day, Week, WorkWeek, Mont
 import ScheduleDetail from "./ScheduleDetail";
 
 import { useEffect, useState } from "react";
-import { addTimes } from "../../utils";
-import api from "../../api"
+import { addTimes } from "../../../../utils/";
+import api from "../../../../api"
 
 import "./translation.ts"
 
@@ -66,7 +66,6 @@ export default function Scheduller({data}){
             EndTime,
             fStartTime: item.start_time,
             fEndTime: SEndTime,
-            Status: "Aberto",
             phone: item.phone_number,
             date: item.date,
             value: item.value
@@ -86,6 +85,8 @@ export default function Scheduller({data}){
             editorTemplate={editorWindow}
             showQuickInfo={false} 
             height='1000px'
+            timeFormat="HH:mm"
+            locale="pt"
             >
             <Inject services={[Day, Week, WorkWeek, Month, Agenda] }/>
         </ScheduleComponent>

@@ -2,7 +2,7 @@ import {L10n} from "@syncfusion/ej2-base"
 
 
 L10n.load({
-   "en-US": {
+   "pt": {
        "schedule": {
            "day": "Dia",
            "week": "Semana",
