@@ -24,7 +24,6 @@ export default function Login(){
 
          window.location.pathname = ("/admin/app/")
       } catch (error) {
-         console.log(error)
          window.alert("Erro ao realiza login, Tente novamente!!!");
       }
    }

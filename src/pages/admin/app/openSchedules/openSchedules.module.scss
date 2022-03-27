@@ -18,7 +18,7 @@
   align-items: center;
   position: absolute;
   margin: 10px;
-  background-color: var(--lilac-button);
+  background-color: var(--azul-card);
   right: 6%;
   bottom: 15px;
   transition: background 0.6s;
@@ -30,7 +30,7 @@
   }
   p {
     margin: 0 5px 0 5px;
-    color: #dee0e4;
+    color: var(--branco-text);
   }
 }
 .panel {
@@ -71,13 +71,17 @@
   animation-duration: 0.6s;
 
   &:hover {
-    background: #8f8f8f;
+    background: #303030;
+
+    p {
+      color: rgb(206, 206, 206);
+    }
   }
 
   p {
     margin: 8px;
     max-width: 200px;
-    color: #d3cfcf;
+    color: var(--branco-text);
   }
 
   .cardBottom {

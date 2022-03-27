@@ -43,7 +43,7 @@
   animation-duration: 0.6s;
 
   &:hover {
-    background: #34346e;
+    background: #303030;
   }
 
   h1 {
@@ -52,8 +52,8 @@
     font-size: 15px;
     margin-bottom: 1px;
     font-family: "Roboto";
-    font-weight: bold;
-    color: #f2f2f2;
+    font-weight: light;
+    color: #d6d6d6;
   }
   ul {
     max-height: 90px;
@@ -66,7 +66,7 @@
       margin: 0 0 5px 10px;
       font-size: 15px;
       font-weight: lighter;
-      color: #ffffff;
+      color: var(--branco-text);
     }
   }
 

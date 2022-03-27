@@ -72,14 +72,14 @@ function CustomerInfo(props:any){
                <h2 className={styles.screenTitle}>Informações</h2>
            </div>
            <div className={styles.inputContainer}>
-               <Input type="text" placeholder="Nome Completo"  name="name" setfieldvalue={setCustomerName} autocomplete="off" />
-               <Input type="text" placeholder="Número de telegone (WhatsApp)"  name="number" autocomplete="off" setfieldvalue={setCustomerNumber} />
+               <Input type="text" placeholder="Nome Completo"  name="name" setFieldValue={setCustomerName} autocomplete="off" />
+               <Input type="text" placeholder="Número de telegone (WhatsApp)"  name="number" autocomplete="off" setFieldValue={setCustomerNumber} />
                <span>Insira o DD antes do número, Ex: 98991443355</span>
            </div>
 
-           <div>
-               <h2  className={styles.payment}>Pagamento é feito no momento do serviço</h2>
+           <div className={styles.paymentInfo}>
                <h2  className={styles.value}>Valor: {props.router.query.servicePrice} R$ </h2>
+               <h2  className={styles.payment}>Pagamento é feito no momento do serviço</h2>
            </div>
 
            <div className={styles.buttonContainer} onClick={handleClick}>

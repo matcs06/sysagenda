@@ -1,129 +1,138 @@
-.container{
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
+.container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
 }
 
-.titleService{
-    margin: 10% 0 15px 0;
-    font-family: "Roboto";
-    font-weight: lighter;
+.titleService {
+  padding: 0 20px 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 8% 0 15px 0;
+  font-family: "Roboto";
+  font-weight: bold;
+  color: #d8d6d6;
+  font-size: large;
 }
 
-.pickDayTitle{
-    margin-top: 30px;
-    margin-bottom: 10px;
-    font-family: "Roboto";
-    font-weight: lighter;
+.pickDayTitle {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  font-family: "Roboto";
+  font-weight: lighter;
 }
 
-.weekDays{
-    width: 90%;
-    height: 90px;
-    display: flex;
-    flex-direction: row;
-    margin: 0 0 10px 0;
-    overflow-x: auto;
-    padding: 2px 2px 2px 2px;
+.weekDays {
+  width: 90%;
+  height: 90px;
+  display: flex;
+  flex-direction: row;
+  margin: 0 0 10px 0;
+  overflow-x: auto;
+  padding: 2px 2px 2px 2px;
 
-
-    .weekDay{
-        margin-right: 6px;
-        height: 85px;
-        width: 35%;
-        min-width: 120px;
-        background-color: #3C2841;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        border-radius: 3px;
-        font-family: "Roboto";
-        font-size: 17px;
-        cursor: pointer;
-        transition: background-color 0.2s ;
-
-        &:hover{
-            background-color: rgba($color: #035c50, $alpha: 0.6);
-        }
-    }
-}
-
-.pickTimeContainer{
+  .weekDay {
+    margin-right: 12px;
+    height: 85px;
+    width: 35%;
+    min-width: 120px;
+    background-color: #3c2841;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    justify-content: center;
+    border-radius: 8px;
+    font-family: "Roboto";
+    font-size: 17px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #dadada;
+    transition: background-color 0.2s;
 
-    h2{
-        font-family: "Roboto";
-        font-weight: lighter;
-        font-size: 16px;
+    &:hover {
+      background-color: rgba($color: #035c50, $alpha: 0.6);
     }
+  }
 }
 
-.pickTimeTitle{
-    margin-top: 25px;
-    margin-bottom: 20px;
+.pickTimeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  h2 {
+    font-family: "Roboto";
+    font-weight: lighter;
+    font-size: 16px;
+  }
 }
 
-.times{
-    width: 90%;
-    height: 55px;
-    display: flex;
-    flex-direction: row;
-    margin: 0 0 10px 0;
-    overflow-x: auto;
-    padding: 4px 2px 2px 2px;
-    .time{
-        margin-right: 18px;
-        height: 40px;
-        width: 7%;
-        min-width: 50px;
-        background-color: #3C2841;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 3px;
-        font-family: "Roboto";
-        cursor: pointer;
-
-        transition: background-color 0.2s ;
-        
- 
-        &:hover{
-            background-color: rgba($color: #035c50, $alpha: 0.6);
-        }  
-    }
+.pickTimeTitle {
+  margin-top: 25px;
+  margin-bottom: 20px;
 }
 
-.buttonContainer{
+.times {
+  width: 90%;
+  height: 55px;
+  display: flex;
+  flex-direction: row;
+  margin: 0 0 10px 0;
+  overflow-x: auto;
+  padding: 4px 2px 2px 2px;
+  .time {
+    margin-right: 18px;
+    height: 40px;
+    width: 7%;
+    min-width: 50px;
+    background-color: #3c2841;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 60px;
-    width: 60%;
-    padding: 5px;
-    margin-top: 6%;
+    border-radius: 8px;
+    font-family: "Roboto";
+    font-weight: bold;
+    color: #e2e0e0;
+    cursor: pointer;
 
-    button{
-        width: 100%;
-        height: 90%;
-        font-family: "Roboto";
-        font-weight: lighter;
-        color: #fff;
-        font-size: 17px;
-        background-color:#3C2841 ;
-        border: none;
-        border-top-left-radius: 9px;
-        border-bottom-right-radius: 9px;
-        cursor: pointer;
-        transition: background-color 0.2s ;
+    transition: background-color 0.2s;
 
-        &:hover{
-            background-color: rgba($color: #3C2841, $alpha: 0.6);
-        }
+    &:hover {
+      background-color: rgba($color: #035c50, $alpha: 0.6);
     }
+  }
+}
+
+.buttonContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  width: 60%;
+  padding: 5px;
+  margin-top: 6%;
+
+  button {
+    width: 100%;
+    height: 90%;
+    font-family: "Roboto";
+    font-weight: lighter;
+    font-weight: bold;
+    color: #d8d6d6;
+    font-size: 17px;
+    background-color: #3c2841;
+    border: none;
+    border-top-left-radius: 9px;
+    border-bottom-right-radius: 9px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: rgba($color: #3c2841, $alpha: 0.6);
+    }
+  }
 }

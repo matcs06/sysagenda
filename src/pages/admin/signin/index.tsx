@@ -26,7 +26,6 @@ export default function SignIn(){
          window.alert("Usuário criado com sucesso");
          window.location.pathname = ("/admin/login")
       } catch (err) {
-         console.log(err)
          
          window.alert(`Erro ao criar Usuário! Usuário já existe ou  chave incorreta`);
       }

@@ -1,151 +1,140 @@
-.pageContainer{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+.pageContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
-.imageContainer{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-top: 8%;
-}
-
-.welcomeText{
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   padding: 8%;
-   font-family: "Roboto";
-   margin-top: -15%;  
-
-   p{
-       text-align: center;
-       font-size: 14px;
-       color: rgba($color: #ffffff, $alpha: 0.7);
-       
-   }
+.imageContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 8%;
 }
 
-.servicesName{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+.welcomeText {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8%;
+  font-family: "Roboto";
+  margin-top: -15%;
 
-    .line{
-       width: 80%;
-       background-color: rgba($color: #ffffff, $alpha: 0.7);
-       border-width: 5px;
-       height: 1px;
-    }
-    
-
-    .services{
-        width: 80%;
-        margin: 10px 0 10px 0;
-        text-align: center;
-        color: rgba($color: #ffffff, $alpha: 0.7);
-        font-size: 14px;
-        font-family: "Roboto";
-        
-    }
-    
+  p {
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: #aca9a9;
+  }
 }
 
-.buttonContainer{
-    display: flex;
-    justify-content: center;
-    margin-top: 30px;
-    width: 100%;
+.servicesName {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 
-    button{
-        width: 50%;
-        height: 40px;
-        border-top-left-radius: 9px;
-        border-bottom-right-radius: 9px;
-        background-color: rgba($color: #3C2841, $alpha: 1);
-        cursor: pointer;
-        color: rgba($color: #ffff, $alpha:0.8);
-        border: none;
-        text-align: center;
-        transition: background-color 0.2s ;
+  .line {
+    width: 80%;
+    background-color: rgba($color: #ffffff, $alpha: 0.7);
+    border-width: 5px;
+    height: 1px;
+  }
 
-        &:hover{
-            background-color: rgba($color: #3C2841, $alpha: 0.6);
-        }
-    }
+  .services {
+    width: 80%;
+    margin: 10px 0 10px 0;
+    text-align: center;
+    color: rgba($color: #ffffff, $alpha: 0.7);
+    font-size: 14px;
+    font-family: "Roboto";
+  }
 }
 
-@media (max-width: 1440px){
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  width: 100%;
 
-    .welcomeText{
-        p{
-            font-size: 19px;
-            
-        }
-     }
+  button {
+    width: 50%;
+    height: 40px;
+    border-top-left-radius: 9px;
+    border-bottom-right-radius: 9px;
+    background-color: rgba($color: #3c2841, $alpha: 1);
+    cursor: pointer;
+    font-weight: bold;
+    color: #d8d6d6;
+    border: none;
+    text-align: center;
+    transition: background-color 0.2s;
 
-    .servicesName{
-        .services{
-            font-size: 18px;
-        }
+    &:hover {
+      background-color: rgba($color: #3c2841, $alpha: 0.6);
     }
-     
-    .buttonContainer{
-        button{
-            height: 45px;
-            font-size: 18px;
-        }
+  }
+}
+
+@media (max-width: 1440px) {
+  .welcomeText {
+    p {
+      font-size: 19px;
     }
- 
- }
+  }
 
- @media (max-width: 720px){
-    .servicesName{
-        .services{
-            font-size: 14px;
-        }
+  .servicesName {
+    .services {
+      font-size: 18px;
     }
+  }
 
-    .welcomeText{
-        
-        p{
-            font-size: 16px;   
-        }
-     }
-
-     .buttonContainer{
-    
-        button{
-            height: 40px;
-            font-size: 16px;
-        }
+  .buttonContainer {
+    button {
+      height: 45px;
+      font-size: 18px;
     }
- 
- }
+  }
+}
 
-@media (max-width: 360px){
-    .servicesName{
-        .services{
-            font-size: 12px;
-        }
+@media (max-width: 720px) {
+  .servicesName {
+    .services {
+      font-size: 14px;
     }
+  }
 
-    .welcomeText{
-        p{
-            font-size: 14px;   
-        }
-     }
-
-     .buttonContainer{
-    
-        button{
-            height: 40px;
-            font-size: 15px;
-        }
+  .welcomeText {
+    p {
+      font-size: 16px;
     }
+  }
 
- 
- }
+  .buttonContainer {
+    button {
+      height: 40px;
+      font-size: 16px;
+    }
+  }
+}
+
+@media (max-width: 360px) {
+  .servicesName {
+    .services {
+      font-size: 12px;
+    }
+  }
+
+  .welcomeText {
+    p {
+      font-size: 14px;
+    }
+  }
+
+  .buttonContainer {
+    button {
+      height: 40px;
+      font-size: 15px;
+    }
+  }
+}

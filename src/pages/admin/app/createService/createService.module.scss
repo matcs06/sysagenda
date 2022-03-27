@@ -101,7 +101,12 @@
     border-radius: 2px;
     color: rgb(219, 237, 248);
     font-weight: bold;
+    height: 40px;
     font-family: "Roboto";
+
+    &:hover {
+      background-color: rgb(133, 95, 59);
+    }
   }
 }
 
