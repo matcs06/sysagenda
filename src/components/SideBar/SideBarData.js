@@ -5,6 +5,8 @@ import MoreTimeIcon from '@mui/icons-material/MoreTime';
 import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 import PriceChangeIcon from '@mui/icons-material/PriceChange';
 import DateRangeIcon from '@mui/icons-material/DateRange';
+import LogoutIcon from '@mui/icons-material/Logout';
+import AirlineSeatReclineExtraIcon from '@mui/icons-material/AirlineSeatReclineExtra';
 
 import AvailabilityInquiry from '../../pages/admin/app/availabilityInquiry';
 import CreateAvailability from '../../pages/admin/app/createAvailability';
@@ -13,6 +15,9 @@ import CreateService from '../../pages/admin/app/createService';
 import OpenSchedules from '../../pages/admin/app/openSchedules';
 import Finance from '../../pages/admin/app/finance';
 import Scheduller from "../../pages/admin/app/Callendar"
+import OpenClient from "../../pages/admin/app/openClient"
+import Link from "react"
+import Logout from '../../pages/admin/app/logout';
 
 export const SideBarData = [
    {
@@ -49,5 +54,15 @@ export const SideBarData = [
       title: "Ifinance",
       icon: <PriceChangeIcon />,
       component: <Finance/>
+   },
+   {
+      title: "Site do Cliente",
+      icon: <AirlineSeatReclineExtraIcon/>,
+      component: <OpenClient/>
+   },
+   {
+      title: "Sair",
+      icon: <LogoutIcon/>,
+      component: <Logout/>
    }
 ]

@@ -21,6 +21,7 @@ export default function Login(){
          });
 
          localStorage.setItem("token", response.data.token);
+         localStorage.setItem("username", response.data.user.name);
 
          window.location.pathname = ("/admin/app/")
       } catch (error) {

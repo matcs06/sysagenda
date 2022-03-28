@@ -50,7 +50,7 @@
     background: var(--input-color);
     margin-top: 30px;
     margin-left: 23px;
-    width: 40%;
+    width: 60%;
     max-width: 280px;
     height: 40px;
     color: black;
@@ -142,12 +142,15 @@
   }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 420px) {
   .morningAfternoon {
     display: flex;
   }
 
   .panel {
     height: 90%;
+    .formatedDate {
+      max-width: 160px;
+    }
   }
 }

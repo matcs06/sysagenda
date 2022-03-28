@@ -1,41 +1,57 @@
-.imageContainer{
-   display: flex;
-   align-items: center;
-   justify-content: center;
+.imageContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.cardContainer{
-   display: flex;
-   width: 100%;
-   align-items: center;
-   justify-content: center;
+.cardContainer {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
 }
-.loginCard{
-   margin-top: -5%;
-   background: var(--gray-backg);
-   border-radius: 10px;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   width: 75%;
-   max-width: 333px;
-   
-   h1{
-      margin: 30px 0 10px 0;
-      color: black;
-     font-family: "Rouge Script";
-     font-weight: 10;
-   }
+.loginCard {
+  margin-top: -5%;
+  background: var(--azul-card);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 75%;
+  max-width: 333px;
+  div {
+    button {
+      color: rgb(180, 174, 174);
+      margin-top: 8px;
+      background-color: var(--azul-button);
+      transition: background-color 0.6s;
 
-   textarea:focus, input:focus{
+      &:hover {
+        background-color: #6b3c1a;
+      }
+    }
+  }
+
+  h1 {
+    margin: 30px 0 10px 0;
+    color: rgb(207, 205, 205);
+    font-family: "Rouge Script";
+    font-weight: 10;
+  }
+
+  input {
+    color: rgb(207, 205, 205);
+  }
+
+  textarea:focus,
+  input:focus {
     outline: none;
-  }  
-
+  }
 }
-.spamContainer{
-   margin-bottom: 35px;
+.spamContainer {
+  margin-bottom: 35px;
 }
 
-.space{
-   width: 100%;
-   margin-top: 10%;
+.space {
+  width: 100%;
+  margin-top: 10%;
 }
