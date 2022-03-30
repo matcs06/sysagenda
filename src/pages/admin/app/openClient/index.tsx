@@ -4,7 +4,7 @@ export default function OpenClient(){
    const [ isFirstTime, setIsFirstTime] = useState(true)
 
       useEffect(()=>{
-         window.open("/client/startPage")
+         window.open("/client/startPage/",'mywin', "width=500, height=900")
 
       },[isFirstTime])
 

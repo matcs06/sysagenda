@@ -23,6 +23,7 @@
   margin-bottom: 10px;
   font-family: "Roboto";
   font-weight: lighter;
+  color: #d8d6d6;
 }
 
 .weekDays {
@@ -39,7 +40,7 @@
     height: 85px;
     width: 35%;
     min-width: 120px;
-    background-color: #3c2841;
+    background-color: var(--azul-card);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -53,7 +54,7 @@
     transition: background-color 0.2s;
 
     &:hover {
-      background-color: rgba($color: #035c50, $alpha: 0.6);
+      background-color: rgba($color: #505050, $alpha: 0.6);
     }
   }
 }
@@ -68,6 +69,7 @@
     font-family: "Roboto";
     font-weight: lighter;
     font-size: 16px;
+    color: #d8d6d6;
   }
 }
 
@@ -89,7 +91,7 @@
     height: 40px;
     width: 7%;
     min-width: 50px;
-    background-color: #3c2841;
+    background-color: var(--azul-card);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -102,7 +104,7 @@
     transition: background-color 0.2s;
 
     &:hover {
-      background-color: rgba($color: #035c50, $alpha: 0.6);
+      background-color: rgba($color: #505050, $alpha: 0.6);
     }
   }
 }
@@ -124,7 +126,7 @@
     font-weight: bold;
     color: #d8d6d6;
     font-size: 17px;
-    background-color: #3c2841;
+    background-color: var(--azul-button);
     border: none;
     border-top-left-radius: 9px;
     border-bottom-right-radius: 9px;
@@ -132,7 +134,7 @@
     transition: background-color 0.2s;
 
     &:hover {
-      background-color: rgba($color: #3c2841, $alpha: 0.6);
+      background-color: rgba($color: #523d03, $alpha: 0.6);
     }
   }
 }

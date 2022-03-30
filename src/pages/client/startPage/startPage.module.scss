@@ -62,7 +62,7 @@
     height: 40px;
     border-top-left-radius: 9px;
     border-bottom-right-radius: 9px;
-    background-color: rgba($color: #3c2841, $alpha: 1);
+    background-color: var(--azul-button);
     cursor: pointer;
     font-weight: bold;
     color: #d8d6d6;
@@ -71,7 +71,7 @@
     transition: background-color 0.2s;
 
     &:hover {
-      background-color: rgba($color: #3c2841, $alpha: 0.6);
+      background-color: rgba($color: #523d03, $alpha: 0.6);
     }
   }
 }

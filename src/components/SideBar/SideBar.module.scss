@@ -13,6 +13,7 @@
   background: var(--azul-card);
   transition: width 0.2s;
   .username {
+    margin-top: 10%;
     font-family: "Roboto";
     margin-left: 5%;
     color: #d5d9de;
@@ -95,6 +96,13 @@
   }
   .sidebarContainer {
     font-size: 14px;
+
+    .username {
+      margin-top: 25%;
+      font-family: "Roboto";
+      margin-left: 5%;
+      color: #d5d9de;
+    }
   }
 
   .toogle {
@@ -111,5 +119,12 @@
   }
   .sidebarContainer {
     font-size: 10px;
+
+    .username {
+      margin-top: 20%;
+      font-family: "Roboto";
+      margin-left: 5%;
+      color: #d5d9de;
+    }
   }
 }
