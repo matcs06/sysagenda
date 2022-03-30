@@ -9,6 +9,7 @@
   display: flex;
   justify-content: center;
   margin-top: 8%;
+  margin-bottom: 8%;
 }
 
 .welcomeText {
@@ -24,30 +25,6 @@
     font-size: 14px;
     font-weight: bold;
     color: #aca9a9;
-  }
-}
-
-.servicesName {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-
-  .line {
-    width: 80%;
-    background-color: rgba($color: #ffffff, $alpha: 0.7);
-    border-width: 5px;
-    height: 1px;
-  }
-
-  .services {
-    width: 80%;
-    margin: 10px 0 10px 0;
-    text-align: center;
-    color: rgba($color: #ffffff, $alpha: 0.7);
-    font-size: 14px;
-    font-family: "Roboto";
   }
 }
 
@@ -83,12 +60,6 @@
     }
   }
 
-  .servicesName {
-    .services {
-      font-size: 18px;
-    }
-  }
-
   .buttonContainer {
     button {
       height: 45px;
@@ -98,12 +69,6 @@
 }
 
 @media (max-width: 720px) {
-  .servicesName {
-    .services {
-      font-size: 14px;
-    }
-  }
-
   .welcomeText {
     p {
       font-size: 16px;

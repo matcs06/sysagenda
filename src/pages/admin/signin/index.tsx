@@ -39,9 +39,9 @@ export default function SignIn(){
        <div className={styles.imageContainer}>
           <Image
              className={styles.logo}
-             src="/logologin.png"
-             width={301}
-             height={274}
+             src="/logo.png"
+             width={300}
+             height={100}
              alt="logo-login"
           />
        </div>

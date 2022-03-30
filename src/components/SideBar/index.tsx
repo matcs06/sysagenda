@@ -4,6 +4,7 @@ import styles from "./SideBar.module.scss"
 import Image from 'next/image'
 import FormatLineSpacingIcon from '@mui/icons-material/FormatLineSpacing';
 import { useState, useEffect } from 'react';
+import MenuIcon from '@mui/icons-material/Menu';
 
 interface SideBarItemProps{
    title: string;
@@ -35,10 +36,12 @@ const SideBar: React.FC = ({children}) => {
         setSideBarContainer("styles.sideBarHidden")
         document.documentElement.style.setProperty('--sidebar-width', "0px");
         document.documentElement.style.setProperty('--display-header', "none");
-     }else{
-        setSideBarContainer("styles.sidebarContainer")
-        document.documentElement.style.setProperty('--sidebar-width', "280px");
-        document.documentElement.style.setProperty('--display-header', "flex");
+        document.documentElement.style.setProperty('--togleRotateDeg', "90deg");
+      }else{
+         setSideBarContainer("styles.sidebarContainer")
+         document.documentElement.style.setProperty('--sidebar-width', "280px");
+         document.documentElement.style.setProperty('--display-header', "flex");
+         document.documentElement.style.setProperty('--togleRotateDeg', "0deg")
      }
 
   }
@@ -50,7 +53,7 @@ const SideBar: React.FC = ({children}) => {
   return(
      <div className={styles.screenContainer}>
      <div className={styles.toogle} onClick={handleTogleClick}>
-        <FormatLineSpacingIcon/>
+        <MenuIcon/>
      </div> 
      <div className={styles.sidebarContainer}>
         <p className={styles.username}>Olá, {userName.split(" ")[0]}!</p>

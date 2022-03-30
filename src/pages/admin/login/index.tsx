@@ -37,9 +37,9 @@ export default function Login(){
        <div className={styles.imageContainer}>
           <Image
              className={styles.logo}
-             src="/logologin.png"
-             width={411}
-             height={392}
+             src="/logo.png"
+             width={300}
+             height={100}
              alt="logo-login"
           />
        </div>
