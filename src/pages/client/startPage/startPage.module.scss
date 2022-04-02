@@ -9,7 +9,6 @@
   display: flex;
   justify-content: center;
   margin-top: 8%;
-  margin-bottom: 8%;
 }
 
 .welcomeText {
@@ -18,20 +17,19 @@
   align-items: center;
   padding: 8%;
   font-family: "Roboto";
-  margin-top: -15%;
+  margin-top: 8%;
 
   p {
     text-align: center;
     font-size: 14px;
-    font-weight: bold;
-    color: #aca9a9;
+    color: #e6e6e6;
   }
 }
 
 .buttonContainer {
   display: flex;
   justify-content: center;
-  margin-top: 30px;
+  margin-top: 32%;
   width: 100%;
 
   button {
@@ -39,7 +37,7 @@
     height: 40px;
     border-top-left-radius: 9px;
     border-bottom-right-radius: 9px;
-    background-color: var(--azul-button);
+    background-color: var(--azul-card);
     cursor: pointer;
     font-weight: bold;
     color: #d8d6d6;
@@ -48,7 +46,7 @@
     transition: background-color 0.2s;
 
     &:hover {
-      background-color: rgba($color: #523d03, $alpha: 0.6);
+      background-color: (--azul-hover);
     }
   }
 }

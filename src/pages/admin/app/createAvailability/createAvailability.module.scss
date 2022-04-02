@@ -133,10 +133,10 @@
       color: rgb(219, 237, 248);
       font-weight: bold;
       font-family: "Roboto";
-      transition: background-color 0.6s;
+      transition: background-color 0.2s;
 
       &:hover {
-        background-color: rgb(133, 95, 59);
+        background-color: var(--azul-hover);
       }
     }
   }

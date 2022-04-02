@@ -57,6 +57,7 @@
     font-size: 15px;
     height: 40px;
     border-bottom: none;
+    color: rgb(224, 224, 224);
   }
 }
 .serviceDescription {
@@ -73,6 +74,7 @@
     font-size: 15px;
     height: 40px;
     border-bottom: none;
+    color: rgb(224, 224, 224);
   }
 }
 .valueAndDuration {
@@ -89,6 +91,7 @@
     font-size: 15px;
     height: 40px;
     border-bottom: none;
+    color: rgb(224, 224, 224);
   }
 }
 
@@ -103,9 +106,10 @@
     font-weight: bold;
     height: 40px;
     font-family: "Roboto";
+    transition: background-color 0.2s;
 
     &:hover {
-      background-color: rgb(133, 95, 59);
+      background-color: var(--azul-hover)
     }
   }
 }

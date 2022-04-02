@@ -55,6 +55,7 @@ const SideBar: React.FC = ({children}) => {
      <div className={styles.toogle} onClick={handleTogleClick}>
         <MenuIcon/>
      </div> 
+     
      <div className={styles.sidebarContainer}>
         <p className={styles.username}>Olá, {userName.split(" ")[0]}!</p>
 

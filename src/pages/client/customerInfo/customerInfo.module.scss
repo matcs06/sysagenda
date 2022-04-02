@@ -27,8 +27,11 @@
     margin-bottom: 15px;
     height: 50px;
     padding: 0 5px 0 5px;
-    background: var(--gray-backg);
     color: white;
+
+    &::placeholder{
+      color: rgba($color: #fff, $alpha: 0.5);
+    }
 
     &:focus {
       outline: none;
@@ -64,7 +67,7 @@
   margin-bottom: 20px;
   margin-top: 20px;
   font-weight: lighter;
-  color: #a5a5a5;
+  color: rgba($color: #fff, $alpha: 0.5);
   font-size: 14px;
 }
 
@@ -85,7 +88,7 @@
     font-weight: bold;
     color: #d8d6d6;
     font-size: 17px;
-    background-color: var(--azul-button);
+    background-color: var(--azul-card);
     border: none;
     border-top-left-radius: 9px;
     border-bottom-right-radius: 9px;
@@ -93,7 +96,7 @@
     transition: background-color 0.2s;
 
     &:hover {
-      background-color: rgba($color: #523d03, $alpha: 0.6);
+      background-color: var(--azul-hover);
     }
   }
 }

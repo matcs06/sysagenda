@@ -12,10 +12,10 @@
   width: 100%;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-template-rows: auto auto 1fr 1fr 1fr auto auto;
-  grid-gap: 10px;
+  grid-gap: 15px;
   background: var(--azul-bkg);
   overflow-y: auto;
-  margin: 5% 5% 0 5%;
+  margin: 5% 5% 5% 5%;
 }
 @keyframes appearFromLeft {
   from {
@@ -43,7 +43,7 @@
   animation-duration: 0.6s;
 
   &:hover {
-    background: #303030;
+    background: #062d4d;
   }
 
   h1 {
@@ -53,7 +53,7 @@
     margin-bottom: 1px;
     font-family: "Roboto";
     font-weight: light;
-    color: #d6d6d6;
+    color: var(--branco-text);
   }
   ul {
     max-height: 90px;

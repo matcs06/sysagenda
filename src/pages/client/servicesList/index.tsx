@@ -45,10 +45,10 @@ export default function ServicesList(){
    const loading = ()=>{
       return(
          <div className={styles.container}>
-         <Skeleton animation="wave" sx={{ bgcolor: '#121212' }}><h3 className={styles.screenTitle}>Escolha um serviço</h3> </Skeleton> 
+         <Skeleton animation="wave" sx={{ bgcolor: '#22223B' }}><h3 className={styles.screenTitle}>Escolha um serviço</h3> </Skeleton> 
          <div className={styles.panel}>
             {arrayLoop.map((cont)=>(
-                <Skeleton width={290} animation="wave" sx={{ bgcolor: '#121212' }} key={cont}>
+                <Skeleton width={290} animation="wave" sx={{ bgcolor: '#22223B' }} key={cont}>
                 <div className={styles.card} >
                 </div>
             </Skeleton>
