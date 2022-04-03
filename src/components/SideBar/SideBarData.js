@@ -21,24 +21,24 @@ import Logout from '../../pages/admin/app/logout';
 
 export const SideBarData = [
    {
-      title: "Ver Serviços",
-      icon: <DesignServicesIcon />,
-      component: <ServicesList/>
-   },
-    {
       title: "Criar Serviço",
       icon: <AddBoxIcon />,
       component: <CreateService/>
    },
-     {
-      title: "Ver Horário",
-      icon: <AccessTimeFilledIcon />,
-      component: <AvailabilityInquiry/>
-   },
-    {
+   {
+      title: "Ver Serviços",
+      icon: <DesignServicesIcon />,
+      component: <ServicesList/>
+   }, 
+   {
       title: "Criar Horário",
       icon: <MoreTimeIcon />,
       component: <CreateAvailability/>
+   },
+   {
+      title: "Ver Horário",
+      icon: <AccessTimeFilledIcon />,
+      component: <AvailabilityInquiry/>
    },
    {
       title: "Agendamentos",

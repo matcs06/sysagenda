@@ -1,7 +1,5 @@
 import Router, {withRouter } from 'next/router'
 import CheckIcon from '@mui/icons-material/Check';
-import { fontSize } from "@mui/system";
-import Button from '../../../components/Button';
 import styles from "./finalScreen.module.scss"
 import { timeFormated } from "../../../utils/index.js";
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
@@ -31,7 +29,7 @@ function FinalScreen(props:any){
         <div className={styles.container}>
             <div className={styles.congratsContainer}>
                 <h2 className={styles.congrats}>Parabéns</h2>
-                <CheckIcon sx={{color: "green", fontSize:30 }}/>
+                <CheckIcon sx={{color: "#22223B", fontSize:35 }}/>
             </div>
             <div className={styles.text}>
                 <h2>Seu agendamento do serviço <strong>{props.router.query.serviceName}</strong>  às <strong>{timeFormated(props.router.query.serviceTime)} horas</strong> foi realizado com sucesso.</h2>

@@ -14,8 +14,9 @@
   width: var(--sidebar-width);
   background: var(--azul-card);
   transition: width 0.2s;
+
   .username {
-    margin-top: 10%;
+    margin-top: 5%;
     font-family: "Roboto";
     margin-left: 5%;
     color: #d5d9de;
@@ -74,7 +75,7 @@
   transition: transform 0.4s;
   transform: rotate(var(--togleRotateDeg));
 
-  background: var(--azul-button);
+  background: var(--azul-hover);
   cursor: pointer;
   z-index: 3;
 }

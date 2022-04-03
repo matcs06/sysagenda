@@ -9,5 +9,5 @@ export default function OpenClient(){
       },[isFirstTime])
 
 
-   return 0;
+   return <></>;
 }

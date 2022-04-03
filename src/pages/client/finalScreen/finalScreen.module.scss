@@ -9,7 +9,7 @@
     text-align: center;
     font-size: 18px;
     font-weight: lighter;
-    color: #b3b3b3;
+    color: #dadada;
     font-family: "Roboto";
   }
 }
@@ -22,6 +22,8 @@
 .congrats {
   margin-right: 10px;
   margin-bottom: 2%;
+  color: var(--azul-hover);
+
 }
 
 .text {
@@ -37,7 +39,7 @@
     font-family: "Roboto";
     font-size: 15px;
     margin-top: 30px;
-    color: #b8b5b5;
+    color: #dadada;
   }
 }
 
@@ -57,7 +59,7 @@
     font-weight: lighter;
     color: #fff;
     font-size: 16px;
-    background-color: var(--azul-button);
+    background-color: var(--azul-card);
     border: none;
     border-top-left-radius: 9px;
     border-bottom-right-radius: 9px;
@@ -65,12 +67,13 @@
     transition: background-color 0.2s;
 
     &:hover {
-      background-color: rgba($color: #3c2841, $alpha: 0.6);
+      background-color: var(--azul-hover);
     }
   }
 }
 
 .whatsAppIcon {
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -79,5 +82,5 @@
   height: 20px;
   margin-top: 15px;
 
-  color: #156901;
+  color: var(--azul-hover);
 }
