@@ -53,6 +53,7 @@ export default function CreateAvailability() {
          validateAfternoonTime(afternoonFrom, afternoonTo)
          
          const token = localStorage.getItem("token");
+         const user_id = localStorage.getItem("user_id");
 
          var morning_start_time = ""
          var morning_end_time = ""
@@ -80,14 +81,15 @@ export default function CreateAvailability() {
             morning_start_time,
             morning_end_time,
             afternoon_start_time,
-            afternoon_end_time
+            afternoon_end_time,
+            user_id: user_id,
             }, {
                headers: {
                Authorization: "Bearer " + token,
             },
          });
          window.alert(`Horário na data ${formatedDate} criado com sucesso`);
-         window.location.pathname = "/admin/app/availabilityInquiry"
+         window.location.pathname = "/admin/app/"
       } catch (error) {
          window.alert(
             "erro ao criar novo horário: Verfifique se já não existe um horário na mesma data"

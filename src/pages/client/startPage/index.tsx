@@ -1,7 +1,9 @@
 import Image from 'next/image'
+import Router, { withRouter } from 'next/router'
+import { useEffect } from 'react'
 import styles from "./startPage.module.scss"
 
-export default function StartPage (){
+function StartPage (props){
 
     const user = {
         welcomeMessage: "Bem Vindo ao Studio Antoniellem Ramos sobrancelhas e estética, aqui oferecemos serviços completos de estética pra você. Clique em Agendar Horário para ter acesso aos serviçoes e agendar seu horário. "
@@ -10,6 +12,10 @@ export default function StartPage (){
     const handleClick = ()=>{
         window.location.pathname = "/client/servicesList"
     }
+
+    useEffect(()=>{
+        console.log(props.router.query.user_id)
+    },[])
 
     return (
         <div className={styles.pageContainer}>
@@ -34,3 +40,5 @@ export default function StartPage (){
     )
 
 }
+
+export default withRouter(StartPage)

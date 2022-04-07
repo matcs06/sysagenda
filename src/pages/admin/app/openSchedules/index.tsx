@@ -30,7 +30,8 @@ export default function OpenSchedules(){
    useEffect(()=>{
 
       async function loadItems(){
-         const response = await api.get<SchduleFields[]>("/schedules")
+         const user_id = localStorage.getItem("user_id");
+         const response = await api.get<SchduleFields[]>(`/schedules?user_id=${user_id}`)
 
          setItems(response.data)
          setUpdateOnDelete(false)

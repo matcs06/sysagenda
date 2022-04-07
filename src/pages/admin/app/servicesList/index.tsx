@@ -31,7 +31,8 @@ export default function ServicesList(){
    useEffect(()=>{
       async function loadItems() {
          const token = localStorage.getItem("token");
-         const response = await api.get<ServiceFields[]>("/products", {
+         const user_id = localStorage.getItem("user_id");
+         const response = await api.get<ServiceFields[]>(`/products?user_id=${user_id}`, {
          headers: { Authorization: "Bearer " + token },
          });
 

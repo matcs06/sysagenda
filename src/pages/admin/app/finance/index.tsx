@@ -37,8 +37,9 @@ const Finance = () => {
   useEffect(()=>{
 
      async function loadItems(){
-        try {         
-          const response = await api.get<ITransactions[]>("transactions")
+        try {
+          const user_id = localStorage.getItem("user_id");          
+          const response = await api.get<ITransactions[]>(`transactions?user_id=${user_id}`)
 
           setTransactions(response.data)
           setRincome(income)
@@ -62,12 +63,14 @@ const Finance = () => {
 
   const handleCreateTransaction = async () => {
       try {
+         const user_id = localStorage.getItem("user_id"); 
          const token = localStorage.getItem("token"); 
 
          await api.post("/transactions", {
             title: description ,
             value: value,
             formatedDate: modalDate,
+            user_id: user_id,
             }, {
                headers: {
                Authorization: "Bearer " + token,

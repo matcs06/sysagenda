@@ -15,20 +15,22 @@ export default function CreateService() {
   
    const handleCreate = async ()=>{
       const token = localStorage.getItem("token");
+      const user_id = localStorage.getItem("user_id");
       
       try {
          await api.post("/products", {
             name: serviceName,
             description: serviceInfo,
             price: value,
-            duration: duration 
+            duration: duration,
+            user_id: user_id, 
             }, {
                headers: {
                Authorization: "Bearer " + token,
             },
          });
          window.alert(`Produto ${serviceName} criado com sucesso`);
-         window.location.pathname = "/admin/app/servicesList"
+         window.location.pathname = "/admin/app/"
       } catch (error) {
          window.alert(
             "erro ao criar novo produto: Verfifique se já não existe um produto com o mesmo nome"
