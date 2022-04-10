@@ -1,5 +1,5 @@
 import styles from "./servicesList.module.scss"
-import Router from 'next/router'
+import Router, { useRouter, withRouter } from 'next/router'
 import { useEffect, useState } from "react"
 import api from "../../../api";
 import { Skeleton } from '@mui/material';
@@ -13,24 +13,29 @@ interface ServiceFields {
    duration:string;
 }
 
-export default function ServicesList(){
-
+function ServicesList(props){
+   
    const [items, setItems] = useState<ServiceFields[]>([]);
    const [isLoading, setIsLoading]= useState(true)
+   const [userId, setUserId] = useState("")
+   const router = useRouter()
    const arrayLoop = [1,2,3,4,5,6]
    const handleClick = (serviceId: string, serviceName: string, serviceDuration:string, servicePrice:string
    ) =>{
 
+   
       Router.push({
          pathname: '/client/chooseTime',
-         query: { serviceName, serviceId, serviceDuration, servicePrice}
+         query: { serviceName, serviceId, serviceDuration, servicePrice, userId}
      })
    }
 
-
    useEffect(()=>{
       async function loadItems() {
-         const response = await api.get<ServiceFields[]>("/products");
+         const userName = router.query.user_name;
+         const userInfo = await api.get(`users/${userName}`)
+         setUserId(userInfo.data.id)
+         const response = await api.get<ServiceFields[]>(`/products?user_id=${userInfo.data.id}`);
 
          setItems(response.data);
          setIsLoading(false)
@@ -93,3 +98,5 @@ export default function ServicesList(){
    }
 
 }
+
+export default withRouter(ServicesList)

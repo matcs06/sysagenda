@@ -15,6 +15,8 @@ function CustomerInfo(props:any){
         const choosedDate = props.router.query.choosedDate;
         const choosedTime = props.router.query.choosedTime;
         const serviceName = props.router.query.serviceName;
+        const userId = props.router.query.userId;
+
         let newServiceDuration: string;
         let newChoosedTime: string;
         if(serviceDuration.split(":").length != 3){
@@ -48,7 +50,8 @@ function CustomerInfo(props:any){
                 start_time: newChoosedTime,
                 service_duration: newServiceDuration,
                 phone_number: customerNumber,
-                isMorning: Boolean(isMorning)
+                isMorning: Boolean(isMorning),
+                user_id: userId
             })
 
             Router.push({

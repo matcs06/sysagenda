@@ -1,20 +1,27 @@
 import Image from 'next/image'
-import Router, { withRouter } from 'next/router'
+import Router, { withRouter, useRouter } from 'next/router'
 import { useEffect } from 'react'
 import styles from "./startPage.module.scss"
 
 function StartPage (props){
-
+    const router = useRouter()
     const user = {
-        welcomeMessage: "Bem Vindo ao Studio Antoniellem Ramos sobrancelhas e estética, aqui oferecemos serviços completos de estética pra você. Clique em Agendar Horário para ter acesso aos serviçoes e agendar seu horário. "
+        welcomeMessage: "Bem Vindo ao Studio Antoniellem Ramos sobrancelhas e estética, aqui oferecemos serviços completos de estética pra você."
     }
 
     const handleClick = ()=>{
-        window.location.pathname = "/client/servicesList"
+        const userName = router.query.userName;
+        localStorage.setItem("user_name", String(router.query.userName));
+        router.push({
+            pathname: `/client/servicesList`,
+            query:{user_name: userName}
+        })
     }
 
     useEffect(()=>{
-        console.log(props.router.query.user_id)
+       const userName = router.query.userName;
+       console.log(userName)
+
     },[])
 
     return (
@@ -30,7 +37,8 @@ function StartPage (props){
 
 
             <div className={styles.welcomeText}>
-                <p>{user.welcomeMessage} </p>
+                <p>{user.welcomeMessage} <br />
+                Clique em Agendar Horário para ter acesso aos serviçoes e agendar seu horário. </p>
             </div>
             <div className={styles.buttonContainer} onClick={handleClick}>
                 <button>Agendar Horário</button>

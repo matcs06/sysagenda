@@ -62,7 +62,7 @@ function UpdateService(props: any) {
          window.alert(
          `Serviço atualizado com sucesso`
          );
-         window.location.pathname = ("/admin/app/")
+
       } catch (error) {
          window.alert("erro ao adicionar produtos: " + String(error));
       }

@@ -72,6 +72,7 @@ const ScheduleDetail= ({props}) => {
             headers: { Authorization: "Bearer " + token },
          })
          setUpdateOnDelete(true)
+         window.alert("Agendamento deletado com sucesso")
       } catch (error) {
          window.alert("Erro ao deletar agendamento")
       }
@@ -100,7 +101,7 @@ const ScheduleDetail= ({props}) => {
                      <WhatsAppIcon/>
               </div>
 
-              <div className={styles.deleteContainer} onClick={()=>deleteSchedules(props.id, props.service, props.date, props.value)}>
+              <div className={styles.deleteContainer} onClick={()=>deleteSchedules(props.id, props.Service, props.date, props.value)}>
                     <DeleteForeverIcon sx={{fontSize:30}}/>
               </div>
           </div>

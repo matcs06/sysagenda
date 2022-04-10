@@ -26,11 +26,14 @@ function ChooseTime(props: any){
         setChoosedDate(dateChoosed)
 
         try {
+            const userId = props.router.query.userId;
             const response = await api.get<availabilityDetails>(`/availability/details/${id}`,{    
-            params:{service_duration: props.router.query.serviceDuration+ ":00"}                          
+            params:{service_duration: props.router.query.serviceDuration+ ":00",
+                    user_id: userId}                          
             })
             setTimesAvailable(response.data)
         } catch (error) {
+            console.log(error.message)
             window.alert("Erro ao ler horários pra esse dia")
         }
 
@@ -49,18 +52,21 @@ function ChooseTime(props: any){
         
         const serviceDuration = props.router.query.serviceDuration;
         const serviceName = props.router.query.serviceName;
-        const servicePrice = props.router.query.servicePrice
+        const servicePrice = props.router.query.servicePrice;
+        const userId = props.router.query.userId;
         
         Router.push({
             pathname: '/client/customerInfo',
-            query: { serviceName, serviceDuration, servicePrice, choosedDate, choosedTime }
+            query: { serviceName, serviceDuration, servicePrice, choosedDate, choosedTime, userId  }
         })      
     }
 
     useEffect(()=>{
+
+      const userId = props.router.query.userId;
     
       async function loadItems() { 
-        const response = await api.get<AvailabilityFields[]>("/availability");
+        const response = await api.get<AvailabilityFields[]>(`/availability?user_id=${userId}`);
 
         setDaysAvailable(response.data);
       }

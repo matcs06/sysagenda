@@ -1,10 +1,11 @@
-import Router, {withRouter } from 'next/router'
+import Router, {withRouter, useRouter } from 'next/router'
 import CheckIcon from '@mui/icons-material/Check';
 import styles from "./finalScreen.module.scss"
 import { timeFormated } from "../../../utils/index.js";
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
 function FinalScreen(props:any){
+    const newrouter = useRouter()
     const user = {
         address:"Avenida perimetral 3077, setor coimbra",
         contact: "11959842539"
@@ -20,8 +21,9 @@ function FinalScreen(props:any){
     }
 
     const handleClick = ()=>{
+        const userName = localStorage.getItem("user_name")
         Router.push({
-            pathname: '/client/startPage'
+            pathname: `/client/startPage/${userName}`
         })      
     }
 
