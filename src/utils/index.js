@@ -190,4 +190,17 @@ const addTimes = (t0, t1) => {
    return timeFromMins(timeToMins(t0) + timeToMins(t1));
 }
 
-export{getMonthName, getWeekDayName,getYear, timeFormated, isTodayOrTomorrow, getDayInNumber, validateAfternoonTime, validateMorningTime, addTimes }
+function removeNonNumbers(text){
+   const numbers = ["0","1","2","3","4","5","6","7","8","9"]
+
+   const arrText = text.split("")
+
+   const removed = arrText.filter(function(value){
+      return numbers.indexOf(value) != -1
+   })
+
+   return removed.join("");
+
+}
+
+export{removeNonNumbers,getMonthName, getWeekDayName,getYear, timeFormated, isTodayOrTomorrow, getDayInNumber, validateAfternoonTime, validateMorningTime, addTimes }

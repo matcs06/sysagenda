@@ -1,0 +1,21 @@
+.inputcontainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+    input{
+      padding: 5px; 
+      margin-top: 10px;
+      width: 90%;
+      height: 35px;
+      border-top: none;
+      border-right: none;
+      border-left: none;
+      background-color: var(--gray-backg);
+      font-family: "Roboto";
+      font-size: 16px;
+    
+   }
+}  
+

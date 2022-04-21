@@ -33,7 +33,6 @@ function ChooseTime(props: any){
             })
             setTimesAvailable(response.data)
         } catch (error) {
-            console.log(error.message)
             window.alert("Erro ao ler horários pra esse dia")
         }
 

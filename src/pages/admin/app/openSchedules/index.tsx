@@ -3,7 +3,8 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { useEffect, useState } from "react";
 import api from "../../../../api";
-import { getWeekDayName, timeFormated } from "../../../../utils/index.js";
+import { getWeekDayName, timeFormated, removeNonNumbers } from "../../../../utils/index.js";
+
 
 interface SchduleFields{
    id:string;
@@ -17,10 +18,6 @@ interface SchduleFields{
 }
 
 export default function OpenSchedules(){
-
-   const user = {
-      businessName: "Studio Antonielem Ramos"
-   }
 
    const [items, setItems] = useState<SchduleFields[]>([]);
    const [updateOnDelete, setUpdateOnDelete] = useState(false)
@@ -86,13 +83,14 @@ export default function OpenSchedules(){
 
    const onWhatsAppClick = (phone: string, serviceName:string, serviceDate:string, serviceTime:string)=>{
 
+      const businessName = localStorage.getItem("business_name")
       
-      phone = "+55"+phone.replace(" ","")
+      phone = "+55"+removeNonNumbers(phone)
       const newTime = serviceTime.split(":")
 
       const formatedTime = newTime[0] + ":" + newTime[1]      
 
-      let messageContent = `${user.businessName}:\nOlá, gostaríamos de confimar o seu agendamento para:\nServiço: *${serviceName}*\nDia: *${serviceDate}*\nHorário: *${formatedTime} hrs*\nconfirma?`
+      let messageContent = `${businessName}:\nOlá, gostaríamos de confimar o seu agendamento para:\nServiço: *${serviceName}*\nDia: *${serviceDate}*\nHorário: *${formatedTime} hrs*\nconfirma?`
 
       messageContent = window.encodeURIComponent(messageContent);
 

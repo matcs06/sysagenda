@@ -1,17 +1,23 @@
-import { useState } from 'react';
-import InputMask from 'react-input-mask';
+import styles from "./PhoneInput.module.scss";
+import InputMask from "react-input-mask";
 
-export default function PhoneInput(props) {
+interface InputProps{
+   placeholder: string;
+   type: string;
+   name: string;
+   setfieldvalue?: Function;
+   disabled?: string;
+}
 
-  const handleSet = ({ target: { value } }) =>{
-     props.onChange(value)
-  }
+export default function PhoneInput(props:any){
 
-  return (
-    <InputMask 
-      mask='(99) 9999 9999' 
-      value={props.value} 
-      onChange={handleSet}>
-    </InputMask>
-  )
+   const handleSet = (event:any) =>{
+      props.setfieldvalue(event.target.value)
+   }
+
+   return(
+      <div className={styles.inputcontainer}>
+          <InputMask mask="(99) 99999-9999" value={props.value} onChange={handleSet} />
+      </div>
+   )
 }

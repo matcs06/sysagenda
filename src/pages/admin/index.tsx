@@ -5,6 +5,7 @@ import Login from './login/index';
 export default function Admin() {
   useEffect(()=>{
     window.location.pathname = ("/admin/login/")
+
   },[])
 
   return <></>

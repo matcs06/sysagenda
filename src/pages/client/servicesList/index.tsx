@@ -33,6 +33,7 @@ function ServicesList(props){
    useEffect(()=>{
       async function loadItems() {
          const userName = router.query.user_name;
+         localStorage.setItem("provider", String(userName))
          const userInfo = await api.get(`users/${userName}`)
          setUserId(userInfo.data.id)
          const response = await api.get<ServiceFields[]>(`/products?user_id=${userInfo.data.id}`);
