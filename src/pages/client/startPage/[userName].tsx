@@ -28,17 +28,21 @@ function StartPage (props){
         <div className={styles.pageContainer}>
             <div className={styles.imageContainer}>
                 <Image
-                    src="/logo.png"
-                    width={300}
-                    height={100}
+                    src="/cealogo.png"
+                    width={320}
+                    height={220}
                     alt="logo-login"
                 />
             </div>
 
 
             <div className={styles.welcomeText}>
-                <p>{user.welcomeMessage} <br />
-                Clique em Agendar Horário para ter acesso aos serviçoes e agendar seu horário. </p>
+                <p>{user.welcomeMessage}</p>
+            </div>
+            <div className={styles.agendar}>
+                <p>Clique em Agendar Horário para ter acesso aos serviçoes e agendar seu horário.
+
+            </p>
             </div>
             <div className={styles.buttonContainer} onClick={handleClick}>
                 <button>Agendar Horário</button>
