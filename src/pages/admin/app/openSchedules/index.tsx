@@ -51,11 +51,13 @@ export default function OpenSchedules(){
      if(togleTransaction){
         try {
             const token = localStorage.getItem("token"); 
+            const user_id = localStorage.getItem("user_id");
 
             await api.post("/transactions", {
                title: serviceName ,
                value: serviceValue,
                formatedDate: serviceDate,
+               user_id: user_id
                }, {
                   headers: {
                   Authorization: "Bearer " + token,
