@@ -34,7 +34,7 @@ export default function SignIn(){
    return(
        <>
         <Head>
-        <title>Criar Usuário | Antonielem studio</title>
+        <title>Criar Usuário | Click & Agenda</title>
         </Head>
        <div className={styles.imageContainer}>
           <Image

@@ -1,18 +1,16 @@
-import styles from "./finance.module.scss"
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
-import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import styles from "./topay.module.scss"
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import { useEffect, useState } from "react";
-import Modal from "../../../../components/Modal"
-import Input from "../../../../components/input"
-import Button from "../../../../components/Button";
-import PaymentsIcon from '@mui/icons-material/Payments';
+import Modal from "../../../../../components/Modal"
+import Input from "../../../../../components/input"
+import Button from "../../../../../components/Button";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import CreditScoreIcon from '@mui/icons-material/CreditScore';
 
-import api from "../../../../api";
-import InfoCard from "../../../../components/InfoCard";
+import api from "../../../../../api";
+import InfoCard from "../../../../../components/InfoCard";
 
 interface ITransactions{
    id:string;
@@ -26,9 +24,7 @@ const Finance = () => {
 
   const [transactions, setTransactions] = useState<ITransactions[]>()
   let income=0
-  let outcome=0
   const [rincome, setRincome] = useState(0)
-  const [routcome, setRoutcome] = useState(0)
 
   const [showModal, setShowModal] = useState(false)
   const [ isLoading, setIsLoading]= useState(true)
@@ -46,7 +42,6 @@ const Finance = () => {
 
           setTransactions(response.data)
           setRincome(income)
-          setRoutcome(outcome)
           setIsLoading(false)
           
 
@@ -73,6 +68,7 @@ const Finance = () => {
             title: description ,
             value: value,
             formatedDate: modalDate.replaceAll("-", "/"),
+            payment_status: "topay",
             user_id: user_id,
             }, {
                headers: {
@@ -94,22 +90,22 @@ const Finance = () => {
 
    try {
       const token = localStorage.getItem("token");
-      await api.delete(`/transactions/${transactionId}`,{
+      await api.patch(`/transactions/`,{
+         id: transactionId,
+	      payment_status:"payd"
+      },{
           headers: { Authorization: "Bearer " + token },
       })
 
       setIsLoading(true)
+      window.alert("Transação atualizada para pago com sucesso!!!")
    } catch (error) {
-      window.alert("Erro ao deletar transação")
+      window.alert("Erro ao mudar para pago! Faço o login e tente novamente")
    }
   }
 
-  const goToPendentPayments = ()=>{
-   window.location.pathname = ("/admin/app/finance/topay")
-  }
-
-  const backToMain = () =>{
-   window.location.pathname = ("/admin/app/")
+  const backToFinance = () =>{
+   window.location.pathname = ("/admin/app/finance")
 
   }
 
@@ -117,35 +113,21 @@ const Finance = () => {
      <>
      <div className={styles.container}>
         <div className={styles.header}>
-           <h2>Financeiro</h2>
-           <div className={styles.arrowBackContainer} onClick={backToMain}>
+           <h2>Pagamentos Pendentes</h2>
+           <div className={styles.arrowBackContainer} onClick={backToFinance}>
                <ArrowBackIcon/>
            </div>
         </div>
+        
         <div className={styles.infoContaiener}>
-           <div className={styles.cardType}>
-              <div className={styles.topCard}>
-                 <p className={styles.type}>Entradas</p>
-                  <ArrowDownwardIcon sx={{ color: "#4ECB71" }}/>
-              </div>
-              
-              <p className={styles.value}>R$ {rincome}</p>
-              
-           </div>
-           <div className={styles.cardType}>
-              <div className={styles.topCard}>
-                 <p className={styles.type}>Saídas</p>
-                 <ArrowUpwardIcon sx={{ color: "#CB4E4E" }}/>
-              </div>
-              <p className={styles.value}>R$ {routcome}</p>
-           </div>
+
            <div className={styles.cardType} id={styles["total"]}>
               <div className={styles.topCard}>
                  <p className={styles.type}>Total</p>
                  <AttachMoneyIcon sx={{ color: "#fff" }}/>
               </div>
               
-              <p className={styles.value}>R$ {rincome + routcome}</p>
+              <p className={styles.value}>R$ {rincome}</p>
            </div>
         </div>
         <div className={styles.optionsContainer}>
@@ -153,28 +135,22 @@ const Finance = () => {
                <AddIcon sx={{ color: "#4ECB71" }}/>
                <p>Nova Transação</p>
             </div>
-            <div className={styles.pendingPayments} onClick={goToPendentPayments}>
-               <PaymentsIcon sx={{ color: "#ca8b8b" }}/>
-               <p>Pagamentos Pendentes</p>
-            </div>
         </div>
 
         <div className={styles.infoTitle}>
            <p>Descrição</p>
            <p>Valor</p>
            <p>Data</p>
-           <p>Deletar</p>
+           <p>Mudar para pago</p>
         </div>
         <div className={styles.transactionsContainer}>
        
             {transactions && transactions.map((transaction)=>{
               
-              if(transaction.payment_status !="topay"){
+              if(transaction.payment_status =="topay"){
 
                  if(Number(transaction.value) > 0 ){
                   income = income + Number(transaction.value)
-                 }else{
-                   outcome = outcome + Number(transaction.value)
                  }
 
                  return (
@@ -183,7 +159,7 @@ const Finance = () => {
                      <p>{transaction.value} R$</p>
                      <p>{transaction.formatedDate}</p>
                      <div className={styles.remove} onClick={()=>{handleDeleteTransaction(transaction.id)}}>
-                        <RemoveCircleIcon sx={{ color: "#cc5252" }}/>
+                        <CreditScoreIcon sx={{ color: "#CB4E4E" }}/>
                      </div>
                   </div>
                  )
@@ -200,8 +176,8 @@ const Finance = () => {
            <Input type="text" placeholder="Descrição" name="description" setfieldvalue={setDescription}/>
            <Input type="text" placeholder="Valor" name="value" setfieldvalue={setValue}/>
            <Input type="date" placeholder="Data" name="date" setfieldvalue={setModalDate}/>
-           <Button handleClick={handleCreateTransaction} page="/admin/app/finance">Cadastrar</Button>
-           <Button handleClick={()=>{setShowModal(false)}} page="/admin/app/finance">Sair</Button>
+           <Button handleClick={handleCreateTransaction} page="/admin/app/finance/topay">Cadastrar</Button>
+           <Button handleClick={()=>{setShowModal(false)}} page="/admin/app/finance/topay">Sair</Button>
         </Modal>}
 
      </>

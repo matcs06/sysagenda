@@ -37,7 +37,7 @@ export default function Login(){
    return(
       <>
         <Head>
-        <title>Login | Antonielem studio</title>
+        <title>Login | Click & Agenda</title>
         </Head>
        <div className={styles.imageContainer}>
           <Image
