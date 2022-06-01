@@ -55,9 +55,9 @@ export default function Login(){
           <Input type="password" placeholder="Senha" name="password" setfieldvalue={setPassword}/>
           <Button page="/admin/login" handleClick={handleClick} >Entrar</Button>
           <div className={styles.spamContainer}>
-             <Link href="signin">
+            {/*  <Link href="signin">
                  <span>Ainda não tenho uma conta</span>
-             </Link>
+             </Link> */}
           </div>
        </div>
        </div>

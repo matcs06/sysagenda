@@ -1,7 +1,7 @@
 import axios from "axios";
 
 let instace = axios.create({
-  baseURL: "http://localhost:3333/",
+  baseURL: "https://clickeagenda.arangal.com",
 });
 
 export default instace

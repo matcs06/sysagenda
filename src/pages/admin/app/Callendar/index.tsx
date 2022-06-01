@@ -23,6 +23,7 @@ interface SchduleFields{
 export default function Scheduller({data}){
 
     const [items, setItems] = useState<SchduleFields[]>([]);
+    const [updateOnDelete, setUpdateOnDelete] = useState(false)
  
     useEffect(()=>{
  
@@ -30,8 +31,7 @@ export default function Scheduller({data}){
         const user_id = localStorage.getItem("user_id");
         const response = await api.get<SchduleFields[]>(`/schedules?user_id=${user_id}`)
  
-          setItems(response.data)
- 
+          setItems(response.data) 
        }
        loadItems();
  
@@ -78,7 +78,7 @@ export default function Scheduller({data}){
     }
 
     const editorWindow = (props: any) =>{
-        return <ScheduleDetail props={props}/>
+        return <ScheduleDetail props={props} />
     }
     
     return(

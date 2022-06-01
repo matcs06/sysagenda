@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Signika:wght@300;400;500&display=swap');
+.container{
+   display: flex;
+   width: 100%;
+   height: 100vh;
+   justify-content: center;
+   align-items: center;
+}
+
+.createAccount1{
+   background-color: #22223B;
+   width: 40%;
+   height: 40%;
+   padding: 10px;
+   border-radius: 10px;
+
+   h2{
+      color: aliceblue;
+      font-family: "Signika";
+      margin-left: 5%;
+      margin-top: 4%;
+      margin-bottom: 2%;
+      font-weight: 300;
+   }
+
+   .input{
+      height: 45px;
+      width: 80%;
+      background-color: #303050;
+      margin-left: -5%;
+      border-bottom-width: 0 ;
+      border-radius: 2px;
+      margin-bottom: 2%;
+      padding-left: 20px;
+      font-family: "Signika";
+      color: rgb(221, 223, 224);
+   }
+
+   button{
+      background-color: #4A6951;
+      margin-left: -5%;
+      width: 80%;
+      height: 40px;
+      border-radius: 2px;
+      font-family: "Signika";
+      color: aliceblue;
+
+   }
+
+   .usernamecontainer{
+
+      display: flex;
+      width: 100%;
+      position: relative;
+
+      .userAvailable{
+         position: absolute;
+         right: 0;
+         margin-right: 25px;
+         margin-top: 4%
+      }
+   }
+}

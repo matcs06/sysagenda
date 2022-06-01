@@ -1,0 +1,74 @@
+.container{
+   margin-top: 10%;
+   width: 100%;
+   display: flex;
+   justify-content: space-around;
+   height: 80vh;
+   padding: 5%;
+}
+
+.plan1{
+   position: relative;
+   display: flex;
+   flex-direction: column;
+   background-color: #22223B;
+   align-items: center;
+   width: 30%;
+   height: 70%;
+   border-radius: 10px;
+   #price{
+      color: #20A100;
+   }
+   div{
+      align-items: center;
+      display: flex;
+      width: 100%;
+      justify-content: space-around;
+      margin: 10% 1% 5% 10%;
+      font-family: "Signika";
+      color: white;
+   }
+
+   p{
+      width: 80%;
+      color: #D4D4D4;
+   }
+
+   #title1 {
+      font-family: "Signika";
+      margin: 5% 0 5% 0;
+   }
+   
+   #title2{
+      font-family: "Signika";
+      margin: 5% 0 2% 0;
+   }
+
+   ul{
+      display: flex;
+      width: 78%;
+      flex-direction: column;
+      justify-content: flex-start;
+      list-style: none;
+      color: white;
+      line-height: 150%;
+      font-family: "Signika";
+      font-size:15px;
+   }
+
+   .button{
+      cursor: pointer;
+      position: absolute;
+      background: #4A6951;
+      width: 90%;
+      height: 45px;
+      right: 4%;
+      bottom: 10px;
+      border-radius: 5px;
+      
+      p{
+         margin-left: 40%;
+      }
+
+   }
+}

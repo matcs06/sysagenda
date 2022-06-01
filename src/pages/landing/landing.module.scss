@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Signika:wght@300;400;500&display=swap');
+.container{
+   display: flex;
+   flex-direction: column;
+   height: 100vh;
+   width: 100%;
+
+   header{
+      display: flex;
+      position: fixed;
+      z-index: 2;
+      background-color: #4A4E69;
+      width: 100%;
+      
+   }
+}
+.logo{
+   margin: 15px 40px 40px 60px;
+   width: 20%;
+}
+.nav{
+   display: flex;
+   width: 70%;
+
+   ul{
+      display: flex;
+      flex-direction: row;
+      list-style: none;
+      width: 60%;
+
+      margin-top: 5%;
+      margin-left: 15%;
+      font-family: "Signika";
+      color: #fff;
+      font-size: 20px;
+      
+
+      li{
+         margin-left: 10%;
+         cursor: pointer;
+      }
+   }
+
+   div{
+      cursor: pointer;
+      padding: 0;
+      margin: 0;
+      background-color: #22223B;
+      width: 97px;
+      height: 39px;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      font-family: "Signika";
+      margin-top: 4%;
+   }
+
+}
+
+
+#sc1{
+   display: flex;
+   align-items: center;
+   width: 100%;
+   flex-direction: row;
+   height: 80vh;
+   padding: 0 15% 5% 5%;
+   margin-top: 2%;
+   h1{
+      font-family: "Signika";
+      font-weight: 300;
+      font-size: 55px;
+      width: 30%;
+      line-height: 140%;
+      color: #fff;
+      margin-bottom: 50px;
+      margin-top: 100px;
+   }
+   #ca{
+      color: #22223B;
+      font-weight: 400;
+   }
+
+   .button{
+      width:239px ;
+      height: 68px;
+      background-color: #22223B;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-family: "Signika";
+      cursor: pointer;
+   
+      span{
+         color: green;
+         font-size: medium;
+      }
+   }
+
+   
+}
+
+#socialNetwork{
+   cursor: auto;
+   background: none;
+   margin-left: 2%;
+   justify-content: space-around;
+
+
+}
+
+#icon1{
+   cursor: pointer;
+}

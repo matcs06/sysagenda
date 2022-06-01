@@ -58,7 +58,7 @@ export default function CreateService() {
                 <Input type="time" placeholder="Duração" name="Duração" setfieldvalue={setDuration}/>
              </div>
              <div className={styles.buttonContainer}>
-                <Button page="/admin/app/createService" handleClick={handleCreate} >Criar</Button>
+                <Button page="/admin/app/" handleClick={handleCreate} >Criar</Button>
                 <Button page="login" handleClick={handleBack} >Voltar</Button>
              </div>
               

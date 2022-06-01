@@ -42,16 +42,11 @@ export const SideBarData = [
    },
    {
       title: "Agendamentos",
-      icon: <EventIcon />,
-      component: <OpenSchedules/>
-   },
-   {
-      title: "Calendário",
       icon: <DateRangeIcon />,
       component: <Scheduller/>
    },
    {
-      title: "Ifinance",
+      title: "Financeiro",
       icon: <PriceChangeIcon />,
       component: <Finance/>
    },
