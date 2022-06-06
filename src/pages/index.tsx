@@ -5,7 +5,7 @@ import Login from "./admin/login"
 export default function Home() {
   return (
     <>
-     <h1>Antonielem site is working</h1>
+     <h1>Click&Agenda is working!</h1>
   </>
   )
 }
