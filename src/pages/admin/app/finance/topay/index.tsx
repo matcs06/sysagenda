@@ -10,7 +10,6 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import CreditScoreIcon from '@mui/icons-material/CreditScore';
 
 import api from "../../../../../api";
-import InfoCard from "../../../../../components/InfoCard";
 
 interface ITransactions{
    id:string;

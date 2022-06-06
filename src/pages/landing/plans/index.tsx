@@ -3,6 +3,11 @@ import React from 'react';
 import styles from "./plans.module.scss"
 
 const Plans = () => {
+
+  const handlePlan = () =>{
+   window.location.pathname = ("/landing/createuser")
+  } 
+
   return (
      <div className={styles.container}>
         <div className={styles.plan1}>
@@ -20,7 +25,7 @@ const Plans = () => {
               <li>Agendamentos</li>
               <li>Gerenciar Sistema financeiro</li>
            </ul>
-           <div className={styles.button}>
+           <div className={styles.button} onClick={handlePlan}>
               <p>Assinar</p>
            </div>
         </div>
@@ -39,7 +44,7 @@ com as cores personalizadas e identidade visual so seu negócio: </p>
               <li>Agendamentos</li>
               <li>Gerenciar Sistema financeiro</li>
            </ul>
-           <div className={styles.button}>
+           <div className={styles.button} onClick={handlePlan}>
               <p>Assinar</p>
            </div>
         </div>

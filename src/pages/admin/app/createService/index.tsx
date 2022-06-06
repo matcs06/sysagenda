@@ -3,7 +3,6 @@ import styles from "./createService.module.scss"
 import Input from "../../../../components/input"
 import Button from "../../../../components/Button";
 import api from "../../../../api";
-import InfoCard from "../../../../components/InfoCard";
 
 
 export default function CreateService() {

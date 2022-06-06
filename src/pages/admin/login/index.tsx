@@ -6,7 +6,6 @@ import Input from "../../../components/input"
 import Button from "../../../components/Button"
 import { useState } from "react";
 import instace from "../../../api";
-import InfoCard from "../../../components/InfoCard/index";
 
 export default function Login(){
    
