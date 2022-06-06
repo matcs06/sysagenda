@@ -100,23 +100,23 @@ const ScheduleDetail= ({props}) => {
 
      <div className={styles.card}>
           <div>
-            <p>Cliente: {props.Cliente}</p>
-            <p>Serviço: {props.Service}</p>
+            <p>Cliente: {props?.Customer}</p>
+            <p>Serviço: {props?.Service}</p>
              
-            <p>Início: {String(props.fStartTime)}</p>
-            <p>Fim: {String(props.fEndTime)}</p>
+            <p>Início: {String(props?.fStartTime)}</p>
+            <p>Fim: {String(props?.fEndTime)}</p>
             <div className={styles.numberContainer}>
-               <p>Contato: {props.phone}</p>
+               <p>Contato: {props?.phone}</p>
             </div>
             <div>
-               <p>Preço: {props.value} R$</p>
+               <p>Preço: {props?.value} R$</p>
             </div>
           </div>
           
           <div className={styles.dropContainer}>
                 <p>Financeiro: </p>
                 <DropDownListComponent id="EventType" dataSource={["SIM", "NÃO"]}
-                placeholder="Adicionar ao Ifinance?" onChange={setTogleValue} data-name="ifinance" value={props.Status || null}>
+                placeholder="Adicionar ao Ifinance?" onChange={setTogleValue} data-name="ifinance" value={null}>
 
                 </DropDownListComponent>
 
@@ -124,7 +124,7 @@ const ScheduleDetail= ({props}) => {
                   <>
                      <p>Pago: </p>
                      <DropDownListComponent id="EventType" dataSource={["SIM", "NÃO"]}
-                     placeholder="Pago?" onChange={setPaidSelected} data-name="ifinance" value={props.Status || null}>
+                     placeholder="Pago?" onChange={setPaidSelected} data-name="ifinance" value={null}>
 
                      </DropDownListComponent>
                   </>
@@ -134,11 +134,11 @@ const ScheduleDetail= ({props}) => {
             </div>
 
             <div className={styles.bottomContainer}>
-              <div onClick={()=>{onWhatsAppClick(props.phone, props.Service, props.date, props.fStartTime)}} className={styles.whatsappContainer}>
+              <div onClick={()=>{onWhatsAppClick(props?.phone, props?.Service, props?.date, props?.fStartTime)}} className={styles.whatsappContainer}>
                      <WhatsAppIcon/>
               </div>
 
-              <div className={styles.deleteContainer} onClick={()=>deleteSchedules(props.id, props.Service, props.date, props.value, props.Cliente)}>
+              <div className={styles.deleteContainer} onClick={()=>deleteSchedules(props?.id, props?.Service, props?.date, props?.value, props?.Customer)}>
                     <DeleteForeverIcon sx={{fontSize:30}}/>
               </div>
           </div>

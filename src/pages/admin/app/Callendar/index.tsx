@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { addTimes } from "../../../../utils/";
 import api from "../../../../api"
 
-import "./translation.ts"
+import "../../../../utils/translation.ts"
 
 
 interface SchduleFields{
@@ -18,7 +18,6 @@ interface SchduleFields{
     phone_number:string;
     value: string;
  }
- 
 
 export default function Scheduller({data}){
 
@@ -42,7 +41,7 @@ export default function Scheduller({data}){
  
     },[])
 
-    const dataSource = items.map((item)=>{
+    const dataSource = items.map((item: SchduleFields )=>{
         
         const SEndTime = addTimes(item.service_duration, item.start_time) + ":00"
 
@@ -60,7 +59,7 @@ export default function Scheduller({data}){
 
         return {
             id: item.id,
-            Cliente: item.customer_name,
+            Customer: item.customer_name,
             Service:item.service,
             Subject: item.service,
             StartTime,
@@ -77,7 +76,7 @@ export default function Scheduller({data}){
         dataSource
     }
 
-    const editorWindow = (props: any) =>{
+    const editorWindow = (props) =>{
         return <ScheduleDetail props={props} />
     }
     
