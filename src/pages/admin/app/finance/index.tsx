@@ -12,7 +12,6 @@ import PaymentsIcon from '@mui/icons-material/Payments';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 import api from "../../../../api";
-import InfoCard from "../../../../components/InfoCard";
 
 interface ITransactions{
    id:string;

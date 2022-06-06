@@ -4,7 +4,6 @@ import EditIcon from '@mui/icons-material/Edit';
 import Router from 'next/router'
 import { useEffect, useState } from "react";
 import api from "../../../../api";
-import InfoCard from "../../../../components/InfoCard";
 
 interface ServiceFields {
    id:string;
