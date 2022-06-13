@@ -44,8 +44,8 @@ const Finance = () => {
           const response = await api.get<ITransactions[]>(`transactions?user_id=${user_id}`)
 
           setTransactions(response.data)
-          setRincome(income.replace(",","."))
-          setRoutcome(outcome.replace(",","."))
+          setRincome(income)
+          setRoutcome(outcome)
           setIsLoading(false)
           
 
