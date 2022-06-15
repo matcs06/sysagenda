@@ -53,7 +53,7 @@ export default function CreateService() {
                  <Input type="text" placeholder="Descrição do serviço" name="Descricao" setfieldvalue={setServiceInfo}/>
              </div>
              <div className={styles.valueAndDuration}>
-                <Input type="text" placeholder="Valor" name="Valor" setfieldvalue={setValue}/>
+                <Input type="number" placeholder="Valor" name="Valor" setfieldvalue={setValue}/>
                 <Input type="time" placeholder="Duração" name="Duração" setfieldvalue={setDuration}/>
              </div>
              <div className={styles.buttonContainer}>
