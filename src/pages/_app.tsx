@@ -2,6 +2,7 @@ import { AppProps} from "next/app"
 import "../styles/global.scss"
 import { loadCldr} from '@syncfusion/ej2-base';
 
+
 function MyApp({ Component, pageProps }: AppProps) {
 
   loadCldr(
