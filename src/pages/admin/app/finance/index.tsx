@@ -171,9 +171,9 @@ const Finance = () => {
               if(transaction.payment_status !="topay"){
 
                  if(Number(transaction.value) > 0 ){
-                  income = income + Number(transaction.value)
+                  income = Number(income) + Number(transaction.value.replace(",","."))
                  }else{
-                   outcome = outcome + Number(transaction.value)
+                   outcome = Number(outcome) + Number(transaction.value.replace(",","."))
                  }
 
                  return (
