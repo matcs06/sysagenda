@@ -1,15 +1,17 @@
 import styles from "./topay.module.scss"
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import AddIcon from '@mui/icons-material/Add';
-import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import { useEffect, useState } from "react";
 import Modal from "../../../../../components/Modal"
 import Input from "../../../../../components/input"
 import Button from "../../../../../components/Button";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import CreditScoreIcon from '@mui/icons-material/CreditScore';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+
 
 import api from "../../../../../api";
+import { removeNonNumbers } from "../../../../../utils";
 
 interface ITransactions{
    id:string;
@@ -17,6 +19,7 @@ interface ITransactions{
    value:string;
    payment_status: string;
    formatedDate: string;
+   customer_phone:string;
 }
 
 const Finance = () => {
@@ -69,6 +72,7 @@ const Finance = () => {
             formatedDate: modalDate.replaceAll("-", "/"),
             payment_status: "topay",
             user_id: user_id,
+            customer_phone: "123456789"
             }, {
                headers: {
                Authorization: "Bearer " + token,
@@ -107,6 +111,22 @@ const Finance = () => {
    window.location.pathname = ("/admin/app/finance")
 
   }
+
+   const onWhatsAppClick = (phone: string)=>{
+
+      let newPhone = removeNonNumbers(phone)
+         
+      newPhone = "+55"+newPhone.replace(" ","")
+     
+
+      let messageContent = `Olá, tudo bem?`
+
+      messageContent = window.encodeURIComponent(messageContent);
+
+      let apiURL = `https://api.whatsapp.com/send?phone=${newPhone}&text=${messageContent}`;
+      
+      window.open(apiURL);
+   }
 
   return (
      <>
@@ -154,12 +174,18 @@ const Finance = () => {
 
                  return (
                   <div className={styles.transactions} key={transaction.id}>
-                     <p className={styles.transactionTitle}>{transaction.title}</p>
+                     <div onClick={()=>{onWhatsAppClick(transaction.customer_phone)}} className={styles.whatsappContainer}>
+                     <WhatsAppIcon/>
+                     </div>
+                     <p className={styles.transactionTitle}>{transaction.title}
+                     </p>
                      <p>{transaction.value} R$</p>
                      <p>{transaction.formatedDate}</p>
+                  
                      <div className={styles.remove} onClick={()=>{handleDeleteTransaction(transaction.id)}}>
                         <CreditScoreIcon sx={{ color: "#CB4E4E" }}/>
                      </div>
+                     
                   </div>
                  )
               }      

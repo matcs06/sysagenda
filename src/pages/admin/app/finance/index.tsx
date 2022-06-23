@@ -73,6 +73,7 @@ const Finance = () => {
             value: value,
             formatedDate: modalDate.replaceAll("-", "/"),
             user_id: user_id,
+            customer_phone: "123456789"
             }, {
                headers: {
                Authorization: "Bearer " + token,

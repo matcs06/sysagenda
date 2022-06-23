@@ -49,10 +49,11 @@ const ScheduleDetail= ({props}) => {
                                   serviceName:string,
                                   serviceDate:string,
                                   serviceValue:string,
-                                  cliente: string) => {
+                                  cliente: string,
+                                  customer_phone:string) => {
       
       const clientFirstName = cliente.split(" ")[0]
-
+ 
       if(togleTransaction){
          try {
             const token = localStorage.getItem("token"); 
@@ -64,6 +65,7 @@ const ScheduleDetail= ({props}) => {
                formatedDate: serviceDate,
                payment_status: paid ? "payd" : "topay",
                user_id: user_id,
+               customer_phone,
                }, {
                   headers: {
                   Authorization: "Bearer " + token,
@@ -138,7 +140,7 @@ const ScheduleDetail= ({props}) => {
                      <WhatsAppIcon/>
               </div>
 
-              <div className={styles.deleteContainer} onClick={()=>deleteSchedules(props?.id, props?.Service, props?.date, props?.value, props?.Customer)}>
+              <div className={styles.deleteContainer} onClick={()=>deleteSchedules(props?.id, props?.Service, props?.date, props?.value, props?.Customer, props?.phone)}>
                     <DeleteForeverIcon sx={{fontSize:30}}/>
               </div>
           </div>

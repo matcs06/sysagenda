@@ -41,6 +41,13 @@
    }
    
  }
+ .whatsappContainer {
+  cursor: pointer;
+
+  &:hover {
+    color: green;
+  }
+}
  
  .infoContaiener {
    display: flex;
