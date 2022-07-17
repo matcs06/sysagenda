@@ -20,6 +20,7 @@ export default function AvailabilityInquiry(){
 
 
    useEffect(()=>{
+      const payment_status = localStorage.getItem("payment_status")
       async function loadItems(){
          const user_id = localStorage.getItem("user_id");
          const response = await api.get<AvailabilityFiels[]>(`/availability?user_id=${user_id}`)
@@ -28,7 +29,13 @@ export default function AvailabilityInquiry(){
          setUpdateOnDelete(false)
 
       }
-      loadItems();
+
+      if(payment_status == "pago"){
+
+         loadItems();
+      }else{
+         window.alert("Error, Pagamento de mensalidade pendente! Pague sua mensalidade para continuar usando o serviço")
+      }
 
       return()=>{
          setItems([]);

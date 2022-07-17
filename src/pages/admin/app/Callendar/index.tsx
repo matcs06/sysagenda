@@ -25,14 +25,21 @@ export default function Scheduller({data}){
     const [updateOnDelete, setUpdateOnDelete] = useState(false)
  
     useEffect(()=>{
- 
+       
+       const payment_status = localStorage.getItem("payment_status") 
+
        async function loadItems(){
         const user_id = localStorage.getItem("user_id");
         const response = await api.get<SchduleFields[]>(`/schedules?user_id=${user_id}`)
  
           setItems(response.data) 
        }
-       loadItems();
+
+       if(payment_status == "pago"){
+           loadItems();
+       }else{
+        window.alert("Erro, Pagamento de mensalidade pendente! Pague sua mensalidade para continuar usando o serviço, Você não conseguirá ver os agendamentos no calendário")
+       }
  
        return()=>{
  

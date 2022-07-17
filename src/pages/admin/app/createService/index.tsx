@@ -15,25 +15,32 @@ export default function CreateService() {
    const handleCreate = async ()=>{
       const token = localStorage.getItem("token");
       const user_id = localStorage.getItem("user_id");
+      const payment_status = localStorage.getItem("payment_status") 
       
-      try {
-         await api.post("/products", {
-            name: serviceName,
-            description: serviceInfo,
-            price: value,
-            duration: duration,
-            user_id: user_id, 
-            }, {
-               headers: {
-               Authorization: "Bearer " + token,
-            },
-         });
-         window.alert(`Produto ${serviceName} criado com sucesso`);
-         window.location.pathname = "/admin/app/"
-      } catch (error) {
-         window.alert(
-            "erro ao criar novo produto: Verfifique se já não existe um produto com o mesmo nome"
-      );
+      if(payment_status == "pago"){
+
+         try {
+            await api.post("/products", {
+               name: serviceName,
+               description: serviceInfo,
+               price: value,
+               duration: duration,
+               user_id: user_id, 
+               }, {
+                  headers: {
+                  Authorization: "Bearer " + token,
+               },
+            });
+            window.alert(`Produto ${serviceName} criado com sucesso`);
+            window.location.pathname = "/admin/app/"
+         } catch (error) {
+            window.alert(
+               "erro ao criar novo produto: Verfifique se já não existe um produto com o mesmo nome"
+         );
+         }
+      
+      }else{
+         window.alert("Erro ao criar.  Pagamento de mensalidade pendente, você precisa fazer o pagamento para continuar usando o serviço")
       }
       
    }

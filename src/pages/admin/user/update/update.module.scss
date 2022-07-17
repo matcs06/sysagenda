@@ -1,0 +1,110 @@
+.container {
+  display: flex;
+  background: var(--gray-backg);
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+.panelContainer {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-self: center;
+  height: 65%;
+  width: 100%;
+  padding: 5px;
+}
+
+@keyframes increaseSize {
+  from {
+    opacity: 0;
+    transform: scale(0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(100%, 100%);
+  }
+
+
+}
+
+.panel {
+  border-radius: 5px;
+  flex-direction: column;
+  display: flex;
+  align-self: center;
+  justify-self: center;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  max-height: 700px;
+  background: var(--azul-card);
+  overflow-x: hidden;
+  height: 100%;
+  padding-top: 40px;
+  animation: increaseSize 0.6s;
+
+  .label{
+    color: antiquewhite;
+    font-family: "Roboto";
+    margin-right: 5px;
+    margin-left: 25%
+  }
+
+  h3{
+    color: rgb(207, 207, 207);
+    font-family: "Roboto";
+
+  }
+}
+
+
+.serviceName {
+  display: flex;
+  width: 85%;
+  align-items: center;
+  margin-top: 20px;
+
+  input {
+    color: rgb(219, 219, 219);
+    border-radius: 2px;
+    font-family: "Roboto";
+    background: var(--input-color);
+    text-align: center;
+    font-size: 15px;
+    height: 40px;
+    border-bottom: none;
+  }
+}
+
+.buttonContainer {
+  width: 90%;
+  height: 120px;
+  margin-top: 50px;
+  color: rgb(201, 201, 201);
+  
+  div{
+
+    button {
+      background: rgb(24, 77, 107);
+      border-radius: 2px;
+      color: rgb(224, 234, 240);
+      font-weight: bold;
+      font-family: "Roboto";
+    }
+  }
+}
+
+
+@media (max-width: 320px) {
+  .serviceName{
+    input {
+      font-size: 12px;
+    }
+  }
+
+  .panel {
+    height: 90%;
+  }
+}

@@ -1,17 +1,16 @@
 import styles from "./login.module.scss"
 import Head from 'next/head'
 import Image from 'next/image'
-import Link from "next/link";
-import Input from "../../../components/input"
-import Button from "../../../components/Button"
+import Input from "../../../../components/input"
+import Button from "../../../../components/Button"
 import { useState } from "react";
-import instace from "../../../api";
+import instace from "../../../../api";
 
-
-export default function Login(){
+export default function UserLogin(){
    
    const [user, setUser] = useState("");
    const [password, setPassword] = useState("");
+   
    
    const handleClick = async () =>{
       try {
@@ -20,15 +19,9 @@ export default function Login(){
          password: password,
          });
 
-         localStorage.setItem("token", response.data.token);
-         localStorage.setItem("username", response.data.user.name);
-         localStorage.setItem("user_name", response.data.user.username)
-         localStorage.setItem("user_id", response.data.user.user_id);
-         localStorage.setItem("business_name", response.data.user.
-         business_name);
+         localStorage.setItem("token_super", response.data.token);
 
-         
-         window.location.pathname = ("/admin/app/")
+         window.location.pathname = ("/admin/user/users")
       } catch (error) {
          window.alert("Erro ao realiza login, Tente novamente!!!");
       }
@@ -50,10 +43,10 @@ export default function Login(){
        </div>
        <div className={styles.cardContainer}>
           <div className={styles.loginCard}>
-          <h1>Fazer Login</h1>
+          <h1>Controle de usuários</h1>
           <Input type="text" placeholder="Usuário" name="user" setfieldvalue={setUser} />
           <Input type="password" placeholder="Senha" name="password" setfieldvalue={setPassword}/>
-          <Button page="/admin/login" handleClick={handleClick} >Entrar</Button>
+          <Button page="/admin/user/login" handleClick={handleClick} >Entrar</Button>
           <div className={styles.spamContainer}>
             {/*  <Link href="signin">
                  <span>Ainda não tenho uma conta</span>

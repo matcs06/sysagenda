@@ -46,55 +46,61 @@ export default function CreateAvailability() {
    }
 
    const handleCreate = async ()=>{
-      
-      try {
+      const payment_status = localStorage.getItem("payment_status")
 
-         validateMorningTime(morningFrom, morningTo);
-         validateAfternoonTime(afternoonFrom, afternoonTo)
-         
-         const token = localStorage.getItem("token");
-         const user_id = localStorage.getItem("user_id");
+      if(payment_status == "pago"){
+         try {
 
-         var morning_start_time = ""
-         var morning_end_time = ""
-         var afternoon_start_time = ""
-         var afternoon_end_time = ""
-
-         if (morningFrom){
-            morning_start_time = morningFrom + ":00"
+            validateMorningTime(morningFrom, morningTo);
+            validateAfternoonTime(afternoonFrom, afternoonTo)
+            
+            const token = localStorage.getItem("token");
+            const user_id = localStorage.getItem("user_id");
+   
+            var morning_start_time = ""
+            var morning_end_time = ""
+            var afternoon_start_time = ""
+            var afternoon_end_time = ""
+   
+            if (morningFrom){
+               morning_start_time = morningFrom + ":00"
+            }
+   
+            if (morningTo){
+               morning_end_time = morningTo + ":00"
+            }
+   
+            if (afternoonFrom){
+               afternoon_start_time = afternoonFrom + ":00"
+            }
+   
+            if (afternoonTo){
+               afternoon_end_time = afternoonTo + ":00"
+            }
+   
+            await api.post("/availability/", {
+               date: formatedDate,
+               morning_start_time,
+               morning_end_time,
+               afternoon_start_time,
+               afternoon_end_time,
+               user_id: user_id,
+               }, {
+                  headers: {
+                  Authorization: "Bearer " + token,
+               },
+            });
+            window.alert(`Horário na data ${formatedDate} criado com sucesso`);
+            window.location.pathname = "/admin/app/"
+         } catch (error) {
+            window.alert(
+               "erro ao criar novo horário: Verfifique se já não existe um horário na mesma data"
+         );
          }
-
-         if (morningTo){
-            morning_end_time = morningTo + ":00"
-         }
-
-         if (afternoonFrom){
-            afternoon_start_time = afternoonFrom + ":00"
-         }
-
-         if (afternoonTo){
-            afternoon_end_time = afternoonTo + ":00"
-         }
-
-         await api.post("/availability/", {
-            date: formatedDate,
-            morning_start_time,
-            morning_end_time,
-            afternoon_start_time,
-            afternoon_end_time,
-            user_id: user_id,
-            }, {
-               headers: {
-               Authorization: "Bearer " + token,
-            },
-         });
-         window.alert(`Horário na data ${formatedDate} criado com sucesso`);
-         window.location.pathname = "/admin/app/"
-      } catch (error) {
-         window.alert(
-            "erro ao criar novo horário: Verfifique se já não existe um horário na mesma data"
-      );
+      }else{
+         window.alert("Error, Pagamento de mensalidade pendente! Pague sua mensalidade para continuar usando o serviço")
       }
+   
 
    }
 

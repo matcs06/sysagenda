@@ -1,0 +1,51 @@
+.container{
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+   align-items: center;
+   justify-content: center;
+}
+
+.title{
+   font-family: "Roboto";
+   margin-top: 5%;
+   margin-bottom: 5%;
+   color: rgb(216, 216, 216);
+}
+
+.userContainer{
+   position: relative;
+   display: flex;
+   width: 70%;
+   min-width: 100px;
+   font-family: "Roboto";
+   background-color: #22223B;
+   margin-top: 10px;
+   border-radius: 5px;
+   justify-content: center;
+   align-items: center;
+   height: 50px;
+
+   p{
+      margin-right: 60px;
+      color: rgb(209, 207, 207);
+   }
+
+   .edit{
+      position: absolute;
+      right: 50px;
+      cursor: pointer;
+      color: rgb(54, 135, 173);    
+   }
+   .delete{
+      position: absolute;
+      right: 10px;
+      cursor: pointer;
+      color: rgb(168, 54, 54);
+   }
+
+
+
+   
+   
+}

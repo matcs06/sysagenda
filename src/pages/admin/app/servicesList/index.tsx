@@ -28,6 +28,7 @@ export default function ServicesList(){
    }
 
    useEffect(()=>{
+      const payment_status = localStorage.getItem("payment_status")
       async function loadItems() {
          const token = localStorage.getItem("token");
          const user_id = localStorage.getItem("user_id");
@@ -38,7 +39,13 @@ export default function ServicesList(){
          setItems(response.data);
          setUpdateOnDelete(false)
       }
-      loadItems();
+
+      if(payment_status == "pago"){
+
+         loadItems();
+      }else{
+         window.alert("Error, Pagamento de mensalidade pendente! Pague sua mensalidade para continuar usando o serviço")
+      }
       return () => {
          setItems([]);
       };
