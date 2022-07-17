@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import SideBar from '../../../components/SideBar';
 import ServicesList from './servicesList';
-import PaymentAlert from '../../../components/PaymentAlert';
 // import { Container } from './styles';
 import api from "../../../api"
 interface UserInfo{
