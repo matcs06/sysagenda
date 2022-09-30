@@ -71,10 +71,12 @@ export default function Users() {
           user.map((user)=>(
             
             <div className={styles.userContainer} key={user.id}>
-   
-               <p>{user.username}</p>
-               <p>Dia de pagamento: {user.payment_day}</p>
-               <p>Pagamento: {user.payment_status == "pago" ? "Pago" : "Pendente"}</p>
+               
+               <div className={styles.cardText}>
+                  <p>{user.username}</p>
+                  <p>Dia de pagamento: {user.payment_day}</p>
+                  <p>Pagamento: {user.payment_status == "pago" ? "Pago" : "Pendente"}</p>
+               </div>
                <div className={styles.edit} onClick={()=>{goToupdateUser(user.username)}}>
                   <EditIcon sx={{fontSize:30}}/>
                </div>
