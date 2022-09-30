@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import api from "../../../../api"
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditIcon from '@mui/icons-material/Edit';
+import Button from '../../../../components/Button';
+
 
 import styles from "./users.module.scss"
 interface UserInfo{
@@ -41,6 +43,7 @@ export default function Users() {
       })
       setUpdateOnDelete(true)
    } catch (error) {
+      console.log(error)
       window.alert("Erro ao remover usuário!")
    }
   }
@@ -52,9 +55,17 @@ export default function Users() {
 
   }
 
+  const handleCreate = () =>{
+   window.location.pathname = ("/admin/user/createuser")
+ }
+
   return (
    <div className={styles.container}> 
-      <h2 className={styles.title}>Usuários do sistema</h2>
+
+      <div className={styles.topContainer}>
+         <h2 className={styles.title}>Usuários do sistema</h2>
+         <div className={styles.createUser} onClick={handleCreate}>Criar novo usuário</div>
+      </div>
       
          {user && 
           user.map((user)=>(

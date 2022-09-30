@@ -43,9 +43,29 @@
       cursor: pointer;
       color: rgb(168, 54, 54);
    }
-
-
-
    
    
+}
+
+.topContainer{
+   display: flex;
+   align-items: center;
+   justify-content: space-evenly;
+   width: 100%;
+
+}
+
+.createUser{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border-radius: 5px;
+   cursor: pointer;
+   height: 40px;
+   width: 30%;
+   background-color: #22223B;
+   color: rgb(209, 207, 207);
+   font-family: "Roboto";
+   font-weight: bold;
+
 }

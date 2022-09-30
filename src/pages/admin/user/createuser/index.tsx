@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import Input from "../../../components/input/"
-import PhoneInput from '../../../components/PhoneInput';
-import Button from '../../../components/Button';
+import Input from "../../../../components/input"
+import PhoneInput from '../../../../components/PhoneInput';
+import Button from '../../../../components/Button';
 import styles from "./createuser.module.scss"
-import api from "../../../api/index"
+import api from "../../../../api/index"
 import DoneIcon from '@mui/icons-material/Done';
 import CloseIcon from '@mui/icons-material/Close';
+import { WindowSharp } from '@mui/icons-material';
 
 const Createuser: React.FC = () => {
 
@@ -27,7 +28,8 @@ const Createuser: React.FC = () => {
           password: password,
         })
 
-        window.alert("Usuário criado com sucesso!! Preenche as informações adicionais para finalizar!")
+        window.alert("Usuário criado com sucesso!!")
+        window.location.pathname = ("/admin/user/users")
 
       } catch (error) { 
         window.alert("Error ao criar usuário")
@@ -35,6 +37,10 @@ const Createuser: React.FC = () => {
 
     }
 
+  }
+
+  const handleBack = () =>{
+    window.location.pathname = ("/admin/user/users")
   }
 
   useEffect(()=>{
@@ -79,7 +85,9 @@ const Createuser: React.FC = () => {
 
           <Input className={styles.input} type="password" placeholder="Senha" name="senha" setfieldvalue={setPassword}/>
 
-          <Button className={styles.button} page="/landing/createuser" handleClick={handleClick} >Continuar</Button>
+          <Button className={styles.button} page="/admin/user/createuser" handleClick={handleClick} >Criar</Button>
+
+          <Button className={styles.button} page="/admin/user/users" handleClick={handleBack} >Voltar</Button>
        
         </div>
      </div>

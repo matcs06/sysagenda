@@ -1,6 +1,4 @@
-var phone = "98991513671"
+const teste = new Date().getDate()
 
 
-phone = "+55" + phone.replace(" ","");
-
-console.log(phone)
+console.log(teste)
