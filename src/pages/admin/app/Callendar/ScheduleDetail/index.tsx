@@ -30,13 +30,13 @@ const ScheduleDetail= ({props}) => {
 
    const onWhatsAppClick = (phone: string, serviceName:string, serviceDate:string, serviceTime:string)=>{
 
-      
+      const business_name = localStorage.getItem("business_name")
       phone = "+55"+phone.replace(" ","")
       const newTime = serviceTime.split(":")
 
       const formatedTime = newTime[0] + ":" + newTime[1]      
 
-      let messageContent = `Studio Antonielem Ramos:\nOlá, gostaríamos de confimar o seu agendamento para:\nServiço: *${serviceName}*\nDia: *${serviceDate}*\nHorário: *${formatedTime} hrs*\nconfirma?`
+      let messageContent = `${business_name}:\nOlá, gostaríamos de confimar o seu agendamento para:\nServiço: *${serviceName}*\nDia: *${serviceDate}*\nHorário: *${formatedTime} hrs*\nconfirma?`
 
       messageContent = window.encodeURIComponent(messageContent);
 

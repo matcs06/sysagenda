@@ -7,8 +7,29 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)   
 
 const Landing = () => {
-  const scrollPage2 = useRef(null)
-  const scrollPage1 = useRef(null)
+
+
+  
+  const wantKnow = ()=>{
+
+    const phone = "+5511959842539"
+
+    let messageContent = `Olá, tenho interesse no Sistema de agendamentos e gostaria de saber mais sobre!`
+
+    messageContent = window.encodeURIComponent(messageContent);
+
+    let apiURL = `https://api.whatsapp.com/send?phone=${phone}&text=${messageContent}`;
+      
+    window.open(apiURL);
+  } 
+
+  const openInstaPage = () =>{
+      const instaUrl = "https://www.instagram.com/clickeagenda/"
+      window.open(instaUrl)
+
+  }
+
+ 
   return (
      <div className={styles.container}>
         <header className={styles.header}>
@@ -16,8 +37,8 @@ const Landing = () => {
             <Image
                
                src="/logoshort.png"
-               width={400}
-               height={120}
+               width={600}
+               height={220}
                alt="logo-login"
             />
           </div>
@@ -25,28 +46,25 @@ const Landing = () => {
           
            <nav className={styles.nav}>
               <ul>
-                 <li onClick={() => scrollToRef(scrollPage1)}>Início</li>
+                 <li>Início</li>
                  <li>Ajuda</li>
-                 <li>Sobre nós</li>
+                 <li>Sobre</li>
               </ul>
-              <div className={styles.planos} onClick={() => scrollToRef(scrollPage2)}>
-                 <p>Planos</p>
-              </div>
-              
+            
               <div id={styles.socialNetwork}>
-                 <InstagramIcon id={styles.icon1}/>
+                 <InstagramIcon id={styles.icon1} onClick={openInstaPage}/>
                  <FacebookIcon id={styles.icon1}/>
               </div>
               
            </nav>
         </header>
         <main className={styles.main}>
-           <section id={styles.sc1} ref={scrollPage1} >
+           <section id={styles.sc1} >
             <div>
                <h1>Deixe o <span id={styles.ca}>Click&Agenda</span>  agendar por você!</h1>
                
-               <div className={styles.button} onClick={() => scrollToRef(scrollPage2)}>
-                  <p>ASSINE AGORA!</p>
+               <div className={styles.button} onClick={wantKnow}>
+                  <p>SAIBA MAIS!</p>
                   <span>Apartir de 49,99 p/mês</span>
                </div>
             </div>
@@ -57,10 +75,6 @@ const Landing = () => {
                alt="imagem-ilustrativa"
             /> 
            </section>
-           <section  ref={scrollPage2} >
-            <Plans/>
-           </section>
-         
         </main>
      </div>
   );
