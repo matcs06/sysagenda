@@ -43,7 +43,6 @@ export default function Users() {
       })
       setUpdateOnDelete(true)
    } catch (error) {
-      console.log(error)
       window.alert("Erro ao remover usuário!")
    }
   }

@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import styles from "./updateService.module.scss"
 import Input from "../../../../components/input"
 import Button from "../../../../components/Button";
@@ -11,7 +11,9 @@ function UpdateService(props: any) {
    const [serviceInfo, setServiceInfo] = useState()
    const [value, setValue] = useState()
    const [duration, setDuration] = useState()
-  
+   const enabledProps:boolean = props.router.query.isEnabled == 'false' ? false : true 
+   const [isEnabled, setIsEnabled] = useState(enabledProps)
+
    const handleUpdate = async ()=>{
       const token = localStorage.getItem("token");
       var existentServiceName = ''
@@ -50,7 +52,8 @@ function UpdateService(props: any) {
             name: existentServiceName,
             description: serviceInfo,
             price: value,
-            duration: existentDuration
+            duration: existentDuration,
+            enabled: isEnabled
          },
          {
             headers: {
@@ -73,8 +76,11 @@ function UpdateService(props: any) {
       window.location.pathname = "/admin/app/"
    }
 
-   
-  
+   const controlEnabled = ()=>{
+      setIsEnabled(!isEnabled)
+   }
+
+
    return(
       <div className={styles.container}>
           <div className={styles.panelContainer}>
@@ -89,6 +95,11 @@ function UpdateService(props: any) {
                 <Input type="text" placeholder="Valor" name="Valor" setfieldvalue={setValue}/>
                 <Input disabled="disabled" type="time" placeholder="Duração" name="Duração" setfieldvalue={setDuration}/>
              </div>
+             <div className={styles.enabledStyle}>
+                  <label className={styles.label} htmlFor="payment_status">Habilitar</label>
+
+                 <input className="checkBox" type="checkbox" id="payment_status" checked={isEnabled} onChange={controlEnabled} />
+               </div>
              <div className={styles.buttonContainer}>
                 <Button page="/admin/app/" handleClick={handleUpdate} >Atualizar</Button>
                 <Button page="/admin/app/" handleClick={handleBack} >Voltar</Button>

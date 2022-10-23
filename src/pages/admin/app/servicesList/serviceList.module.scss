@@ -86,6 +86,66 @@
     }
   }
 }
+
+.disabledCard {
+  position: relative;
+  width: 20%;
+  min-width: 250px;
+  background: rgb(54, 54, 54);;
+  border-radius: 10px;
+  padding: 20px 15px 10px 15px;
+  margin: 10px 15px 10px 10px;
+  height: 220px;
+  transition: background 0.2s;
+  overflow-y: auto;
+  animation-name: appearFromLeft;
+  animation-duration: 0.6s;
+
+  &:hover {
+    background: rgb(71, 71, 71);;
+  }
+
+  h1 {
+    justify-self: center;
+    align-self: center;
+    font-size: 15px;
+    margin-bottom: 1px;
+    font-family: "Roboto";
+    font-weight: light;
+    color: var(--branco-text);
+  }
+  ul {
+    max-height: 90px;
+    overflow-y: auto;
+    margin: 10px 0 10px 0;
+
+    li {
+      font-family: "Roboto";
+      list-style: none;
+      margin: 0 0 5px 10px;
+      font-size: 15px;
+      font-weight: lighter;
+      color: var(--branco-text);
+    }
+  }
+
+  .cardBottom {
+    position: absolute;
+    width: 90%;
+    font-family: "Roboto";
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    bottom: 20px;
+    color: #c8d8e4;
+    padding: 0 10px 0 5px;
+    h3 {
+      font-size: 15px;
+      font-weight: lighter;
+    }
+  }
+}
+
 .topCardContainer {
   display: flex;
   flex-direction: row;

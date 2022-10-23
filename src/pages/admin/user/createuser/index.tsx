@@ -54,7 +54,6 @@ const Createuser: React.FC = () => {
     
     if(!userName){  
       loadUsers()
-      console.log("chamou api")
     }else{
       listOfUsers.map((user)=>{
         if(user.username == userName){

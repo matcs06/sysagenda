@@ -11,6 +11,7 @@ interface ServiceFields {
    description:string;
    price:string;
    duration:string;
+   enabled: string;
 }
 
 export default function ServicesList(){
@@ -19,11 +20,11 @@ export default function ServicesList(){
    const [updateOnDelete, setUpdateOnDelete] = useState(false)
 
    const handleEdit = (serviceName: string, serviceId:string, serviceDuration:string,
-   serviceDescription:string, serviceValue:string) =>{
+   serviceDescription:string, serviceValue:string, isEnabled: string) =>{
 
       Router.push({
          pathname: '/admin/app/updateService',
-         query: { serviceName, serviceId, serviceDuration, serviceDescription, serviceValue }
+         query: { serviceName, serviceId, serviceDuration, serviceDescription, serviceValue, isEnabled }
      })
    }
 
@@ -66,33 +67,68 @@ export default function ServicesList(){
    return(
       <div className={styles.container}>      
          <div className={styles.panel}>
-            {items && items.map((item)=>(
-               <div className={styles.card} key={item.id}>
-                  <div className={styles.topCardContainer}>                     
-                     <h1>{item.name}</h1>
-                     <div className={styles.deleteEdit}>
-                        <div className={styles.editContainer} onClick={()=>handleEdit(item.name, item.id, item.duration, item.description, item.price)}>
-                           <EditIcon sx={{fontSize:30}}/>
+            {items && items.map((item)=> {
+               if (String(item.enabled) == 'true') {
+                  return (
+                     <div className={styles.card} key={item.id}>
+                        <div className={styles.topCardContainer}>                     
+                           <h1>{item.name}</h1>
+                           <div className={styles.deleteEdit}>
+                              <div className={styles.editContainer} onClick={()=>handleEdit(item.name, item.id, item.duration, item.description, item.price, item.enabled)}>
+                                 <EditIcon sx={{fontSize:30}}/>
+                              </div>
+                              <div className={styles.deleteContainer} onClick={()=>{deleteProduct(item.id)}}>
+                              <DeleteForeverIcon sx={{fontSize:30}}/>
+                              </div>
+                           </div>
                         </div>
-                        <div className={styles.deleteContainer} onClick={()=>{deleteProduct(item.id)}}>
-                        <DeleteForeverIcon sx={{fontSize:30}}/>
+                     
+                        <ul>
+                           {item.description.split(",").map((descLine)=>(
+                           <li key={descLine}>
+                              {descLine}
+                           </li>
+                           ))}
+                        </ul>
+                        <div className={styles.cardBottom}>
+                           <h3>Duração: {item.duration} {item.duration.split(":")[0] == "00" ? "min" : "hr/s" }</h3>
+                           <h3>{item.price} R$</h3>
                         </div>
                      </div>
-                  </div>
+                  )
+               }else{
+                  return (
+                     <div className={styles.disabledCard} key={item.id}>
+                        <div className={styles.topCardContainer}>  
+                                        
+                           <h1>{item.name}</h1>
+                           <div className={styles.deleteEdit}>
+                              <div className={styles.editContainer} onClick={()=>handleEdit(item.name, item.id, item.duration, item.description, item.price, item.enabled)}>
+                                 <EditIcon sx={{fontSize:30}}/>
+                              </div>
+                              <div className={styles.deleteContainer} onClick={()=>{deleteProduct(item.id)}}>
+                              <DeleteForeverIcon sx={{fontSize:30}}/>
+                              </div>
+                           </div>
+                        </div>
+                     
+                        <ul>
+                           {item.description.split(",").map((descLine)=>(
+                           <li key={descLine}>
+                              {descLine}
+                           </li>
+                           ))}
+                        </ul>
+                        <div className={styles.cardBottom}>
+                           <h3>Duração: {item.duration} {item.duration.split(":")[0] == "00" ? "min" : "hr/s" }</h3>
+                           <h3>{item.price} R$</h3>
+                        </div>
+                     </div>
+                  )
+               }
                
-                  <ul>
-                     {item.description.split(",").map((descLine)=>(
-                     <li key={descLine}>
-                        {descLine}
-                     </li>
-                     ))}
-                  </ul>
-                  <div className={styles.cardBottom}>
-                     <h3>Duração: {item.duration} {item.duration.split(":")[0] == "00" ? "min" : "hr/s" }</h3>
-                     <h3>{item.price} R$</h3>
-                  </div>
-               </div>
-            ))}
+
+            })}
 
          </div>
          

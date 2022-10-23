@@ -11,6 +11,7 @@ interface ServiceFields {
    description:string;
    price:string;
    duration:string;
+   enabled:string;
 }
 
 function ServicesList(props){
@@ -72,25 +73,29 @@ function ServicesList(props){
       <div className={styles.container}>
         <h3 className={styles.screenTitle}>Escolha um serviço</h3>
          <div className={styles.panel}>
-            {items && items.map((item)=>(
-                 <div className={styles.card} onClick={()=>handleClick(item.id, item.name, item.duration, item.price)} key={item.id}>
-               <div className={styles.topCardContainer}>
-                   <h1>{item.name}</h1>
-               </div>
-              
-               <ul>
-                 {item.description.split(",").map((descLine)=>(
-                     <li key={descLine}>
-                        {descLine}
-                     </li>
-                  ))}
-               </ul>
-               <div className={styles.cardBottom}>
-                  <h3>Duração: {item.duration} {item.duration.split(":")[0]==="00" ? "minutos" : "hr/s"}</h3>
-                  <h3>{item.price} R$</h3>
-               </div>
-            </div>
-            ))}
+            {items && items.map((item)=>{
+               if(String(item.enabled) == "true"){
+                  return(
+                     <div className={styles.card} onClick={()=>handleClick(item.id, item.name, item.duration, item.price)} key={item.id}>
+                     <div className={styles.topCardContainer}>
+                        <h1>{item.name}</h1>
+                     </div>
+                     
+                     <ul>
+                        {item.description.split(",").map((descLine)=>(
+                           <li key={descLine}>
+                              {descLine}
+                           </li>
+                        ))}
+                     </ul>
+                     <div className={styles.cardBottom}>
+                        <h3>Duração: {item.duration} {item.duration.split(":")[0]==="00" ? "minutos" : "hr/s"}</h3>
+                        <h3>{item.price} R$</h3>
+                     </div>
+                  </div>
+                )
+               }
+            })}
          </div>
          
       </div>
