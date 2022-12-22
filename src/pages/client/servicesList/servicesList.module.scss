@@ -46,8 +46,7 @@
   &:hover {
     background-color: var(--azul-hover);
     span{
-      background-color: var(--azul-card);
-      color: rgb(113, 170, 113);
+      color: rgb(232, 254, 232);
     }
   }
 
@@ -100,7 +99,6 @@
 
 
 .priceStyle{
-  background-color: rgb(49, 56, 100);
   border-radius: 8px;
   height: 25px;
   min-width: 80px;
@@ -109,6 +107,6 @@
   align-items: center;
   justify-content: center;
   font-size: 15px;
-  font-weight: 300;
-  color: #9fdcc4;
+  font-weight: bold;
+  color: #feffff;
 }
