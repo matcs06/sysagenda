@@ -8,10 +8,11 @@ interface InputProps{
    disabled?: string;
 }
 
-export default function Input(props:any){
+export default function Input(
+   {setfieldvalue, ...props}){
 
    const handleSet = (event:any) =>{
-      props.setfieldvalue(event.target.value)
+      setfieldvalue(event.target.value)
    }
 
    return(

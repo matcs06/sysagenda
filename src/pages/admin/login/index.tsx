@@ -1,7 +1,6 @@
 import styles from "./login.module.scss"
 import Head from 'next/head'
 import Image from 'next/image'
-import Link from "next/link";
 import Input from "../../../components/input"
 import Button from "../../../components/Button"
 import { useState } from "react";
@@ -51,9 +50,12 @@ export default function Login(){
        <div className={styles.cardContainer}>
           <div className={styles.loginCard}>
           <h1>Fazer Login</h1>
-          <Input type="text" placeholder="Usuário" name="user" setfieldvalue={setUser} />
-          <Input type="password" placeholder="Senha" name="password" setfieldvalue={setPassword}/>
-          <Button page="/admin/login" handleClick={handleClick} >Entrar</Button>
+          <form action="" style={{width:"100%"}}>
+            <Input type="text" placeholder="Usuário" name="user" setfieldvalue={setUser} />
+            <Input type="password" placeholder="Senha" name="password" setfieldvalue={setPassword}/>
+            <Button page="/admin/login" handleClick={handleClick} >Entrar</Button>
+          </form>
+          
           <div className={styles.spamContainer}>
             {/*  <Link href="signin">
                  <span>Ainda não tenho uma conta</span>
