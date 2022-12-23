@@ -179,7 +179,7 @@ const Finance = () => {
                      </div>
                      <p className={styles.transactionTitle}>{transaction.title}
                      </p>
-                     <p>{transaction.value} R$</p>
+                     <p>R$ {transaction.value}</p>
                      <p>{transaction.formatedDate}</p>
                   
                      <div className={styles.remove} onClick={()=>{handleDeleteTransaction(transaction.id)}}>

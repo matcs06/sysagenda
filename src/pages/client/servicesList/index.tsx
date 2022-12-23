@@ -90,7 +90,7 @@ function ServicesList(props){
                      </ul>
                      <div className={styles.cardBottom}>
                         <h3>Duração: {item.duration} {item.duration.split(":")[0]==="00" ? "minutos" : "hr/s"}</h3>
-                        <span className={styles.priceStyle}>{item.price} R$</span>
+                        <span className={styles.priceStyle}>R$ {item.price}</span>
                      </div>
                   </div>
                 )

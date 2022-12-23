@@ -83,7 +83,7 @@ function CustomerInfo(props:any){
            </div>
 
            <div className={styles.paymentInfo}>
-               <h2  className={styles.value}>Valor: {props.router.query.servicePrice} R$ </h2>
+               <h2  className={styles.value}>Valor: R$ {props.router.query.servicePrice}</h2>
                <h2  className={styles.payment}>Pagamento é feito no momento do serviço</h2>
            </div>
 

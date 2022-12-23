@@ -120,7 +120,7 @@ export default function OpenSchedules(){
                   <p>Horário: {timeFormated(item.start_time)}</p>
                   <div className={styles.cardBottom}>
                      <p>Duração: {timeFormated(item.service_duration)}</p>
-                     <p>{item.value} R$</p>
+                     <p>R$ {item.value}</p>
                   </div>
                </div>
              

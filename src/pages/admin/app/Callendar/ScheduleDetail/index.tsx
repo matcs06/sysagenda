@@ -111,7 +111,7 @@ const ScheduleDetail= ({props}) => {
                <p>Contato: {props?.phone}</p>
             </div>
             <div>
-               <p>Preço: {props?.value} R$</p>
+               <p>Preço: R$ {props?.value}</p>
             </div>
           </div>
           

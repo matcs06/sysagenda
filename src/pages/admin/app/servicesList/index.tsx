@@ -92,7 +92,7 @@ export default function ServicesList(){
                         </ul>
                         <div className={styles.cardBottom}>
                            <h3>Duração: {item.duration} {item.duration.split(":")[0] == "00" ? "min" : "hr/s" }</h3>
-                           <h3>{item.price} R$</h3>
+                           <h3>R$ {item.price}</h3>
                         </div>
                      </div>
                   )
@@ -121,7 +121,7 @@ export default function ServicesList(){
                         </ul>
                         <div className={styles.cardBottom}>
                            <h3>Duração: {item.duration} {item.duration.split(":")[0] == "00" ? "min" : "hr/s" }</h3>
-                           <h3>{item.price} R$</h3>
+                           <h3>R$ {item.price}</h3>
                         </div>
                      </div>
                   )
