@@ -4,7 +4,7 @@ import styles from "./scheduleDetail.module.scss"
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import api from "../../../../../api"
-
+import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
 const ScheduleDetail = ({ props }) => {
 
    const [updateOnDelete, setUpdateOnDelete] = useState(false)
@@ -45,8 +45,23 @@ const ScheduleDetail = ({ props }) => {
       window.open(apiURL);
    }
 
-   const deleteSchedules = async (scheduleId: string,
-      serviceName: string,
+   const deleteSchedules = async (scheduleId: string) => {
+
+      try {
+
+         const token = localStorage.getItem("token");
+         await api.delete(`/schedules/${scheduleId}`, {
+            headers: { Authorization: "Bearer " + token },
+         })
+         setUpdateOnDelete(true)
+         window.alert("Agendamento deletado com sucesso")
+      } catch (error) {
+         window.alert("Erro ao deletar agendamento")
+      }
+
+   }
+
+   const handleAddToFinancial = async (serviceName: string,
       serviceDate: string,
       serviceValue: string,
       cliente: string,
@@ -84,18 +99,6 @@ const ScheduleDetail = ({ props }) => {
       }
 
 
-      try {
-
-         const token = localStorage.getItem("token");
-         await api.delete(`/schedules/${scheduleId}`, {
-            headers: { Authorization: "Bearer " + token },
-         })
-         setUpdateOnDelete(true)
-         window.alert("Agendamento deletado com sucesso")
-      } catch (error) {
-         window.alert("Erro ao deletar agendamento")
-      }
-
    }
 
    return (
@@ -129,18 +132,23 @@ const ScheduleDetail = ({ props }) => {
                      placeholder="Pago?" onChange={setPaidSelected} data-name="ifinance" value={null}>
 
                   </DropDownListComponent>
+                  <div onClick={() => handleAddToFinancial(props?.Service, props?.date, props?.value, props?.Customer, props?.phone)} className={styles.addToFinButton} title="Clique aqui para adicionar ao financeiro">
+                     <RadioButtonCheckedIcon />
+                  </div>
                </>
 
             )}
 
+
+
          </div>
 
-         <div className={styles.bottomContainer}>
+         <div className={styles.bottomContainer} >
             <div onClick={() => { onWhatsAppClick(props?.phone, props?.Service, props?.date, props?.fStartTime) }} className={styles.whatsappContainer}>
                <WhatsAppIcon />
             </div>
 
-            <div className={styles.deleteContainer} onClick={() => deleteSchedules(props?.id, props?.Service, props?.date, props?.value, props?.Customer, props?.phone)}>
+            <div className={styles.deleteContainer} onClick={() => deleteSchedules(props?.id)}>
                <DeleteForeverIcon sx={{ fontSize: 30 }} />
             </div>
          </div>
