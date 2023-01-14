@@ -1,5 +1,4 @@
 import DesignServicesIcon from '@mui/icons-material/DesignServices';
-import EventIcon from '@mui/icons-material/Event';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import MoreTimeIcon from '@mui/icons-material/MoreTime';
 import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
@@ -12,52 +11,50 @@ import AvailabilityInquiry from '../../pages/admin/app/availabilityInquiry';
 import CreateAvailability from '../../pages/admin/app/createAvailability';
 import ServicesList from '../../pages/admin/app/servicesList';
 import CreateService from '../../pages/admin/app/createService';
-import OpenSchedules from '../../pages/admin/app/openSchedules';
 import Finance from '../../pages/admin/app/finance';
 import Scheduller from "../../pages/admin/app/Callendar"
 import OpenClient from "../../pages/admin/app/openClient"
-import Link from "react"
 import Logout from '../../pages/admin/app/logout';
 
 export const SideBarData = [
    {
       title: "Criar Serviço",
       icon: <AddBoxIcon />,
-      component: <CreateService/>
+      component: <CreateService />
    },
    {
       title: "Ver Serviços",
       icon: <DesignServicesIcon />,
-      component: <ServicesList/>
-   }, 
+      component: <ServicesList />
+   },
    {
       title: "Criar Horário",
       icon: <MoreTimeIcon />,
-      component: <CreateAvailability/>
+      component: <CreateAvailability />
    },
    {
       title: "Ver Horário",
       icon: <AccessTimeFilledIcon />,
-      component: <AvailabilityInquiry/>
+      component: <AvailabilityInquiry />
    },
    {
       title: "Agendamentos",
       icon: <DateRangeIcon />,
-      component: <Scheduller/>
+      component: <Scheduller />
    },
    {
       title: "Financeiro",
       icon: <PriceChangeIcon />,
-      component: <Finance/>
+      component: <Finance />
    },
    {
       title: "Site do Cliente",
-      icon: <AirlineSeatReclineExtraIcon/>,
-      component: <OpenClient/>
+      icon: <AirlineSeatReclineExtraIcon />,
+      component: <OpenClient />
    },
    {
       title: "Sair",
-      icon: <LogoutIcon/>,
-      component: <Logout/>
+      icon: <LogoutIcon />,
+      component: <Logout />
    }
 ]
