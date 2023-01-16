@@ -46,22 +46,7 @@
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-@media (max-width: 1080px) {
-  html {
-    font-size: 93.75%;
-  }
-}
 
-@media (max-width: 720px) {
-  html {
-    font-size: 87.5%;
-  }
-}
-
-body {
-  background: var(--azul-bkg);
-  color: var(--white);
-}
 
 body,
 input,
@@ -69,6 +54,11 @@ textarea,
 select,
 button {
   font: 400 1 rem "Roboto", sans-serif;
+}
+
+body {
+  background: var(--azul-bkg);
+  color: var(--white);
 }
 
 button {
@@ -96,4 +86,56 @@ a {
 
 .e-event-delete {
   display: none;
+}
+
+@media (max-width: 1080px) {
+  html {
+    font-size: 93.75%;
+  }
+
+  .e-footer-content {
+    display: none;
+    height: 0;
+    background: rgb(255, 255, 255);
+  }
+
+  .e-event-cancel {
+    display: none;
+  }
+
+  .e-event-save {
+    display: none;
+  }
+
+  .e-event-delete {
+    display: none;
+  }
+}
+
+@media (max-width: 720px) {
+  html {
+    font-size: 87.5%;
+  }
+
+  .e-footer-content {
+    display: none;
+    height: 0;
+    background: rgb(255, 255, 255);
+  }
+
+  .e-event-cancel {
+    display: none;
+  }
+
+  .e-event-save {
+    display: none;
+  }
+
+  .e-event-delete {
+    display: none;
+  }
+
+  .e-schedule-dialog.e-device .e-save-icon::before {
+    display: none;
+  }
 }
