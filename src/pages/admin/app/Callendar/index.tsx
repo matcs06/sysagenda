@@ -89,7 +89,7 @@ export default function Scheduller({ data }) {
 
     return (
         <ScheduleComponent eventSettings={{ dataSource: localData.dataSource }}
-            //editorTemplate={editorWindow}
+            editorTemplate={editorWindow}
             showQuickInfo={false}
             height='1000px'
             timeFormat="HH:mm"
