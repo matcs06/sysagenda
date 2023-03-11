@@ -9,7 +9,7 @@ function CustomerInfo(props: any) {
 
 
     const [customerName, setCustomerName] = useState()
-    const [customerNumber, setCustomerNumber] = useState()
+    const [customerNumber, setCustomerNumber] = useState("")
 
     const handleClick = async () => {
 
