@@ -5,9 +5,6 @@ const Alert = ({ message = "mesagem de status", status, showAlert = true }) => {
    const [mainMessage, description] = message.split("|")
 
 
-   console.log(show)
-
-
 
    return (
       <>

@@ -67,9 +67,9 @@ function ServicesList(props) {
       return (
          <div className={styles.container}>
             <Skeleton animation="wave" sx={{ bgcolor: '#eb99bb' }}><h3 className={styles.screenTitle}>Escolha um serviço</h3> </Skeleton>
-            <div className={styles.panel}>
+            <div className={styles.skpanel}>
                {arrayLoop.map((cont) => (
-                  <Skeleton width={290} animation="wave" sx={{ bgcolor: '#eb99bb', minHeight: "190px", minWidth: "440px" }} key={cont}>
+                  <Skeleton width={250} animation="wave" sx={{ bgcolor: '#eb99bb', minHeight: "190px" }} key={cont}>
                      <div className={styles.card} >
                      </div>
                   </Skeleton>

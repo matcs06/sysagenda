@@ -19,8 +19,8 @@ interface ServiceFields {
 
 export default function ServicesList() {
 
-   const testApiUrl = "http://localhost:3333/files/";
-   const productionApiUrl = "https://clickeagenda.arangal.com/files";
+   const testApiUrl = "http://localhost:3333/files";
+   let productionApiUrl = "https://clickeagenda.arangal.com/files";
 
 
    const [userName, setUserName] = useState("")
@@ -94,8 +94,6 @@ export default function ServicesList() {
          window.alert("Erro ao deletar serviço")
       }
    }
-
-   console.log(userName)
 
    return (
       <div className={styles.container}>
