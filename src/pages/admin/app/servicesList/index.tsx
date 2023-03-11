@@ -124,7 +124,7 @@ export default function ServicesList() {
                            ))}
                         </ul>
                         <div className={styles.imageContainer}>
-                           <Image className={styles.imagefile} src={item.image_url !== null ? `${productionApiUrl}/${userName}/${item.image_url}` : `/admin/${userName}/logo.png`}
+                           <Image className={styles.imagefile} src={item.image_url !== null ? `${productionApiUrl}/${userName}/${item.image_url}` : `/admin/${userName}/admlogo.png`}
                               width={90}
                               height={90}
                               alt={"imagem"} />
@@ -152,14 +152,14 @@ export default function ServicesList() {
                         </div>
 
                         <ul>
-                           {item.description.split(",").map((descLine) => (
+                           {item.description.split(";").map((descLine) => (
                               <li key={descLine}>
                                  {descLine}
                               </li>
                            ))}
                         </ul>
                         <div className={styles.imageContainer}>
-                           <Image className={styles.imagefile} src={item.image_url !== null ? `${productionApiUrl}/${userName}/${item.image_url}` : `/admin/${userName}/logo.png`}
+                           <Image className={styles.imagefile} src={item.image_url !== null ? `${productionApiUrl}/${userName}/${item.image_url}` : `/admin/${userName}/admlogo.png`}
                               width={90}
                               height={90}
                               alt={"imagem"} />
