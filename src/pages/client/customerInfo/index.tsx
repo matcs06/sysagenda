@@ -7,8 +7,9 @@ import styles from "./customerInfo.module.scss"
 
 function CustomerInfo(props: any) {
 
-    const [customerName, setCustomerName] = useState("")
-    const [customerNumber, setCustomerNumber] = useState("")
+
+    const [customerName, setCustomerName] = useState()
+    const [customerNumber, setCustomerNumber] = useState()
 
     const handleClick = async () => {
 
@@ -79,7 +80,7 @@ function CustomerInfo(props: any) {
                 <p>Nome</p>
                 <Input type="text" placeholder="" name="name" setfieldvalue={setCustomerName} autocomplete="off" />
                 <p>Número de telefone (WhatsApp)</p>
-                <PhoneInput type="text" placeholder="" name="number" autocomplete="off" setfieldvalue={setCustomerNumber} />
+                <PhoneInput type="text" placeholder="" name="number" autoComplete="off" setfieldvalue={setCustomerNumber} />
             </div>
 
             <div className={styles.paymentInfo}>

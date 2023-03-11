@@ -3,8 +3,9 @@
   width: 100%;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   padding: 30px 10px 10px 10px;
+  height: 100vh;
+  background-color: var(--client-white);
 }
 
 .screenTitle {
@@ -12,7 +13,7 @@
   margin-bottom: 20px;
   margin-top: 20px;
   font-weight: bold;
-  color: #d8d6d6;
+  color: var(--client-pink1);
 }
 
 .inputContainer {
@@ -22,17 +23,17 @@
   flex-direction: column;
   align-items: center;
 
-  p{
+  p {
     display: flex;
     width: 90%;
-    color: rgba($color: #fff, $alpha: 0.5);
+    color: var(--client-pink2);
     font-family: "Roboto";
     font-size: 15px;
     margin-top: 30px;
 
   }
 
-  span{
+  span {
     display: flex;
     width: 90%;
     color: rgba($color: rgb(206, 206, 206), $alpha: 0.5);
@@ -42,10 +43,14 @@
     width: 90%;
     height: 40px;
     padding: 0 5px 0 5px;
-    color: white;
+    color: #706e6e;
+    border: 1px solid #b8b8b8;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
 
-    &::placeholder{
-      color: rgba($color: #fff, $alpha: 0.5);
+    &::placeholder {
+      color: rgba($color: #9d9b9b, $alpha: 0.5);
     }
 
     &:focus {
@@ -54,7 +59,7 @@
   }
 
   span {
-    color: rgba($color: #fff, $alpha: 0.5);
+    color: rgba($color: #ffffff, $alpha: 0.5);
     font-size: 13px;
     font-family: "Roboto";
     margin: 0;
@@ -74,7 +79,7 @@
   font-weight: bold;
   padding: 20px 0 0 0px;
   font-size: 16px;
-  color: #d8d6d6;
+  color: var(--client-pink1);
 }
 
 .payment {
@@ -82,7 +87,7 @@
   margin-bottom: 20px;
   margin-top: 20px;
   font-weight: lighter;
-  color: rgba($color: #fff, $alpha: 0.5);
+  color: var(--client-pink2);
   font-size: 14px;
 }
 
@@ -101,9 +106,9 @@
     font-family: "Roboto";
     font-weight: lighter;
     font-weight: bold;
-    color: #d8d6d6;
+    color: var(--client-white);
     font-size: 17px;
-    background-color: var(--azul-card);
+    background-color: var(--client-pink1);
     border: none;
     border-top-left-radius: 9px;
     border-bottom-right-radius: 9px;
@@ -111,7 +116,7 @@
     transition: background-color 0.2s;
 
     &:hover {
-      background-color: var(--azul-hover);
+      background-color: var(--client-pink1hover);
     }
   }
 }

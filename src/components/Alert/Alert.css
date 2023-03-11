@@ -1,0 +1,38 @@
+.alert {
+   position: absolute;
+   transition: all 0.5s ease-in-out;
+   display: flex;
+   justify-content: center;
+   height: 60px;
+   padding: 10px;
+   border-radius: 8px 0 0 8px;
+   color: #fff;
+   font-family: "Roboto";
+   z-index: 10;
+   line-height: 20px;
+   flex-direction: column;
+}
+
+.alert.show {
+   transform: translate(0);
+   visibility: visible;
+
+}
+
+.alert.hide {
+   transform: translate(100%, 0);
+   visibility: hidden;
+}
+
+.alert-success {
+   background-color: #2ca52c;
+}
+
+.alert-failed {
+   background-color: red;
+}
+
+.messageDescription {
+   font-size: small;
+   color: rgb(209, 209, 209);
+}

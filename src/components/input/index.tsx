@@ -1,6 +1,6 @@
 import styles from "./Input.module.scss";
 
-interface InputProps{
+interface InputProps {
    placeholder: string;
    type: string;
    name: string;
@@ -9,15 +9,15 @@ interface InputProps{
 }
 
 export default function Input(
-   {setfieldvalue, ...props}){
+   { setfieldvalue, ...props }) {
 
-   const handleSet = (event:any) =>{
+   const handleSet = (event: any) => {
       setfieldvalue(event.target.value)
    }
 
-   return(
+   return (
       <div className={styles.inputcontainer}>
-        <input onChange={handleSet} type={props.type} placeholder={props.placeholder} name={props.name} {...props} />
+         <input autoComplete="off" onChange={handleSet} type={props.type} placeholder={props.placeholder} name={props.name} {...props} />
       </div>
    )
 }

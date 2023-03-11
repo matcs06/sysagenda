@@ -48,20 +48,21 @@ function FinalScreen(props: any) {
         <div className={styles.container}>
             <div className={styles.congratsContainer}>
                 <h2 className={styles.congrats}>Parabéns!!!</h2>
-                <CheckIcon sx={{ color: "#22223B", fontSize: 35 }} />
+                <CheckIcon sx={{ color: "#f48ab6", fontSize: 35 }} />
             </div>
             <div className={styles.text}>
                 <h2>Seu agendamento do serviço <strong>{props.router.query.serviceName}</strong>  às <strong>{timeFormated(props.router.query.serviceTime)} horas</strong> foi realizado com sucesso.</h2>
             </div>
 
-            <div className={styles.text}>
+            <div className={styles.text2}>
                 <p>Esse é nosso endereço: <br />
                     <strong> {address}</strong><br />
                 </p>
                 <p>Caso não receba nenhum contato em algumas horas, entre em contato pelo nosso WhatsApp: </p>
                 <div onClick={handleWhatsAppClick} className={styles.whatsAppIcon}><WhatsAppIcon sx={{ fontSize: 35 }} /></div>
-                <p className={styles.paymentAlert}>O pagamento é feito depois serviço</p>
             </div>
+            <p className={styles.paymentAlert}>O pagamento é feito depois serviço</p>
+
 
             <div className={styles.buttonContainer} onClick={handleClick}>
                 <button>Voltar ao início</button>
