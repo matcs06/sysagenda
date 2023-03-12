@@ -5,6 +5,7 @@ import api from "../../../api";
 import { Skeleton } from '@mui/material';
 import Image from "next/dist/client/image";
 import { height } from "@material-ui/system";
+import { BRLReais } from "../../../utils/CurrencyFormat"
 
 interface ServiceFields {
    id: string;
@@ -112,8 +113,8 @@ function ServicesList(props) {
                                  ))}
                               </ul>
                               <div className={styles.cardBottom}>
-                                 <h3>{item.duration} {item.duration.split(":")[0] === "00" ? "minutos" : "hr/s"}</h3>
-                                 <span className={styles.priceStyle}>R$ {item.price}</span>
+                                 <h3>{item.duration.split(":")[0] === "00" ? `${item.duration.split(":")[1]} minutos` : `${item.duration} h`}</h3>
+                                 <span className={styles.priceStyle}> {BRLReais.format(Number(item.price))}</span>
                               </div>
                            </div>
                         </div>

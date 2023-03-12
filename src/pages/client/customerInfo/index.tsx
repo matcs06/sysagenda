@@ -4,6 +4,7 @@ import api from "../../../api"
 import Input from "../../../components/input"
 import PhoneInput from "../../../components/PhoneInput"
 import styles from "./customerInfo.module.scss"
+import { BRLReais } from "../../../utils/CurrencyFormat"
 
 function CustomerInfo(props: any) {
 
@@ -84,7 +85,7 @@ function CustomerInfo(props: any) {
             </div>
 
             <div className={styles.paymentInfo}>
-                <h2 className={styles.value}>Valor: R$ {props.router.query.servicePrice}</h2>
+                <h2 className={styles.value}>Valor: {BRLReais.format(Number(props.router.query.servicePrice))}</h2>
                 <h2 className={styles.payment}>Pagamento é feito no momento do serviço</h2>
             </div>
 
