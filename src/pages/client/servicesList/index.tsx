@@ -69,7 +69,7 @@ function ServicesList(props) {
             <Skeleton animation="wave" sx={{ bgcolor: '#eb99bb' }}><h3 className={styles.screenTitle}>Escolha um serviço</h3> </Skeleton>
             <div className={styles.skpanel}>
                {arrayLoop.map((cont) => (
-                  <Skeleton width={250} animation="wave" sx={{ bgcolor: '#eb99bb', minHeight: "190px" }} key={cont}>
+                  <Skeleton width={320} animation="wave" sx={{ bgcolor: '#eb99bb', minHeight: "220px" }} key={cont}>
                      <div className={styles.card} >
                      </div>
                   </Skeleton>
