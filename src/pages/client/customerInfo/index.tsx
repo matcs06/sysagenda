@@ -4,7 +4,7 @@ import api from "../../../api"
 import Input from "../../../components/input"
 import PhoneInput from "../../../components/PhoneInput"
 import styles from "./customerInfo.module.scss"
-import { BRLReais } from "../../../utils/CurrencyFormat"
+import { BRLReais } from "../../../utils/CurrencyFmt"
 
 function CustomerInfo(props: any) {
 

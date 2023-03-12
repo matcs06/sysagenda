@@ -22,8 +22,10 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "src/pages/client/chooseTime/utils.js"  ],
+    "**/*.tsx",
+    "src/pages/client/chooseTime/utils.js",
+    "src/utils/CurrencyFmt.ts"
+  ],
   "exclude": [
     "node_modules"
   ]

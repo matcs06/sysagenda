@@ -5,7 +5,7 @@ import api from "../../../api";
 import { Skeleton } from '@mui/material';
 import Image from "next/dist/client/image";
 import { height } from "@material-ui/system";
-import { BRLReais } from "../../../utils/CurrencyFormat"
+import { BRLReais } from "../../../utils/CurrencyFmt"
 
 interface ServiceFields {
    id: string;
