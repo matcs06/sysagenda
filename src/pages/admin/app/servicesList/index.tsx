@@ -36,6 +36,10 @@ export default function ServicesList() {
       service_value: ""
    })
 
+   const [inputedValue, setImputedValue] = useState("")
+
+   const filteredServices: ServiceFields[] = items.filter((item) => item.name.toLocaleLowerCase().includes(inputedValue.toLocaleLowerCase()))
+
    const handleEdit = (serviceName: string, serviceId: string, serviceDuration: string,
       serviceDescription: string, serviceValue: string, isEnabled: string) => {
 
@@ -95,10 +99,19 @@ export default function ServicesList() {
       }
    }
 
+   function handleSearch(event: any) {
+      event?.preventDefault()
+      setImputedValue(event.target.value)
+   }
+
+
    return (
       <div className={styles.container}>
+         <form action="" className={styles.form}>
+            <input className={styles.search} type="text" placeholder="Busque por um serviço" onChange={handleSearch} />
+         </form>
          <div className={styles.panel} >
-            {items && items.map((item) => {
+            {filteredServices.map((item) => {
                if (String(item.enabled) == 'true') {
                   return (
                      <div className={styles.card} key={item.id} >
