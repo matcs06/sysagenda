@@ -18,14 +18,23 @@ interface ServiceFields {
    image_url: string
 }
 
+interface UserInfo {
+   name: string;
+   payment_status: string;
+   payment_day: string;
+   enabled: string;
+}
+
+
 export default function ServicesList() {
 
    const testApiUrl = "http://localhost:3333/files";
    let productionApiUrl = "https://clickeagenda.arangal.com/files";
 
    const [showReminder, setShowReminder] = useState(false)
+   const [userFullName, setUserFullName] = useState("")
 
-
+   const [isReminderForPaymentDay, setIsReminderForPaymentDay] = useState(true)
    const [userName, setUserName] = useState("")
    const [items, setItems] = useState<ServiceFields[]>([]);
    const [updateOnDelete, setUpdateOnDelete] = useState(false)
@@ -60,20 +69,42 @@ export default function ServicesList() {
    }
 
    useEffect(() => {
-      setUserName(localStorage.getItem("user_name"))
+      let payment_status = localStorage.getItem("payment_status")
+      const user_name = String(localStorage.getItem("user_name"))
+      setUserName(user_name)
+      setUserFullName(String(localStorage.getItem("username")))
 
-      function ShowReminder() {
-         const formatedPaymentDay = localStorage.getItem("payment_day") !== null ? Number(localStorage.getItem("payment_day")) : 1
+      async function loadUserAndReminder() {
+         const response = await api.get<UserInfo>(`users/${user_name}`)
+         if (response.data.payment_status !== "pago") {
+            payment_status = "pendente"
+         } else {
+            payment_status = "pago"
+         }
 
+         const formatedPaymentDay = Number(response.data.payment_day)
+
+         //getting current day
          const today = new Date()
          const dateDay = Number(today.getDate().toString())
-         const reminderFlag = dateDay == formatedPaymentDay
-         setShowReminder(reminderFlag)
+
+         const isPaymentDayToday = dateDay == formatedPaymentDay
+
+         const showReminderFlagFirstCondition = isPaymentDayToday && payment_status == "pendente"
+         const showReminderFlagSecondCondition = payment_status == "pendente"
+
+         //Usado para definir o tipo de mensagem: lembrete do dia de pagamente o pagamento pendente
+         setIsReminderForPaymentDay(showReminderFlagFirstCondition)
+
+         //Mostrar o reminder caso seja a data de pagamento e esteja pendente
+         setShowReminder(showReminderFlagFirstCondition || showReminderFlagSecondCondition)
+
       }
 
-      ShowReminder()
+      loadUserAndReminder();
 
-   }, [setShowReminder])
+   }, [])
+
 
    useEffect(() => {
       async function loadItems() {
@@ -211,7 +242,7 @@ export default function ServicesList() {
          )}
 
          {showReminder && (
-            <PaymentReminder name={userName.split(" ")[0]} setShowReminder={setShowReminder} />
+            <PaymentReminder name={userFullName.split(" ")[0]} setShowReminder={setShowReminder} isReminderForPaymentDay={isReminderForPaymentDay} />
 
          )}
       </div>

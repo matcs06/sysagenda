@@ -23,36 +23,33 @@ export default function CreateService() {
          setShowWarning(true)
       }
       else {
-         if (payment_status == "pago") {
-            setShowWarning(false)
-            const formData = new FormData()
 
-            try {
+         setShowWarning(false)
+         const formData = new FormData()
 
-               formData.append("name", serviceName)
-               formData.append("price", value)
-               formData.append("description", serviceInfo)
-               formData.append("duration", duration)
-               formData.append("user_id", user_id)
-               formData.append("filename", images[0].file)
+         try {
 
-               await api.post("/products", formData, {
-                  headers: {
-                     "Content-Type": "multipart/form-data",
-                     Authorization: "Bearer " + token,
-                  },
-               });
-               window.alert(`Produto ${serviceName} criado com sucesso`);
-               window.location.pathname = "/admin/app/"
-            } catch (error) {
-               window.alert(
-                  "erro ao criar novo produto: Verfifique se já não existe um produto com o mesmo nome"
-               );
-            }
+            formData.append("name", serviceName)
+            formData.append("price", value)
+            formData.append("description", serviceInfo)
+            formData.append("duration", duration)
+            formData.append("user_id", user_id)
+            formData.append("filename", images[0].file)
 
-         } else {
-            window.alert("Erro ao criar.  Pagamento de mensalidade pendente, você precisa fazer o pagamento para continuar usando o serviço")
+            await api.post("/products", formData, {
+               headers: {
+                  "Content-Type": "multipart/form-data",
+                  Authorization: "Bearer " + token,
+               },
+            });
+            window.alert(`Produto ${serviceName} criado com sucesso`);
+            window.location.pathname = "/admin/app/"
+         } catch (error) {
+            window.alert(
+               "erro ao criar novo produto: Verfifique se já não existe um produto com o mesmo nome"
+            );
          }
+
       }
 
 

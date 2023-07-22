@@ -16,10 +16,10 @@ interface SideBarItemProps {
 const SideBar: React.FC = ({ children }) => {
    const [sideComponent, setSideComponent] = useState(children)
    const [sideBarContiner, setSideBarContainer] = useState("styles.sidebarContainer")
-   const [userName, setUsername] = useState('')
+   const [userFullName, setUserFullname] = useState('')
 
    useEffect(() => {
-      setUsername(localStorage.getItem("username"))
+      setUserFullname(localStorage.getItem("username"))
       window.addEventListener('resize', () => {
          if (window.screen.width <= 760) {
             document.documentElement.style.setProperty('--sidebar-width', "50px");
@@ -61,7 +61,7 @@ const SideBar: React.FC = ({ children }) => {
 
          <div className={styles.sidebarContainer}>
             <div className={styles.sideBarHeader}>
-               <p className={styles.username}>Olá, {userName.split(" ")[0]}!</p>
+               <p className={styles.username}>Olá, {userFullName.split(" ")[0]}!</p>
                <div className={styles.toogle} onClick={handleTogleClick}>
                   <MenuIcon />
                </div>
