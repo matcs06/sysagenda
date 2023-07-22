@@ -1,0 +1,49 @@
+.Remindercontainer {
+   position: absolute;
+   z-index: 20;
+   width: 100%;
+   height: 100%;
+
+   background: rgba(63, 63, 63, 0.924);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+   .reminder {
+      padding: 2%;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      font-family: "Roboto";
+      background: var(--branco-text);
+      height: 50%;
+      width: 60%;
+      max-width: 600px;
+      border-radius: 8px;
+
+      h5 {
+         margin-top: 5px;
+         margin-bottom: 5%;
+         font-weight: lighter;
+      }
+
+      .close {
+         background-color: #090843;
+         height: 30px;
+         width: 100px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         padding: 5px;
+         color: antiquewhite;
+         font-family: "Roboto";
+         cursor: pointer;
+         margin-top: 5%;
+         border-radius: 4px;
+         font-size: 12px;
+
+      }
+   }
+
+
+}

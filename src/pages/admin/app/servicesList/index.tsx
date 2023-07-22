@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import api from "../../../../api";
 
 import UpdateService from "./UpdateService";
+import PaymentReminder from "../../../../components/PaymentReminder";
 
 interface ServiceFields {
    id: string;
@@ -21,6 +22,8 @@ export default function ServicesList() {
 
    const testApiUrl = "http://localhost:3333/files";
    let productionApiUrl = "https://clickeagenda.arangal.com/files";
+
+   const [showReminder, setShowReminder] = useState(false)
 
 
    const [userName, setUserName] = useState("")
@@ -59,10 +62,20 @@ export default function ServicesList() {
    useEffect(() => {
       setUserName(localStorage.getItem("user_name"))
 
-   }, [])
+      function ShowReminder() {
+         const formatedPaymentDay = localStorage.getItem("payment_day") !== null ? Number(localStorage.getItem("payment_day")) : 1
+
+         const today = new Date()
+         const dateDay = Number(today.getDate().toString())
+         const reminderFlag = dateDay == formatedPaymentDay
+         setShowReminder(reminderFlag)
+      }
+
+      ShowReminder()
+
+   }, [setShowReminder])
 
    useEffect(() => {
-      const payment_status = localStorage.getItem("payment_status")
       async function loadItems() {
          const token = localStorage.getItem("token");
          const user_id = localStorage.getItem("user_id");
@@ -75,12 +88,8 @@ export default function ServicesList() {
          setUpdateOnDelete(false)
       }
 
-      if (payment_status == "pago") {
+      loadItems();
 
-         loadItems();
-      } else {
-         window.alert("Error, Pagamento de mensalidade pendente! Pague sua mensalidade para continuar usando o serviço")
-      }
       return () => {
          setItems([]);
       };
@@ -201,7 +210,10 @@ export default function ServicesList() {
             </div>
          )}
 
+         {showReminder && (
+            <PaymentReminder name={userName.split(" ")[0]} setShowReminder={setShowReminder} />
 
+         )}
       </div>
 
    )

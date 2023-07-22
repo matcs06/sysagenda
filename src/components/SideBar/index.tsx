@@ -5,6 +5,7 @@ import Image from 'next/image'
 import FormatLineSpacingIcon from '@mui/icons-material/FormatLineSpacing';
 import { useState, useEffect } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
+import PaymentReminder from '../PaymentReminder';
 
 interface SideBarItemProps {
    title: string;
