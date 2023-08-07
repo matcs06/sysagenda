@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { addTimes } from "../../../../utils/";
 import api from "../../../../api"
 
-import "../../../../utils/translation.ts"
+import "../../../../utils/translation"
 import PaymentReminder from "../../../../components/PaymentReminder";
 
 
@@ -149,7 +149,7 @@ export default function Scheduller({ data }) {
                 <Inject services={[Day, Week, WorkWeek, Month, Agenda]} />
             </ScheduleComponent>
             {showReminder && (
-                <PaymentReminder name={userFullName.split(" ")[0]} setShowReminder={setShowReminder} isReminderForPaymentDay={isReminderForPaymentDay} />
+                <PaymentReminder showCloseOption={false} name={userFullName.split(" ")[0]} setShowReminder={setShowReminder} isReminderForPaymentDay={isReminderForPaymentDay} />
 
             )}
         </>

@@ -7,7 +7,7 @@ interface QRCodeListProps {
    key?: string;
 }
 
-export default function PaymentReminder({ name, setShowReminder, isReminderForPaymentDay = true }) {
+export default function PaymentReminder({ name, setShowReminder, isReminderForPaymentDay = true, showCloseOption = true }) {
    let qrcodevalue: QRCodeListProps[] = qrcodelist.filter((item) => item.key == String(name))
 
 
@@ -22,7 +22,11 @@ export default function PaymentReminder({ name, setShowReminder, isReminderForPa
             ) : (<h3>Olá, {name}! Seu pagamento está pendente!</h3>)}
             <h5>Para facilitar, você pode pagar via PIX lendo código QR abaixo <b>com o APP do seu banco:</b> </h5>
             <QRCode value={qrcodevalue[0].code} size={220} />
-            <div onClick={() => setShowReminder(false)} className={styles.close}>Fechar</div>
+
+            {showCloseOption && (
+               <div onClick={() => setShowReminder(false)} className={styles.close}>Fechar</div>
+
+            )}
          </div>
 
       </div>

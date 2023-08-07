@@ -33,8 +33,8 @@ export default function ServicesList() {
 
    const [showReminder, setShowReminder] = useState(false)
    const [userFullName, setUserFullName] = useState("")
-
    const [isReminderForPaymentDay, setIsReminderForPaymentDay] = useState(true)
+
    const [userName, setUserName] = useState("")
    const [items, setItems] = useState<ServiceFields[]>([]);
    const [updateOnDelete, setUpdateOnDelete] = useState(false)
