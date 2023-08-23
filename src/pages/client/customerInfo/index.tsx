@@ -6,11 +6,28 @@ import PhoneInput from "../../../components/PhoneInput"
 import styles from "./customerInfo.module.scss"
 import { BRLReais } from "../../../utils/CurrencyFmt"
 
+interface IUserInfo {
+    customerName: string;
+    customerPhone: string;
+
+}
+
 function CustomerInfo(props: any) {
 
 
-    const [customerName, setCustomerName] = useState()
-    const [customerNumber, setCustomerNumber] = useState("")
+    let customerDefaultInfo: IUserInfo = { customerName: "", customerPhone: "" }
+
+    if (typeof window !== 'undefined') {
+        customerDefaultInfo = JSON.parse(localStorage.getItem("customer_info_clickagenda") || "{}")
+    }
+
+    if (customerDefaultInfo == null) {
+        localStorage.setItem("customer_info_clickagenda", "{}")
+        customerDefaultInfo = { customerName: "", customerPhone: "" }
+    }
+
+    const [customerName, setCustomerName] = useState(customerDefaultInfo.customerName)
+    const [customerNumber, setCustomerNumber] = useState(customerDefaultInfo.customerPhone)
 
     const handleClick = async () => {
 
@@ -57,10 +74,19 @@ function CustomerInfo(props: any) {
                 user_id: userId
             })
 
+            const customerInfo = {
+                customerName,
+                customerPhone: customerNumber,
+
+            }
+
+            localStorage.setItem("customer_info_clickagenda", JSON.stringify(customerInfo))
+
             Router.push({
                 pathname: '/client/finalScreen',
                 query: { valor: props.router.query.servicePrice, serviceName, serviceTime: choosedTime, customerName }
             })
+
 
         } catch (error) {
             if (error.message.indexOf("Informe") > -1) {
@@ -79,9 +105,9 @@ function CustomerInfo(props: any) {
             </div>
             <div className={styles.inputContainer}>
                 <p>Nome</p>
-                <Input type="text" placeholder="" name="name" setfieldvalue={setCustomerName} autocomplete="off" />
+                <Input type="text" placeholder="" name="name" value={customerName} setfieldvalue={setCustomerName} autoComplete="off" />
                 <p>Número de telefone (WhatsApp)</p>
-                <PhoneInput type="text" placeholder="" name="number" autoComplete="off" setfieldvalue={setCustomerNumber} />
+                <PhoneInput type="text" placeholder="" name="number" value={customerNumber} autoComplete="off" setfieldvalue={setCustomerNumber} />
             </div>
 
             <div className={styles.paymentInfo}>
