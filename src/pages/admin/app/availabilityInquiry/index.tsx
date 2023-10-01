@@ -4,6 +4,7 @@ import { fontSize } from "@mui/system";
 import { useEffect, useState } from "react";
 import { getMonthName, getWeekDayName, getYear, getDayInNumber, timeFormated } from "../../../../utils/index.js"
 import api from "../../../../api";
+import { useQuery } from "react-query";
 
 interface AvailabilityFiels {
    id: string;
@@ -15,30 +16,23 @@ interface AvailabilityFiels {
 }
 
 export default function AvailabilityInquiry() {
-   const [items, setItems] = useState<AvailabilityFiels[]>([]);
    const [updateOnDelete, setUpdateOnDelete] = useState(false)
 
 
-   useEffect(() => {
-      async function loadItems() {
+   const fetchAvailabilities = async () => {
+      try {
          const user_id = localStorage.getItem("user_id");
          const response = await api.get<AvailabilityFiels[]>(`/availability?user_id=${user_id}`)
 
-         setItems(response.data)
-         setUpdateOnDelete(false)
+         return response.data
+
+      } catch (error) {
 
       }
+   }
 
+   const { data: availabilities, isLoading, isError, } = useQuery("availabilities", fetchAvailabilities)
 
-
-      loadItems();
-
-
-      return () => {
-         setItems([]);
-      }
-
-   }, [updateOnDelete])
 
    const deleteAvailability = async (productId: string) => {
       try {
@@ -46,16 +40,26 @@ export default function AvailabilityInquiry() {
          await api.delete(`/availability/${productId}`, {
             headers: { Authorization: "Bearer " + token },
          })
+         window.alert(
+            "Horário removido com sucesso!"
+         );
          setUpdateOnDelete(true)
       } catch (error) {
          window.alert("Erro ao deletar serviço")
       }
    }
 
+
+   useEffect(() => {
+
+   }, [updateOnDelete])
+
+
+
    return (
       <div className={styles.container}>
          <div className={styles.panel}>
-            {items.map((item) => (
+            {availabilities?.map((item) => (
                <div className={styles.card} key={item.date} >
                   <p>Dia da semana: {getWeekDayName(item.date)}</p>
                   <p>Data: {getDayInNumber(item.date)} de {getMonthName(item.date)}</p>
