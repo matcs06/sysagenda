@@ -8,6 +8,8 @@ import api from "../../../../api"
 import "../../../../utils/translation"
 import PaymentReminder from "../../../../components/PaymentReminder";
 
+import { useQuery } from "react-query";
+
 
 interface SchduleFields {
     id: string;
@@ -29,35 +31,28 @@ interface UserInformation {
 
 export default function Scheduller({ data }) {
 
-    const [items, setItems] = useState<SchduleFields[]>([]);
     const [updateOnDelete, setUpdateOnDelete] = useState(false)
 
     const [userFullName, setUserFullName] = useState("")
     const [isReminderForPaymentDay, setIsReminderForPaymentDay] = useState(true)
     const [showReminder, setShowReminder] = useState(false)
 
-
-    useEffect(() => {
-
+    const fetchSchedules = async () => {
         const payment_status = localStorage.getItem("payment_status")
 
-        async function loadItems() {
+        try {
+
             const user_id = localStorage.getItem("user_id");
             const response = await api.get<SchduleFields[]>(`/schedules?user_id=${user_id}`)
 
-            setItems(response.data)
+            return response.data
+        } catch (error) {
+
         }
+    }
 
+    const { data: schedules = [], isLoading, isError, } = useQuery("schedules", fetchSchedules)
 
-        loadItems();
-
-
-        return () => {
-
-            setItems([]);
-        }
-
-    }, [])
 
     useEffect(() => {
         let payment_status = localStorage.getItem("payment_status")
@@ -96,7 +91,7 @@ export default function Scheduller({ data }) {
 
     }, [])
 
-    const dataSource = items.map((item: SchduleFields) => {
+    const dataSource = schedules.map((item: SchduleFields) => {
 
         const SEndTime = addTimes(item.service_duration, item.start_time) + ":00"
 
