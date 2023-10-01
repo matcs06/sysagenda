@@ -8,6 +8,8 @@ import api from "../../../../api";
 import UpdateService from "./UpdateService";
 import PaymentReminder from "../../../../components/PaymentReminder";
 
+import { useQuery } from "react-query";
+
 interface ServiceFields {
    id: string;
    name: string;
@@ -36,7 +38,6 @@ export default function ServicesList() {
    const [isReminderForPaymentDay, setIsReminderForPaymentDay] = useState(true)
 
    const [userName, setUserName] = useState("")
-   const [items, setItems] = useState<ServiceFields[]>([]);
    const [updateOnDelete, setUpdateOnDelete] = useState(false)
    const [showUpdateModal, setShowUpdateModal] = useState(false)
    const [serviceUpdateData, setServiceUpdateData] = useState({
@@ -50,7 +51,26 @@ export default function ServicesList() {
 
    const [inputedValue, setImputedValue] = useState("")
 
-   const filteredServices: ServiceFields[] = items.filter((item) => item.name.toLocaleLowerCase().includes(inputedValue.toLocaleLowerCase()))
+   const fetchServices = async () => {
+      try {
+         const token = localStorage.getItem("token");
+         const user_id = localStorage.getItem("user_id");
+
+         const response = await api.get<ServiceFields[]>(`/products?user_id=${user_id}`, {
+            headers: { Authorization: "Bearer " + token },
+         });
+
+         setUpdateOnDelete(false)
+         return response.data
+
+      } catch (error) {
+
+      }
+   }
+
+   const { data: services = [], isLoading, isError, } = useQuery("services", fetchServices)
+   const filteredServices = services.filter((item) => item.name.toLocaleLowerCase().includes(inputedValue.toLocaleLowerCase()))
+
 
    const handleEdit = (serviceName: string, serviceId: string, serviceDuration: string,
       serviceDescription: string, serviceValue: string, isEnabled: string) => {
@@ -106,26 +126,6 @@ export default function ServicesList() {
    }, [])
 
 
-   useEffect(() => {
-      async function loadItems() {
-         const token = localStorage.getItem("token");
-         const user_id = localStorage.getItem("user_id");
-
-         const response = await api.get<ServiceFields[]>(`/products?user_id=${user_id}`, {
-            headers: { Authorization: "Bearer " + token },
-         });
-
-         setItems(response.data);
-         setUpdateOnDelete(false)
-      }
-
-      loadItems();
-
-      return () => {
-         setItems([]);
-      };
-   }, [updateOnDelete])
-
    const deleteProduct = async (productId: string) => {
 
       try {
@@ -133,6 +133,9 @@ export default function ServicesList() {
          await api.delete(`/products/${productId}?user_name=${userName}`, {
             headers: { Authorization: "Bearer " + token },
          })
+         window.alert(
+            "Horário removido com sucesso!"
+         );
          setUpdateOnDelete(true)
       } catch (error) {
          window.alert("Erro ao deletar serviço")
@@ -151,7 +154,7 @@ export default function ServicesList() {
             <input className={styles.search} type="text" placeholder="Busque por um serviço" onChange={handleSearch} />
          </form>
          <div className={styles.panel} >
-            {filteredServices.map((item) => {
+            {filteredServices?.map((item) => {
                if (String(item.enabled) == 'true') {
                   return (
                      <div className={styles.card} key={item.id} >

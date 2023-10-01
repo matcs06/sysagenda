@@ -50,12 +50,6 @@ export default function AvailabilityInquiry() {
    }
 
 
-   useEffect(() => {
-
-   }, [updateOnDelete])
-
-
-
    return (
       <div className={styles.container}>
          <div className={styles.panel}>
