@@ -43,6 +43,18 @@ const isTodayOrTomorrow = (someDate) => {
 
 }
 
+const getDateFromString = (someDate) => {
+
+   const day = someDate.split('/')[0]
+   const month = someDate.split('/')[1]
+   const year = someDate.split('/')[2]
+   const sentDate = new Date(Number(year), Number(month) - 1, Number(day))
+
+
+   return sentDate
+
+}
+
 const getWeekDayName = (dateValue) => {
 
 
@@ -203,4 +215,4 @@ function removeNonNumbers(text) {
 
 }
 
-export { removeNonNumbers, getMonthName, getWeekDayName, getYear, timeFormated, isTodayOrTomorrow, getDayInNumber, validateAfternoonTime, validateMorningTime, addTimes }
+export { getDateFromString, removeNonNumbers, getMonthName, getWeekDayName, getYear, timeFormated, isTodayOrTomorrow, getDayInNumber, validateAfternoonTime, validateMorningTime, addTimes }

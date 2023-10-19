@@ -2,7 +2,7 @@ import styles from "./chooseTime.module.scss"
 import Router, { withRouter } from 'next/router'
 import { useEffect, useState } from "react"
 import api from "../../../api"
-import { getWeekDayName, isTodayOrTomorrow, timeFormated } from "../../../utils/index.js"
+import { getDateFromString, getWeekDayName, isTodayOrTomorrow, timeFormated } from "../../../utils/index.js"
 interface AvailabilityFields {
     id: string;
     date: string;
@@ -20,6 +20,8 @@ function ChooseTime(props: any) {
     const [timesAvailable, setTimesAvailable] = useState<availabilityDetails>()
     const [choosedDate, setChoosedDate] = useState("")
     const [choosedTime, setChoosedTime] = useState("")
+
+    daysAvailable.sort(function (a, b) { return getDateFromString(a.date).getTime() - getDateFromString(b.date).getTime() });
 
     const onClickDay = async (id: string, dateChoosed) => {
 
@@ -96,13 +98,19 @@ function ChooseTime(props: any) {
             <div className={styles.pickTimeContainer}>
                 <h2 className={styles.pickTimeTitle} >Escolha um horário{choosedTime && `: ${choosedTime}`}</h2>
 
-                <h2>Manhã</h2>
+                {timesAvailable?.morning_available_times.length > 0 && (
+                    <h2>Manhã</h2>
+
+                )}
                 <div className={styles.times}>
                     {timesAvailable?.morning_available_times && timesAvailable.morning_available_times.map((time) => (
                         <div onClick={() => { onClickTime(timeFormated(time)) }} key={time} className={styles.time}>{timeFormated(time)}</div>
                     ))}
                 </div>
-                <h2>Tarde</h2>
+                {timesAvailable?.afternoon_available_times.length > 0 && (
+                    <h2>Tarde</h2>
+
+                )}
                 <div className={styles.times}>
                     {timesAvailable?.afternoon_available_times && timesAvailable.afternoon_available_times.map((time) => (
                         <div onClick={() => { onClickTime(timeFormated(time)) }} key={time} className={styles.time}>{timeFormated(time)}</div>
