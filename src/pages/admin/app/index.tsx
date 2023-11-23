@@ -13,18 +13,17 @@ interface UserInfo {
 
 const App: React.FC = () => {
 
-   const todayDate = new Date().getDate()
-
-
    const [user, setUser] = useState<UserInfo>()
    const [payment_day, setPaymentDay] = useState("")
 
    useEffect(() => {
-      const userName = localStorage.getItem("user_name")
+
       if (!localStorage.getItem("username")) {
-         console.log("passou aqui")
          window.location.pathname = ("/admin/login/")
       }
+
+      const userName = localStorage.getItem("user_name")
+
       async function loadUser() {
          const response = await api.get<UserInfo>(`users/${userName}`)
          setUser(response.data)

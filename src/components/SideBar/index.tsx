@@ -13,7 +13,7 @@ interface SideBarItemProps {
 const SideBar: React.FC = ({ children }) => {
    const [sideComponent, setSideComponent] = useState(children)
    const [sideBarContiner, setSideBarContainer] = useState("styles.sidebarContainer")
-   const [userFullName, setUserFullname] = useState(localStorage.getItem("username"))
+   const [userFullName, setUserFullname] = useState("User Welcome")
 
    useEffect(() => {
       setUserFullname(localStorage.getItem("username"))
