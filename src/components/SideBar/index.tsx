@@ -16,6 +16,9 @@ const SideBar: React.FC = ({ children }) => {
    const [userFullName, setUserFullname] = useState("User Welcome")
 
    useEffect(() => {
+      if (!localStorage.getItem("username")) {
+         window.location.pathname = ("/admin/login/")
+      }
       setUserFullname(localStorage.getItem("username"))
       window.addEventListener('resize', () => {
          if (window.screen.width <= 760) {
