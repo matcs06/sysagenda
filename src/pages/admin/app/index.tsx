@@ -21,7 +21,10 @@ const App: React.FC = () => {
 
    useEffect(() => {
       const userName = localStorage.getItem("user_name")
-
+      if (!localStorage.getItem("username")) {
+         console.log("passou aqui")
+         window.location.pathname = ("/admin/login/")
+      }
       async function loadUser() {
          const response = await api.get<UserInfo>(`users/${userName}`)
          setUser(response.data)

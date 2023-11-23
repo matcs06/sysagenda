@@ -1,11 +1,8 @@
 import React from 'react';
 import { SideBarData } from "./SideBarData"
 import styles from "./SideBar.module.scss"
-import Image from 'next/image'
-import FormatLineSpacingIcon from '@mui/icons-material/FormatLineSpacing';
 import { useState, useEffect } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
-import PaymentReminder from '../PaymentReminder';
 
 interface SideBarItemProps {
    title: string;
@@ -16,7 +13,7 @@ interface SideBarItemProps {
 const SideBar: React.FC = ({ children }) => {
    const [sideComponent, setSideComponent] = useState(children)
    const [sideBarContiner, setSideBarContainer] = useState("styles.sidebarContainer")
-   const [userFullName, setUserFullname] = useState('')
+   const [userFullName, setUserFullname] = useState(localStorage.getItem("username"))
 
    useEffect(() => {
       setUserFullname(localStorage.getItem("username"))
