@@ -3,8 +3,9 @@ import styles from "./updateService.module.scss"
 import Input from "../../../../components/input"
 import Button from "../../../../components/Button";
 import api from "../../../../api";
+import { userInfo } from "os";
 
-function UpdateService({ service_name, service_duration, service_value, service_description, is_enabled, service_id, openModal }) {
+function UpdateService({ service_name, service_duration, service_value, service_description, is_enabled, service_id, openModal, user_id }) {
 
    const [serviceName, setServiceName] = useState(service_name)
    const [serviceInfo, setServiceInfo] = useState(service_description)
@@ -18,7 +19,7 @@ function UpdateService({ service_name, service_duration, service_value, service_
          await api.patch(
             `/products/${service_id}`,
             {
-               name: serviceName,
+               name: serviceName + "-" + user_id,
                description: serviceInfo,
                price: serviceValue,
                duration: serviceDuration,
@@ -48,7 +49,6 @@ function UpdateService({ service_name, service_duration, service_value, service_
    const controlEnabled = () => {
       setIsEnabled(!isEnabled)
    }
-
 
    return (
       <div className={styles.container}>

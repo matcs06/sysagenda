@@ -93,6 +93,7 @@ export default function Scheduller({ data }) {
 
     const dataSource = schedules.map((item: SchduleFields) => {
 
+        /* Formatting time to show up on calledar*/
         const SEndTime = addTimes(item.service_duration, item.start_time) + ":00"
 
         const [day, month, year] = item.date.split("/")
@@ -100,9 +101,7 @@ export default function Scheduller({ data }) {
         const [shour, sminutes, ss] = item.start_time.split(":")
         const [ehours, eminutes, es] = SEndTime.split(":")
 
-
         const StartTime = new Date(Number(year), Number(month) - 1, Number(day), Number(shour), Number(sminutes))
-
         const EndTime = new Date(Number(year), Number(month) - 1, Number(day), Number(ehours), Number(eminutes))
 
 
@@ -110,8 +109,8 @@ export default function Scheduller({ data }) {
         return {
             id: item.id,
             Customer: item.customer_name,
-            Service: item.service,
-            Subject: item.service,
+            Service: item.service.split("-")[0],
+            Subject: item.service.split("-")[0],
             StartTime,
             EndTime,
             fStartTime: item.start_time.substring(0, 5),

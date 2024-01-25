@@ -36,6 +36,7 @@ export default function ServicesList() {
    const [showReminder, setShowReminder] = useState(false)
    const [userFullName, setUserFullName] = useState("")
    const [isReminderForPaymentDay, setIsReminderForPaymentDay] = useState(true)
+   const [userId, setUserId] = useState("")
 
    const [userName, setUserName] = useState("")
    const [updateOnDelete, setUpdateOnDelete] = useState(false)
@@ -46,16 +47,17 @@ export default function ServicesList() {
       service_duration: "",
       service_description: "",
       service_isEnabled: "",
-      service_value: ""
+      service_value: "",
+      user_id: ""
+
    })
 
    const [inputedValue, setImputedValue] = useState("")
-
    const fetchServices = async () => {
       try {
          const token = localStorage.getItem("token");
          const user_id = localStorage.getItem("user_id");
-
+         setUserId(user_id)
          const response = await api.get<ServiceFields[]>(`/products?user_id=${user_id}`, {
             headers: { Authorization: "Bearer " + token },
          });
@@ -69,7 +71,7 @@ export default function ServicesList() {
    }
 
    const { data: services = [], isLoading, isError, } = useQuery("services", fetchServices)
-   const filteredServices = services.filter((item) => item.name.toLocaleLowerCase().includes(inputedValue.toLocaleLowerCase()))
+   const filteredServices = services.filter((item) => item.name.split("-")[0].toLocaleLowerCase().includes(inputedValue.toLocaleLowerCase()))
 
 
    const handleEdit = (serviceName: string, serviceId: string, serviceDuration: string,
@@ -81,7 +83,8 @@ export default function ServicesList() {
          service_description: serviceDescription,
          service_duration: serviceDuration,
          service_isEnabled: isEnabled,
-         service_value: serviceValue
+         service_value: serviceValue,
+         user_id: userId
       })
 
       setShowUpdateModal(true)
@@ -159,9 +162,10 @@ export default function ServicesList() {
                   return (
                      <div className={styles.card} key={item.id} >
                         <div className={styles.topCardContainer}>
-                           <h1>{item.name}</h1>
+                           <h1>{item.name.split("-")[0]}</h1>
+                           <p>{item.name}</p>
                            <div className={styles.deleteEdit}>
-                              <div className={styles.editContainer} onClick={() => handleEdit(item.name, item.id, item.duration, item.description, item.price, item.enabled)}>
+                              <div className={styles.editContainer} onClick={() => handleEdit(item.name.split("-")[0], item.id, item.duration, item.description, item.price, item.enabled)}>
                                  <EditIcon sx={{ fontSize: 30 }} />
                               </div>
                               <div className={styles.deleteContainer} onClick={() => { deleteProduct(item.id) }}>
@@ -194,9 +198,9 @@ export default function ServicesList() {
                      <div className={styles.disabledCard} key={item.id} >
                         <div className={styles.topCardContainer}>
 
-                           <h1>{item.name}</h1>
+                           <h1>{item.name.split("-")[0]}</h1>
                            <div className={styles.deleteEdit}>
-                              <div className={styles.editContainer} onClick={() => handleEdit(item.name, item.id, item.duration, item.description, item.price, item.enabled)}>
+                              <div className={styles.editContainer} onClick={() => handleEdit(item.name.split("-")[0], item.id, item.duration, item.description, item.price, item.enabled)}>
                                  <EditIcon sx={{ fontSize: 30 }} />
                               </div>
                               <div className={styles.deleteContainer} onClick={() => { deleteProduct(item.id) }}>
@@ -239,6 +243,7 @@ export default function ServicesList() {
                   is_enabled={serviceUpdateData.service_isEnabled}
                   service_id={serviceUpdateData.service_id}
                   service_value={serviceUpdateData.service_value}
+                  user_id={serviceUpdateData.user_id}
                   openModal={setShowUpdateModal} />
 
             </div>

@@ -36,7 +36,7 @@ const ScheduleDetail = ({ props }) => {
 
       const formatedTime = newTime[0] + ":" + newTime[1]
 
-      let messageContent = `${business_name}:\nOlá, gostaríamos de confimar o seu agendamento para:\nServiço: *${serviceName}*\nDia: *${serviceDate}*\nHorário: *${formatedTime} hrs*\nTolerância de atraso: *10min*\nconfirma?`
+      let messageContent = `${business_name}:\nOlá, gostaríamos de confimar o seu agendamento para:\nServiço: *${serviceName.split("-")[0]}*\nDia: *${serviceDate}*\nHorário: *${formatedTime} hrs*\nTolerância de atraso: *10min*\nconfirma?`
 
       messageContent = window.encodeURIComponent(messageContent);
 
@@ -75,7 +75,7 @@ const ScheduleDetail = ({ props }) => {
             const user_id = localStorage.getItem("user_id");
 
             await api.post("/transactions", {
-               title: clientFirstName + " - " + serviceName,
+               title: clientFirstName + " - " + serviceName.split("-")[0],
                value: serviceValue,
                formatedDate: serviceDate,
                payment_status: paid ? "payd" : "topay",

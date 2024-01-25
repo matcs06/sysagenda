@@ -91,7 +91,7 @@ function ServicesList(props) {
                {items && items.map((item) => {
                   if (String(item.enabled) == "true") {
                      return (
-                        <div className={styles.card} onClick={() => handleClick(item.id, item.name, item.duration, item.price)} key={item.id}>
+                        <div className={styles.card} onClick={() => handleClick(item.id, item.name.split("-")[0], item.duration, item.price)} key={item.id}>
 
                            <div className={styles.imageContainer}>
                               <Image className={styles.imageFile} src={item.image_url !== null ? `${productionApiUrl}/${imageUserName}/${item.image_url}` : `/admin/${imageUserName}/clientlogo.png`}
@@ -102,7 +102,7 @@ function ServicesList(props) {
 
                            <div className={styles.cardContainer}>
                               <div className={styles.topCardContainer}>
-                                 <h1>{item.name}</h1>
+                                 <h1>{item.name.split("-")[0]}</h1>
                               </div>
 
                               <ul>

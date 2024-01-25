@@ -29,7 +29,7 @@ export default function CreateService() {
 
          try {
 
-            formData.append("name", serviceName)
+            formData.append("name", serviceName + "-" + user_id)
             formData.append("price", value)
             formData.append("description", serviceInfo)
             formData.append("duration", duration)
