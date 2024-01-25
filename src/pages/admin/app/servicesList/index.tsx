@@ -163,7 +163,6 @@ export default function ServicesList() {
                      <div className={styles.card} key={item.id} >
                         <div className={styles.topCardContainer}>
                            <h1>{item.name.split("-")[0]}</h1>
-                           <p>{item.name}</p>
                            <div className={styles.deleteEdit}>
                               <div className={styles.editContainer} onClick={() => handleEdit(item.name.split("-")[0], item.id, item.duration, item.description, item.price, item.enabled)}>
                                  <EditIcon sx={{ fontSize: 30 }} />
