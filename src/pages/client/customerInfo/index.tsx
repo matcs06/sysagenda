@@ -65,7 +65,7 @@ function CustomerInfo(props: any) {
 
             await api.post('/schedules', {
                 customer_name: customerName,
-                service: serviceName + "-" + userId,
+                service: serviceName,
                 date: choosedDate,
                 start_time: newChoosedTime,
                 service_duration: newServiceDuration,
