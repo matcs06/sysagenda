@@ -81,7 +81,7 @@ function ChooseTime(props: any) {
 
     return (
         <div className={styles.container}>
-            <h2 className={styles.titleService}>{props.router.query.serviceName}</h2>
+            <h2 className={styles.titleService}>{props.router.query.serviceName.split("-")[0]}</h2>
 
             <h3 className={styles.pickDayTitle}>Escolha um dia{choosedDate && `: ${choosedDate}`}</h3>
             <div className={styles.weekDays}>
