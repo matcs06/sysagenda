@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "export NODE_OPTIONS=--openssl-legacy-provider && next build",
-    "start": "next start",
+    "start": "export NODE_OPTIONS=--openssl-legacy-provider && next start",
     "lint": "next lint",
     "openmobile": "node ./node_modules/openmobile/ip.js"
   },
