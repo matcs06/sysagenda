@@ -11,6 +11,5 @@ module.exports = {
     domains: ['localhost', "oimparcial.com.br", "clickeagenda.arangal.com"],
 
   },
-  pageExtensions: ['page.tsx', 'page.ts', 'page.jsx', 'page.js']
 
 }
