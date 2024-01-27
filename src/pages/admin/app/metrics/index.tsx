@@ -61,7 +61,6 @@ export default function Metrics() {
    const { data: schedules = [], isLoading, isError, } = useQuery("schedules", fetchSchedules)
    const schedlesAmountByPeriod = schedules.filter((schedule, index) => schedule.date.includes(monthToNumber + "/" + selectedYear))
    const earningsByPeriod = schedlesAmountByPeriod.reduce((acc, schedlesAmountByPeriod) => acc + Number(schedlesAmountByPeriod.value), 0)
-   console.log(schedlesAmountByPeriod)
 
    return (
       <div className={styles.container}>
