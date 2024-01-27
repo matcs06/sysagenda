@@ -35,6 +35,7 @@ function CustomerInfo(props: any) {
         const choosedDate = props.router.query.choosedDate;
         const choosedTime = props.router.query.choosedTime;
         const serviceName = props.router.query.serviceName;
+        const servicePrice = props.router.query.servicePrice
         const userId = props.router.query.userId;
 
         let newServiceDuration: string;
@@ -71,6 +72,7 @@ function CustomerInfo(props: any) {
                 service_duration: newServiceDuration,
                 phone_number: customerNumber,
                 isMorning: Boolean(isMorning),
+                price: servicePrice,
                 user_id: userId
             })
 
