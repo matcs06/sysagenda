@@ -12,6 +12,7 @@ function FinalScreen(props: any) {
 
     const [address, setAddress] = useState("")
     const [phoneNumber, setPhoneNumber] = useState("")
+    const [serviceName, setServiceName] = useState(props.router.query.serviceName || "Serviço escolhido")
 
     useEffect(() => {
         const userName = localStorage.getItem("provider")
@@ -51,7 +52,7 @@ function FinalScreen(props: any) {
                 <CheckIcon sx={{ color: "#f48ab6", fontSize: 35 }} />
             </div>
             <div className={styles.text}>
-                <h2>Seu agendamento do serviço <strong>{props.router.query.serviceName.split("-")[0]}</strong>  às <strong>{timeFormated(props.router.query.serviceTime)} horas</strong> foi realizado com sucesso.</h2>
+                <h2>Seu agendamento do serviço <strong>{serviceName.split("-")[0]}</strong>  às <strong>{timeFormated(props.router.query.serviceTime)} horas</strong> foi realizado com sucesso.</h2>
             </div>
 
             <div className={styles.text2}>

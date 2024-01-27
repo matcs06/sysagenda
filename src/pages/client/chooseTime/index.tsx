@@ -20,6 +20,7 @@ function ChooseTime(props: any) {
     const [timesAvailable, setTimesAvailable] = useState<availabilityDetails>()
     const [choosedDate, setChoosedDate] = useState("")
     const [choosedTime, setChoosedTime] = useState("")
+    const [serviceName, setServiceName] = useState(props.router.query.serviceName || "Serviço escolhido")
 
     daysAvailable.sort(function (a, b) { return getDateFromString(a.date).getTime() - getDateFromString(b.date).getTime() });
 
@@ -81,7 +82,7 @@ function ChooseTime(props: any) {
 
     return (
         <div className={styles.container}>
-            <h2 className={styles.titleService}>{props.router.query.serviceName.split("-")[0]}</h2>
+            <h2 className={styles.titleService}>{serviceName.split("-")[0]}</h2>
 
             <h3 className={styles.pickDayTitle}>Escolha um dia{choosedDate && `: ${choosedDate}`}</h3>
             <div className={styles.weekDays}>

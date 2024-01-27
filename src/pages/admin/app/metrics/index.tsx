@@ -2,7 +2,7 @@ import styles from "./metrics.module.scss"
 import { BRLReais } from "../../../../utils/CurrencyFmt"
 import { useState } from "react"
 import Dropdown from "../../../../components/TextDropDown"
-import { options } from "./options"
+import { options } from "../../../../utils/options"
 import { useQuery } from "react-query";
 import api from "../../../../api";
 import { addLeadingZero } from "../../../../utils"
