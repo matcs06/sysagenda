@@ -215,4 +215,8 @@ function removeNonNumbers(text) {
 
 }
 
-export { getDateFromString, removeNonNumbers, getMonthName, getWeekDayName, getYear, timeFormated, isTodayOrTomorrow, getDayInNumber, validateAfternoonTime, validateMorningTime, addTimes }
+function addLeadingZero(number) {
+   return number < 10 ? `0${number}` : `${number}`;
+}
+
+export { addLeadingZero, getDateFromString, removeNonNumbers, getMonthName, getWeekDayName, getYear, timeFormated, isTodayOrTomorrow, getDayInNumber, validateAfternoonTime, validateMorningTime, addTimes }

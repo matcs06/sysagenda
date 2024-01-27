@@ -6,6 +6,7 @@ import PriceChangeIcon from '@mui/icons-material/PriceChange';
 import DateRangeIcon from '@mui/icons-material/DateRange';
 import LogoutIcon from '@mui/icons-material/Logout';
 import AirlineSeatReclineExtraIcon from '@mui/icons-material/AirlineSeatReclineExtra';
+import StackedBarChartIcon from '@mui/icons-material/StackedBarChart';
 
 import AvailabilityInquiry from '../../pages/admin/app/availabilityInquiry';
 import CreateAvailability from '../../pages/admin/app/createAvailability';
@@ -15,6 +16,7 @@ import Finance from '../../pages/admin/app/finance';
 import Scheduller from "../../pages/admin/app/Callendar"
 import OpenClient from "../../pages/admin/app/openClient"
 import Logout from '../../pages/admin/app/logout';
+import Metrics from '../../pages/admin/app/metrics'
 
 export const SideBarData = [
    {
@@ -46,6 +48,11 @@ export const SideBarData = [
       title: "Financeiro",
       icon: <PriceChangeIcon />,
       component: <Finance />
+   },
+   {
+      title: "Metricas",
+      icon: <StackedBarChartIcon />,
+      component: <Metrics />
    },
    {
       title: "Site do Cliente",
