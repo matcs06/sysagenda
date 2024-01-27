@@ -2,11 +2,11 @@
   "name": "antonielem",
   "private": true,
   "engines": {
-    "node": "18.x"
+    "node": "20.x"
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "export NODE_OPTIONS=--openssl-legacy-provider && next build",
     "start": "next start",
     "lint": "next lint",
     "openmobile": "node ./node_modules/openmobile/ip.js"
@@ -23,6 +23,7 @@
     "axios": "^0.25.0",
     "browserify-fs": "^1.0.0",
     "cldr-data": "^36.0.0",
+    "cross-env": "^7.0.3",
     "date-fns": "^2.25.0",
     "dotenv": "^16.0.0",
     "fs": "^0.0.1-security",

@@ -6,7 +6,6 @@ import { options } from "./options"
 import { useQuery } from "react-query";
 import api from "../../../../api";
 import { addLeadingZero } from "../../../../utils"
-import { Schedule } from "@mui/icons-material"
 
 interface SchduleFields {
    id: string;
