@@ -122,7 +122,7 @@ export default function Scheduller({ data }) {
     })
 
     const localData: EventSettingsModel = {
-        dataSource: payment_status == "pago" && dataSource
+        dataSource: payment_status !== "pendente" && dataSource
     }
 
     const editorWindow = (props) => {
