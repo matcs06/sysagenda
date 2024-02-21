@@ -36,7 +36,7 @@ export default function Scheduller({ data }) {
     const [userFullName, setUserFullName] = useState("")
     const [isReminderForPaymentDay, setIsReminderForPaymentDay] = useState(true)
     const [showReminder, setShowReminder] = useState(false)
-
+    let payment_status = ""
     const fetchSchedules = async () => {
         const payment_status = localStorage.getItem("payment_status")
 
@@ -55,7 +55,7 @@ export default function Scheduller({ data }) {
 
 
     useEffect(() => {
-        let payment_status = localStorage.getItem("payment_status")
+        payment_status = localStorage.getItem("payment_status")
         const user_name = String(localStorage.getItem("user_name"))
 
         setUserFullName(String(localStorage.getItem("username")))
@@ -122,7 +122,7 @@ export default function Scheduller({ data }) {
     })
 
     const localData: EventSettingsModel = {
-        dataSource
+        dataSource: payment_status == "pago" && dataSource
     }
 
     const editorWindow = (props) => {
