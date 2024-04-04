@@ -1,5 +1,5 @@
 import styles from "./availabilityInquiry.module.scss"
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { fontSize } from "@mui/system";
 import { useEffect, useState } from "react";
 import { getMonthName, getWeekDayName, getYear, getDayInNumber, timeFormated } from "../../../../utils/index.js"
@@ -56,8 +56,8 @@ export default function AvailabilityInquiry() {
             {availabilities?.map((item) => (
                <div className={styles.card} key={item.date} >
                   <p>Dia da semana: {getWeekDayName(item.date)}</p>
-                  <p>Data: {getDayInNumber(item.date)} de {getMonthName(item.date)}</p>
-                  <p>Ano: {getYear(item.date)}</p>
+                  <p>Data: {getDayInNumber(item.date)} de {getMonthName(item.date)}, {getYear(item.date)}</p>
+                  <p className={styles.divideLine}>****🕜  Horários   🕜****</p>
                   <div className={styles.cardBottom}>
                      {item.morning_start_time && (
                         <p>Manhã: {timeFormated(item.morning_start_time)} hrs - {timeFormated(item.morning_end_time)} hrs</p>
@@ -68,7 +68,7 @@ export default function AvailabilityInquiry() {
                   </div>
                   <div className={styles.deleteContainerContainer}>
                      <div className={styles.deleteContainer} onClick={() => { deleteAvailability(item.id) }}>
-                        <DeleteForeverIcon sx={{ fontSize: 30 }} />
+                        <DeleteOutlineIcon sx={{ fontSize: 25 }} />
                      </div>
                   </div>
                </div>
