@@ -14,6 +14,8 @@ const SideBar: React.FC = ({ children }) => {
    const [sideComponent, setSideComponent] = useState(children)
    const [sideBarContiner, setSideBarContainer] = useState("styles.sidebarContainer")
    const [userFullName, setUserFullname] = useState("User Welcome")
+   const [selectedService, setSelectedService] = useState("")
+
 
    useEffect(() => {
       if (!localStorage.getItem("username")) {
@@ -52,10 +54,14 @@ const SideBar: React.FC = ({ children }) => {
 
    }
 
-   const OnClikOption = (component) => {
+   const OnClikOption = (component, serviceTitle) => {
+      ChangeBackGround(serviceTitle)
       setSideComponent(component)
    }
 
+   const ChangeBackGround = (title: string) => {
+      setSelectedService(title)
+   }
    return (
       <div className={styles.screenContainer}>
 
@@ -66,21 +72,28 @@ const SideBar: React.FC = ({ children }) => {
                   <MenuIcon />
                </div>
             </div>
-
             <ul>
                {SideBarData.map((value, key) => {
+                  var serviceBackGround = value.title == selectedService ? "#2d2c2d" : ""
                   return (
-                     <li key={key} onClick={() => { OnClikOption(value.component) }}>
+                     <li key={key} onClick={() => { OnClikOption(value.component, value.title) }} style={{ background: serviceBackGround }}>
                         {""}
                         <div className={styles.icon}>{value.icon}</div>{""}
-                        <div className={styles.services}>
-                           {value.title}
-                        </div>
+                        {selectedService == value.title ? (
+                           <div className={styles.services}  >
+                              {value.title}
+                           </div>
+                        ) : (
+                           <div className={styles.services} >
+                              {value.title}
+                           </div>
+                        )}
+
                      </li>
                   )
+
                })}
             </ul>
-
          </div>
          <div className={styles.screenContainer}>
             {sideComponent}
