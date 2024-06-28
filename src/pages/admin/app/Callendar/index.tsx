@@ -77,6 +77,10 @@ export default function Scheduller({ data }) {
 
     useEffect(() => {
 
+        if (scheduleRef.current) {
+            updateMonthAndYear(scheduleRef.current.selectedDate);
+        }
+
         payment_status = localStorage.getItem("payment_status")
         const user_name = String(localStorage.getItem("user_name"))
 
@@ -150,12 +154,6 @@ export default function Scheduller({ data }) {
     const editorWindow = (props) => {
         return <ScheduleDetail props={props} />
     }
-
-    useEffect(() => {
-        if (scheduleRef.current) {
-            updateMonthAndYear(scheduleRef.current.selectedDate);
-        }
-    }, []);
 
     const updateMonthAndYear = (date) => {
         const newMonth = date.getMonth() + 1; // Months are zero-based, so we add 1
