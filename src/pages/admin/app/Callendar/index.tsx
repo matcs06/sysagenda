@@ -1,7 +1,8 @@
 import { EventSettingsModel, Inject, ScheduleComponent, Day, Week, WorkWeek, Month, Agenda } from "@syncfusion/ej2-react-schedule";
 import ScheduleDetail from "./ScheduleDetail";
+import { addLeadingZero } from "../../../../utils"
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { addTimes } from "../../../../utils/";
 import api from "../../../../api"
 
@@ -30,20 +31,37 @@ interface UserInformation {
 }
 
 export default function Scheduller({ data }) {
-
+    const scheduleRef = useRef(null);
+    const [callendarMonth, setMonth] = useState("IN");
+    const [callendarYear, setYear] = useState(null);
     const [updateOnDelete, setUpdateOnDelete] = useState(false)
 
     const [userFullName, setUserFullName] = useState("")
     const [isReminderForPaymentDay, setIsReminderForPaymentDay] = useState(true)
     const [showReminder, setShowReminder] = useState(false)
     let payment_status = ""
+
+
+    var currentTime = new Date()
+    // returns the year (four digits)
+    var currentYear = currentTime.getFullYear()
+
     const fetchSchedules = async () => {
         const payment_status = localStorage.getItem("payment_status")
+        var schedule_date = addLeadingZero(callendarMonth) + "/" + callendarYear
+
+        if (callendarYear == null) {
+            schedule_date = callendarMonth + "/" + currentYear
+        }
 
         try {
-
             const user_id = localStorage.getItem("user_id");
-            const response = await api.get<SchduleFields[]>(`/schedules?user_id=${user_id}`)
+            const response = await api.get<SchduleFields[]>(`/schedules/bymonthandyear`, {
+                params: {
+                    user_id: user_id,
+                    schedule_date: schedule_date
+                }
+            })
 
             return response.data
         } catch (error) {
@@ -51,10 +69,14 @@ export default function Scheduller({ data }) {
         }
     }
 
-    const { data: schedules = [], isLoading, isError, } = useQuery("schedules", fetchSchedules)
-
+    const { data: schedules = [], refetch, isLoading, isError } = useQuery("schedules", fetchSchedules)
 
     useEffect(() => {
+        refetch()
+    }, [callendarMonth])
+
+    useEffect(() => {
+
         payment_status = localStorage.getItem("payment_status")
         const user_name = String(localStorage.getItem("user_name"))
 
@@ -129,9 +151,31 @@ export default function Scheduller({ data }) {
         return <ScheduleDetail props={props} />
     }
 
+    useEffect(() => {
+        if (scheduleRef.current) {
+            updateMonthAndYear(scheduleRef.current.selectedDate);
+        }
+    }, []);
+
+    const updateMonthAndYear = (date) => {
+        const newMonth = date.getMonth() + 1; // Months are zero-based, so we add 1
+        const newYear = date.getFullYear();
+
+        setMonth(newMonth);
+        setYear(newYear);
+
+    };
+
+    const onActionComplete = (args) => {
+        if (args.requestType === 'dateNavigate') {
+            updateMonthAndYear(scheduleRef.current.selectedDate);
+        }
+    };
+
     return (
         <>
-            <ScheduleComponent eventSettings={{ dataSource: localData.dataSource }}
+            <ScheduleComponent ref={scheduleRef} actionComplete={onActionComplete}
+                eventSettings={{ dataSource: localData.dataSource }}
                 editorTemplate={editorWindow}
                 showQuickInfo={false}
                 height='1000px'
@@ -141,6 +185,7 @@ export default function Scheduller({ data }) {
                 workHours={{ highlight: true, start: '07:00', end: '18:00' }}
             >
                 <Inject services={[Day, Week, WorkWeek, Month, Agenda]} />
+
             </ScheduleComponent>
             {showReminder && (
                 <PaymentReminder showCloseOption={false} name={userFullName.split(" ")[0]} setShowReminder={setShowReminder} isReminderForPaymentDay={isReminderForPaymentDay} />
