@@ -96,22 +96,34 @@ const ScheduleDetail = ({ props }) => {
 
       <div className={styles.card}>
          <div>
-            <p>Cliente: {props?.Customer}</p>
-            <p>Serviço: {props?.Service}</p>
 
-            <p>Início: {String(props?.fStartTime)}</p>
-            <p>Fim: {String(props?.fEndTime)}</p>
-            <div className={styles.numberContainer}>
-               <p>Contato: {props?.phone}</p>
+            <div className={styles.titleContent} style={{ display: "flex", width: "100%" }}>
+               <p style={{ fontWeight: "lighter" }}>Cliente:</p><p>{props?.Customer}</p>
             </div>
-            <div>
-               <p>Preço: R$ {props?.value}</p>
+
+            <div className={styles.titleContent} style={{ display: "flex", width: "100%" }}>
+               <p style={{ fontWeight: "lighter" }}>Serviço:</p><p>{props?.Service}</p>
             </div>
+
+            <div className={styles.titleContent} style={{ display: "flex", width: "100%" }}>
+               <p style={{ fontWeight: "lighter" }}>Horário:</p><p>{String(props?.fStartTime)} às {String(props?.fEndTime)}</p>
+            </div>
+
+            <div className={styles.titleContent} style={{ display: "flex", width: "100%" }}>
+               <p style={{ fontWeight: "lighter" }}>Contato:</p><p>{props?.phone}</p>
+            </div>
+
+            <div className={styles.titleContent} style={{ display: "flex", width: "100%" }}>
+               <p style={{ fontWeight: "lighter" }}>Preço:</p><p>R$ {props?.value}</p>
+            </div>
+
+
          </div>
 
          <div className={styles.dropContainer}>
 
             <>
+
                <p>Pago: </p>
                <DropDownListComponent id="EventType" dataSource={["SIM", "NÃO"]}
                   placeholder="Pago?" onChange={setPaidSelected} data-name="ifinance" value={null}>
