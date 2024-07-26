@@ -4,21 +4,12 @@ import styles from "./scheduleDetail.module.scss"
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import api from "../../../../../api"
-import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
+import PaidIcon from '@mui/icons-material/Paid';
 const ScheduleDetail = ({ props }) => {
 
    const [updateOnDelete, setUpdateOnDelete] = useState(false)
    const [updateOnClick, setupdateOnClick] = useState(false)
-   const [togleTransaction, setTogleTransaction] = useState(true)
    const [paid, setPaid] = useState(false)
-
-   const setTogleValue = (target: any) => {
-      if (target.value == "NÃO") {
-         setTogleTransaction(false)
-      } else {
-         setTogleTransaction(true)
-      }
-   }
 
    const setPaidSelected = (target: any) => {
       if (target.value == "NÃO") {
@@ -69,34 +60,34 @@ const ScheduleDetail = ({ props }) => {
 
       const clientFirstName = cliente.split(" ")[0]
 
-      if (togleTransaction) {
-         try {
-            const token = localStorage.getItem("token");
-            const user_id = localStorage.getItem("user_id");
 
-            await api.post("/transactions", {
-               title: clientFirstName + " - " + serviceName.split("-")[0],
-               value: serviceValue,
-               formatedDate: serviceDate,
-               payment_status: paid ? "payd" : "topay",
-               user_id: user_id,
-               customer_phone,
-            }, {
-               headers: {
-                  Authorization: "Bearer " + token,
-               },
-            });
+      try {
+         const token = localStorage.getItem("token");
+         const user_id = localStorage.getItem("user_id");
 
-            if (paid) {
-               window.alert("Agendamento adicionado ao Financeiro com sucesso!")
-            } else {
-               window.alert("Agendamento adicionado aos Pagamentos pendentes com sucesso!")
-            }
-         } catch (error) {
-            window.alert("Erro ao adicionar agendamento no Financeiro")
+         await api.post("/transactions", {
+            title: clientFirstName + " - " + serviceName.split("-")[0],
+            value: serviceValue,
+            formatedDate: serviceDate,
+            payment_status: paid ? "payd" : "topay",
+            user_id: user_id,
+            customer_phone,
+         }, {
+            headers: {
+               Authorization: "Bearer " + token,
+            },
+         });
 
+         if (paid) {
+            window.alert("Agendamento adicionado ao Financeiro com sucesso!")
+         } else {
+            window.alert("Agendamento adicionado aos Pagamentos pendentes com sucesso!")
          }
+      } catch (error) {
+         window.alert("Erro ao adicionar agendamento no Financeiro")
+
       }
+
 
 
    }
@@ -119,27 +110,18 @@ const ScheduleDetail = ({ props }) => {
          </div>
 
          <div className={styles.dropContainer}>
-            <p>Financeiro: </p>
-            <DropDownListComponent id="EventType" dataSource={["SIM", "NÃO"]}
-               placeholder="Adicionar ao Ifinance?" onChange={setTogleValue} data-name="ifinance" value={null}>
 
-            </DropDownListComponent>
-
-            {togleTransaction && (
-               <>
-                  <p>Pago: </p>
-                  <DropDownListComponent id="EventType" dataSource={["SIM", "NÃO"]}
-                     placeholder="Pago?" onChange={setPaidSelected} data-name="ifinance" value={null}>
-
-                  </DropDownListComponent>
-                  <div onClick={() => handleAddToFinancial(props?.Service, props?.date, props?.value, props?.Customer, props?.phone)} className={styles.addToFinButton} title="Clique aqui para adicionar ao financeiro">
-                     <RadioButtonCheckedIcon />
-                  </div>
-               </>
-
-            )}
+            <>
+               <p>Pago: </p>
+               <DropDownListComponent id="EventType" dataSource={["SIM", "NÃO"]}
+                  placeholder="Pago?" onChange={setPaidSelected} data-name="ifinance" value={null}>
+               </DropDownListComponent>
 
 
+               <div onClick={() => handleAddToFinancial(props?.Service, props?.date, props?.value, props?.Customer, props?.phone)} className={styles.addToFinButton} title="Clique aqui para adicionar ao financeiro">
+                  <PaidIcon />
+               </div>
+            </>
 
          </div>
 

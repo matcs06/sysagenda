@@ -65,7 +65,7 @@
   align-items: center;
   justify-content: space-between;
   width: 90%;
-  bottom: 5px;
+  bottom: -3px;
 }
 
 .deleteContainer {
@@ -82,19 +82,17 @@
 
 .dropContainer {
   display: flex;
-  width: 90%;
+  width: 40%;
 }
 
 
 .addToFinButton {
-  position: absolute;
-  margin-left: 15px;
+  margin-left: 5%;
   cursor: pointer;
   color: rgb(4, 133, 0);
   transition: 0.2s;
   height: 30px;
   width: 40px;
-  background-color: #1b215c;
   right: 0;
   display: flex;
   align-items: center;
@@ -103,7 +101,6 @@
 
   &:hover {
     color: rgb(16, 185, 10);
-    background-color: #000000;
 
 
   }
