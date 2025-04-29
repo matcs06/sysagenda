@@ -51,12 +51,17 @@ function ServicesList(props) {
 
          localStorage.setItem("provider", String(userName))
          const userInfo = await api.get(`users/${userName}`)
-         setUserId(userInfo.data.id)
-         const response = await api.get<ServiceFields[]>(`/products?user_id=${userInfo.data.id}`);
-
-         setItems(response.data);
-         setIsLoading(false)
-
+         if(userInfo.data.payment_status !== "pendente"){
+            setUserId(userInfo.data.id)
+            const response = await api.get<ServiceFields[]>(`/products?user_id=${userInfo.data.id}`);
+   
+            setItems(response.data);
+            setIsLoading(false)
+         }else{
+            setItems([]);
+            setIsLoading(false)
+         }
+        
       }
       loadItems();
       return () => {
@@ -88,6 +93,11 @@ function ServicesList(props) {
          <div className={styles.container}>
             <h3 className={styles.screenTitle}>Escolha um serviço</h3>
             <div className={styles.panel}>
+               {items.length === 0 ? (
+                  <div className={styles.noServiceContainer}>
+                     <h1>Não há serviços disponíveis no momento</h1>
+                  </div>
+               ) : null}
                {items && items.map((item) => {
                   if (String(item.enabled) == "true") {
                      return (
